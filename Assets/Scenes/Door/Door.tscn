@@ -144,6 +144,9 @@ animations = [{
 size = Vector2(42, 46)
 
 [node name="Door" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+input_pickable = false
 script = ExtResource("1_1o1ha")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -156,3 +159,6 @@ frame_progress = 1.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 13)
 shape = SubResource("RectangleShape2D_4w2m7")
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
