@@ -8,10 +8,13 @@ class_name CharacterStateMachine
 @export var current_state : State
 
 var states : Array[State]
+var death_state : Death
 
 func _ready():
 	for child in get_children():
 		if (child is State):
+			if child is Death:
+				death_state = child
 			states.append(child)
 			child.character = character
 			child.playback = animation_tree["parameters/playback"]
@@ -26,7 +29,10 @@ func _physics_process(delta):
 	current_state.state_process(delta)
 
 func check_if_can_move():
-	return current_state.can_move
+	return current_state.can_move and not character.is_sliding() and not current_state is Death
+
+func kill():
+	switch_states(death_state)
 
 func switch_states(new_state : State):
 	if current_state != null:
