@@ -1,7 +1,15 @@
 extends State
 
+@export var jump_velocity : int = -280
 @export var climbing_velocity : float = 1
 @export var ground_state : State
+@export var air_state : State
+@export var idle_jump_animation : String = "JumpIdle"
+@export var moving_jump_animation : String = "JumpMoving"
+@export var push_speed : float = 1.5
+
+func on_enter():
+	character.velocity.y = 0
 
 func state_process(delta):
 	if character.is_on_floor() and Input.is_action_pressed("move_down"):
@@ -11,8 +19,15 @@ func state_process(delta):
 	if not character.is_on_ladder() and not Input.is_action_pressed("move_down"):
 		next_state = ground_state
 		return
+		
+	if character.is_pushed_up() and not Input.is_action_pressed("move_down"):
+		character.position.y -= push_speed
+	if character.is_pushed_down() and not Input.is_action_pressed("move_up"):
+		character.position.y += push_speed
 	
-	if Input.is_action_pressed("move_up"):
+	if Input.is_action_pressed("thrust") and not character.ceiling_raycast.is_colliding():
+		jump()
+	elif Input.is_action_pressed("move_up"):
 		climb_up(delta)
 	elif Input.is_action_pressed("move_down"):
 		climb_down(delta)
@@ -51,7 +66,17 @@ func pull_towards_middle():
 		return
 	var middle_of_tile = get_tile_middle()
 	
-	if character.position.x > middle_of_tile:
+	var offset = 1 if character.sprite.flip_h else -1
+	if ceil(character.position.x + offset) > middle_of_tile:
 		character.position.x -= 1
-	elif character.position.x < middle_of_tile:
+	elif ceil(character.position.x + offset) < middle_of_tile:
 		character.position.x += 1
+
+func jump():
+	character.velocity.y = jump_velocity
+	if character.fuel <= 0:
+		if character.velocity.x == 0:
+			playback.travel(idle_jump_animation)
+		else:
+			playback.travel(moving_jump_animation)
+	next_state = air_state

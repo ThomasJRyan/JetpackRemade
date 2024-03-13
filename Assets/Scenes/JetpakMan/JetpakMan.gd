@@ -33,8 +33,13 @@ var on_ladder = 0:
 		on_ladder = l
 		set_collision_mask_value(4, not is_on_ladder())
 var skip_gravity_check = false
+
 var push_left = 0
 var push_right = 0
+var push_up = 0
+var push_down = 0
+var sliding = 0
+var slowed = 0
 
 var middle_collision = 0
 var bottom_collision = 0
@@ -46,7 +51,7 @@ var SCORE = 0
 	
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var last_direction := 1
+var last_direction := 0
 
 			
 func has_fuel():
@@ -61,8 +66,29 @@ func is_middle_colliding():
 func is_bottom_colliding():
 	return bottom_collision > 0
 	
+func is_sliding():
+	return sliding > 0
+	
+func is_pushed_left():
+	return push_left > 0
+	
+func is_pushed_right():
+	return push_right > 0
+	
+func is_pushed_up():
+	return push_up > 0
+	
+func is_pushed_down():
+	return push_down > 0
+	
+func is_slowed():
+	return slowed > 0
+	
 func check_if_gravity_skipped():
-	return is_on_ladder()
+	return is_on_ladder() and not state_machine.current_state is Air
+	
+func kill():
+	state_machine.kill()
 	
 func _physics_process(delta):
 	## Add the gravity.
@@ -81,6 +107,8 @@ func _physics_process(delta):
 	## Handle basic movement
 	if direction.x != 0 and state_machine.check_if_can_move():
 		velocity.x = direction.x * speed
+		if is_slowed():
+			velocity.x = clamp(velocity.x, -(speed * 0.66), speed * 0.66)
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		
@@ -94,8 +122,10 @@ func _physics_process(delta):
 func update_direction():
 	if direction.x > 0:
 		sprite.flip_h = false
+		last_direction = 1
 	elif direction.x < 0:
 		sprite.flip_h = true
+		last_direction = -1
 	
 func update_animation():
 	animation_tree.set("parameters/Move/blend_position", direction.x)
@@ -104,6 +134,8 @@ func update_animation():
 func _on_area_2d_body_shape_entered(body_rid, body: TileMap, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
 	if not tile_map:
 		tile_map = body
@@ -111,6 +143,12 @@ func _on_area_2d_body_shape_entered(body_rid, body: TileMap, body_shape_index, l
 	match special_interaction:
 		1: # On ladder
 			on_ladder += 1
+		2: # On up ladder
+			on_ladder += 1
+			push_up += 1
+		3: # On down ladder
+			on_ladder += 1
+			push_down += 1
 		4: # Collect gem
 			SCORE += 50
 			emit_signal("gem_collected")
@@ -133,59 +171,93 @@ func _on_area_2d_body_shape_entered(body_rid, body: TileMap, body_shape_index, l
 		23: # Extra life
 			SCORE += 500
 			body.erase_cell(0, tile_cords)
-		114: # Platforms that push left
-			push_left += 1
-		117: # Platforms that push left
-			push_right += 1
+		36:
+			kill()
 
 func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
 	if not tile_map:
 		tile_map = body
 	#print("Exiting: " + str(special_interaction))
 	match special_interaction:
-		# Leave ladder
-		1:
+		1: # Leave ladder
 			on_ladder -= 1
-		114:# Platforms that push left
-			push_left -= 1
-		117: # Platforms that push left
-			push_right -= 1
+		2: # On up ladder
+			on_ladder -= 1
+			push_up -= 1
+		3: # On down ladder
+			on_ladder -= 1
+			push_down -= 1
 
 
 func _on_middle_collision_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
 	match special_interaction:
 		1:
+			middle_collision += 1
+		2:
+			middle_collision += 1
+		3:
 			middle_collision += 1
 
 
 func _on_middle_collision_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
 	match special_interaction:
 		1:
+			middle_collision -= 1
+		2:
+			middle_collision -= 1
+		3:
 			middle_collision -= 1
 
 
 func _on_bottom_collision_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
+	#print(special_interaction)
 	match special_interaction:
 		1:
 			bottom_collision += 1
+		94: # Ice
+			sliding += 1
+		97: # Grass
+			slowed += 1
+		114: # Platforms that push left
+			push_left += 1
+		117: # Platforms that push left
+			push_right += 1
 
 
 func _on_bottom_collision_body_shape_exited(body_rid, body, body_shape_index, local_shape_index):
 	var tile_cords = body.get_coords_for_body_rid(body_rid)
 	var tile_data = body.get_cell_tile_data(0, tile_cords)
+	if not tile_data:
+		return
 	var special_interaction: int = tile_data.get_custom_data("special_interaction")
 	match special_interaction:
 		1:
 			bottom_collision -= 1
+		94: # Ice
+			sliding -= 1
+		97: # Grass
+			slowed -= 1
+		114:# Platforms that push left
+			push_left -= 1
+		117: # Platforms that push left
+			push_right -= 1

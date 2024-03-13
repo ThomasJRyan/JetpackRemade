@@ -1,4 +1,4 @@
-[gd_scene load_steps=107 format=3 uid="uid://d38vn5v1nohdy"]
+[gd_scene load_steps=113 format=3 uid="uid://d38vn5v1nohdy"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/JetpakMan.gd" id="1_v0uda"]
 [ext_resource type="Texture2D" uid="uid://d3cr1gncrnkyq" path="res://Assets/Graphics/JetpakMan.png" id="2_71voa"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/BottomColl.gd" id="12_w5v4p"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/AnimPlaying.gd" id="13_68cok"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/CurrentTileCords.gd" id="14_aou4k"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/Sliding.gd" id="15_qb54l"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/XSpeed.gd" id="16_ppemb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pcun"]
 size = Vector2(21, 33)
@@ -889,6 +891,18 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cv4ai"]
 animation = &"Climb"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7d5ft"]
+animation = &"Death1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7l6y6"]
+animation = &"Death2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l5epe"]
+animation = &"Death3"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_socws"]
+animation = &"Death4"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kvcpc"]
 animation = &"FlyIdle"
 
@@ -942,6 +956,14 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_org0l"]
 states/Climb/node = SubResource("AnimationNodeAnimation_cv4ai")
 states/Climb/position = Vector2(615, 100)
+states/Death1/node = SubResource("AnimationNodeAnimation_7d5ft")
+states/Death1/position = Vector2(720, 243)
+states/Death2/node = SubResource("AnimationNodeAnimation_7l6y6")
+states/Death2/position = Vector2(720, 298)
+states/Death3/node = SubResource("AnimationNodeAnimation_l5epe")
+states/Death3/position = Vector2(720, 354)
+states/Death4/node = SubResource("AnimationNodeAnimation_socws")
+states/Death4/position = Vector2(720, 410)
 states/FlyIdle/node = SubResource("AnimationNodeAnimation_kvcpc")
 states/FlyIdle/position = Vector2(344, 217)
 states/FlyMoving/node = SubResource("AnimationNodeAnimation_yvvep")
@@ -955,7 +977,7 @@ states/JumpMoving/position = Vector2(498, -23)
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_84uxy")
 states/Move/position = Vector2(415, 100)
 transitions = ["Move", "JumpIdle", SubResource("AnimationNodeStateMachineTransition_ypmmd"), "Move", "JumpMoving", SubResource("AnimationNodeStateMachineTransition_6m4nl"), "Move", "FlyIdle", SubResource("AnimationNodeStateMachineTransition_p8nb2"), "Move", "FlyMoving", SubResource("AnimationNodeStateMachineTransition_ehptw"), "Start", "Move", SubResource("AnimationNodeStateMachineTransition_nmd22"), "FlyIdle", "Idle", SubResource("AnimationNodeStateMachineTransition_oq700"), "FlyMoving", "Idle", SubResource("AnimationNodeStateMachineTransition_v3el6"), "Move", "Climb", SubResource("AnimationNodeStateMachineTransition_q3y3i")]
-graph_offset = Vector2(26, -60)
+graph_offset = Vector2(175, 154)
 
 [node name="JetpakMan" type="CharacterBody2D"]
 collision_mask = 9
@@ -967,8 +989,6 @@ MAX_GRAVITY = 200
 [node name="TopRaycast" type="RayCast2D" parent="Raycasts"]
 position = Vector2(-1, -15)
 target_position = Vector2(0, -9)
-collide_with_areas = true
-collide_with_bodies = false
 
 [node name="BotRaycast" type="RayCast2D" parent="Raycasts"]
 position = Vector2(-1, 15)
@@ -987,7 +1007,7 @@ shape = SubResource("RectangleShape2D_8pcun")
 metadata/_edit_lock_ = true
 
 [node name="SpecialAreaCollision" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 metadata/_edit_lock_ = true
 
@@ -1046,21 +1066,24 @@ script = ExtResource("4_dacaa")
 air_state = NodePath("../Air")
 climbing_state = NodePath("../Climbing")
 
-[node name="Air" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state")]
+[node name="Air" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state", "climbing_state")]
 script = ExtResource("5_mwiph")
 flying_velocity = -200
 ground_state = NodePath("../Ground")
+climbing_state = NodePath("../Climbing")
 
 [node name="Death" type="Node" parent="CharacterStateMachine"]
 script = ExtResource("6_tqwsx")
 can_move = false
 
-[node name="Climbing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state")]
+[node name="Climbing" type="Node" parent="CharacterStateMachine" node_paths=PackedStringArray("ground_state", "air_state")]
 script = ExtResource("7_ei6re")
 climbing_velocity = 2.0
 ground_state = NodePath("../Ground")
+air_state = NodePath("../Air")
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1136,6 +1159,26 @@ offset_bottom = -128.0
 text = "CurrTile: "
 script = ExtResource("14_aou4k")
 character = NodePath("../..")
+
+[node name="Sliding" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -172.0
+offset_top = -9.0
+offset_right = -47.0
+offset_bottom = 14.0
+text = "Sliding: "
+script = ExtResource("15_qb54l")
+charater = NodePath("../..")
+
+[node name="XSpeed" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -169.0
+offset_top = -172.0
+offset_right = -23.0
+offset_bottom = -149.0
+text = "XSpeed: "
+script = ExtResource("16_ppemb")
+charater = NodePath("../..")
 
 [connection signal="body_shape_entered" from="SpecialAreaCollision" to="." method="_on_area_2d_body_shape_entered"]
 [connection signal="body_shape_exited" from="SpecialAreaCollision" to="." method="_on_area_2d_body_shape_exited"]
