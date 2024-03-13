@@ -36,7 +36,7 @@ func map_legacy_tiles():
 func load_map(filepath: String):
 	"""Load a map into the play area"""
 	var content := FileAccess.get_file_as_bytes("res://Assets/Levels/" + filepath)
-	var level_data := LevelData.new(content)
+	var level_data := Map.new(content)
 	
 	# Iterate through the level data and generate the map
 	for y in range(level_data.level_map.size()):
@@ -51,6 +51,7 @@ func load_map(filepath: String):
 	
 	# Set the ending position
 	exit_door = Door.instantiate()
+	exit_door.connect("door_reached", level_complete)
 	var door_pos: Vector2 = tilemap.to_global(level_data.level_end)
 	print(door_pos)
 	add_child(exit_door)
@@ -77,6 +78,9 @@ func on_fuel_change():
 	
 func on_gem_collected():
 	collected_gems += 1
+	
+func level_complete():
+	print("Level complete!")
 	
 func _ready():
 	map_legacy_tiles()
