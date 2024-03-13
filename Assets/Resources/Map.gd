@@ -1,5 +1,5 @@
-extends Node
-class_name LevelData
+extends Resource
+class_name Map
 
 var map_width: int
 var map_height: int
@@ -51,4 +51,3 @@ func _init(level_data: PackedByteArray, width: int = 26, height: int = 16, enemy
 	level_name = ""
 	for n in range(pos, len(level_data)):
 		level_name += char(level_data[n])
-	
