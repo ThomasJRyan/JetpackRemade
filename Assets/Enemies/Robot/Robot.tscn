@@ -1,0 +1,208 @@
+[gd_scene load_steps=23 format=3 uid="uid://bebmyngm14i6y"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/Robot.gd" id="1_knjqa"]
+[ext_resource type="Texture2D" uid="uid://c4ye237j3kh6h" path="res://Assets/Graphics/Robot.png" id="1_n402d"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/CurrentTileCords.gd" id="3_o1aex"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/IsCentered.gd" id="3_y0e8b"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/NextTile.gd" id="4_kq6fl"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/OnLadder.gd" id="5_8ds6k"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/NextMove.gd" id="6_c7nw5"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/Position.gd" id="7_p8jkw"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/RobotStateMachine.gd" id="9_l4kt2"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/Moving.gd" id="10_3sykg"]
+[ext_resource type="Script" path="res://Assets/Enemies/Robot/Climbing.gd" id="11_2r4ht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_by3x4"]
+size = Vector2(27, 35.9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xk25e"]
+atlas = ExtResource("1_n402d")
+region = Rect2(144, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_taegq"]
+atlas = ExtResource("1_n402d")
+region = Rect2(180, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kai8x"]
+atlas = ExtResource("1_n402d")
+region = Rect2(216, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wrex"]
+atlas = ExtResource("1_n402d")
+region = Rect2(252, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbtyj"]
+atlas = ExtResource("1_n402d")
+region = Rect2(0, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu768"]
+atlas = ExtResource("1_n402d")
+region = Rect2(36, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pkj6"]
+atlas = ExtResource("1_n402d")
+region = Rect2(72, 0, 36, 36)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtufq"]
+atlas = ExtResource("1_n402d")
+region = Rect2(108, 0, 36, 36)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5m8t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xk25e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_taegq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kai8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wrex")
+}],
+"loop": true,
+"name": &"Climb",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbtyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu768")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pkj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtufq")
+}],
+"loop": true,
+"name": &"Movement",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a34km"]
+size = Vector2(27, 30)
+
+[node name="Robot" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_knjqa")
+climbing_velocity = 1
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 0.05)
+shape = SubResource("RectangleShape2D_by3x4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_c5m8t")
+animation = &"Climb"
+autoplay = "Movement"
+metadata/_edit_lock_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1.5, 3)
+shape = SubResource("RectangleShape2D_a34km")
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Debug"]
+visible = false
+
+[node name="DebugLabels" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_lock_ = true
+
+[node name="IsCentered" type="Label" parent="DebugLabels" node_paths=PackedStringArray("character")]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -168.0
+offset_right = 143.0
+offset_bottom = -145.0
+text = "Centered: "
+script = ExtResource("3_y0e8b")
+character = NodePath("../..")
+
+[node name="CurrTile" type="Label" parent="DebugLabels" node_paths=PackedStringArray("character")]
+layout_mode = 0
+offset_left = -20.0
+offset_top = -105.0
+offset_right = 144.0
+offset_bottom = -82.0
+text = "CurrTile: "
+script = ExtResource("3_o1aex")
+character = NodePath("../..")
+
+[node name="NextTile" type="Label" parent="DebugLabels" node_paths=PackedStringArray("character")]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -83.0
+offset_right = 55.0
+offset_bottom = -60.0
+text = "NextTile: "
+script = ExtResource("4_kq6fl")
+character = NodePath("../..")
+
+[node name="OnLadder" type="Label" parent="DebugLabels" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -18.0
+offset_top = -128.0
+offset_right = 160.0
+offset_bottom = -105.0
+text = "OnLadder: "
+script = ExtResource("5_8ds6k")
+charater = NodePath("../..")
+
+[node name="NextMove" type="Label" parent="DebugLabels" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -60.0
+offset_right = 168.0
+offset_bottom = -37.0
+text = "NextMove: "
+script = ExtResource("6_c7nw5")
+charater = NodePath("../..")
+
+[node name="Position" type="Label" parent="DebugLabels" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -148.0
+offset_right = 131.0
+offset_bottom = -125.0
+text = "Position: "
+script = ExtResource("7_p8jkw")
+charater = NodePath("../..")
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)
+
+[node name="RobotStateMachine" type="Node" parent="." node_paths=PackedStringArray("character", "current_state")]
+script = ExtResource("9_l4kt2")
+character = NodePath("..")
+current_state = NodePath("Moving")
+
+[node name="Moving" type="Node" parent="RobotStateMachine" node_paths=PackedStringArray("climbing_state")]
+script = ExtResource("10_3sykg")
+climbing_state = NodePath("../Climbing")
+speed = 115
+
+[node name="Climbing" type="Node" parent="RobotStateMachine" node_paths=PackedStringArray("moving_state")]
+script = ExtResource("11_2r4ht")
+moving_state = NodePath("../Moving")
+
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]
+[connection signal="body_shape_exited" from="Area2D" to="." method="_on_area_2d_body_shape_exited"]
