@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://d38vn5v1nohdy"]
+[gd_scene load_steps=115 format=3 uid="uid://d38vn5v1nohdy"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/JetpakMan.gd" id="1_v0uda"]
 [ext_resource type="Texture2D" uid="uid://d3cr1gncrnkyq" path="res://Assets/Graphics/JetpakMan.png" id="2_71voa"]
@@ -14,8 +14,10 @@
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/BottomColl.gd" id="12_w5v4p"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/AnimPlaying.gd" id="13_68cok"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/CurrentTileCords.gd" id="14_aou4k"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/CurrentTileMid.gd" id="15_onjji"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/Sliding.gd" id="15_qb54l"]
 [ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/XSpeed.gd" id="16_ppemb"]
+[ext_resource type="Script" path="res://Assets/Scenes/JetpakMan/Switch.gd" id="17_ol7nq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8pcun"]
 size = Vector2(21, 33)
@@ -980,6 +982,7 @@ transitions = ["Move", "JumpIdle", SubResource("AnimationNodeStateMachineTransit
 graph_offset = Vector2(175, 154)
 
 [node name="JetpakMan" type="CharacterBody2D"]
+collision_layer = 16
 collision_mask = 9
 script = ExtResource("1_v0uda")
 MAX_GRAVITY = 200
@@ -1092,92 +1095,111 @@ metadata/_edit_lock_ = true
 
 [node name="State" type="Label" parent="Debug" node_paths=PackedStringArray("state_machine")]
 layout_mode = 0
-offset_left = -172.0
-offset_top = -27.0
-offset_right = -59.0
-offset_bottom = -4.0
+offset_left = -166.0
+offset_top = 37.0
+offset_right = -53.0
+offset_bottom = 60.0
 text = "State:"
 script = ExtResource("8_8mypv")
 state_machine = NodePath("../../CharacterStateMachine")
 
 [node name="OnLadder" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
 layout_mode = 0
-offset_left = -173.0
-offset_top = -46.0
-offset_right = -87.0
-offset_bottom = -23.0
+offset_left = -167.0
+offset_top = 18.0
+offset_right = -81.0
+offset_bottom = 41.0
 text = "OnLadder: "
 script = ExtResource("9_uhgdp")
 charater = NodePath("../..")
 
 [node name="OnFloor" type="Label" parent="Debug" node_paths=PackedStringArray("character")]
 layout_mode = 0
-offset_left = -171.0
-offset_top = -66.0
-offset_right = -131.0
-offset_bottom = -43.0
+offset_left = -165.0
+offset_top = -2.0
+offset_right = -94.0
+offset_bottom = 21.0
 text = "OnFloor: "
 script = ExtResource("10_n5ano")
 character = NodePath("../..")
 
 [node name="MiddleColl" type="Label" parent="Debug" node_paths=PackedStringArray("character")]
 layout_mode = 0
-offset_left = -170.0
-offset_top = -106.0
-offset_right = -87.0
-offset_bottom = -83.0
+offset_left = -164.0
+offset_top = -42.0
+offset_right = -81.0
+offset_bottom = -19.0
 text = "Middle: "
 script = ExtResource("11_4r0cy")
 character = NodePath("../..")
 
 [node name="BottomColl" type="Label" parent="Debug" node_paths=PackedStringArray("character")]
 layout_mode = 0
-offset_left = -170.0
-offset_top = -86.0
-offset_right = -75.0
-offset_bottom = -63.0
+offset_left = -164.0
+offset_top = -22.0
+offset_right = -69.0
+offset_bottom = 1.0
 text = "Bottom:"
 script = ExtResource("12_w5v4p")
 character = NodePath("../..")
 
 [node name="AnimPlaying" type="Label" parent="Debug" node_paths=PackedStringArray("anim_player")]
 layout_mode = 0
-offset_left = -171.0
-offset_top = -130.0
-offset_right = -131.0
-offset_bottom = -107.0
+offset_left = -165.0
+offset_top = -66.0
+offset_right = -83.0
+offset_bottom = -43.0
 text = "AnimPlay: "
 script = ExtResource("13_68cok")
 anim_player = NodePath("../../AnimatedSprite2D")
 
 [node name="CurrentTileCords" type="Label" parent="Debug" node_paths=PackedStringArray("character")]
 layout_mode = 0
-offset_left = -170.0
-offset_top = -151.0
-offset_right = 8.0
-offset_bottom = -128.0
+offset_left = -165.0
+offset_top = -109.0
+offset_right = -15.0
+offset_bottom = -86.0
 text = "CurrTile: "
 script = ExtResource("14_aou4k")
 character = NodePath("../..")
 
+[node name="CurrentTileMid" type="Label" parent="Debug" node_paths=PackedStringArray("character")]
+offset_left = -165.0
+offset_top = -89.0
+offset_right = -15.0
+offset_bottom = -66.0
+text = "CurrTileMid: "
+script = ExtResource("15_onjji")
+character = NodePath("../..")
+
 [node name="Sliding" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
 layout_mode = 0
-offset_left = -172.0
-offset_top = -9.0
-offset_right = -47.0
-offset_bottom = 14.0
+offset_left = -166.0
+offset_top = 55.0
+offset_right = -41.0
+offset_bottom = 78.0
 text = "Sliding: "
 script = ExtResource("15_qb54l")
 charater = NodePath("../..")
 
 [node name="XSpeed" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
 layout_mode = 0
-offset_left = -169.0
-offset_top = -172.0
-offset_right = -23.0
-offset_bottom = -149.0
+offset_left = -164.0
+offset_top = -130.0
+offset_right = -18.0
+offset_bottom = -107.0
 text = "XSpeed: "
 script = ExtResource("16_ppemb")
+charater = NodePath("../..")
+
+[node name="Switch" type="Label" parent="Debug" node_paths=PackedStringArray("charater")]
+layout_mode = 0
+offset_left = -162.0
+offset_top = -150.0
+offset_right = -102.0
+offset_bottom = -127.0
+text = "Switch: "
+script = ExtResource("17_ol7nq")
 charater = NodePath("../..")
 
 [connection signal="body_shape_entered" from="SpecialAreaCollision" to="." method="_on_area_2d_body_shape_entered"]

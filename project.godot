@@ -79,6 +79,7 @@ death={
 2d_physics/layer_2="Interactables"
 2d_physics/layer_3="Enemies"
 2d_physics/layer_4="Ladder Top"
+2d_physics/layer_5="Player"
 
 [rendering]
 

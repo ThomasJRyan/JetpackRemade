@@ -11,7 +11,10 @@ signal gem_collected
 	set(f):
 		fuel = clamp(f, 0, 100)
 		emit_signal("fuel_changed")
-@export var tile_map : TileMap
+@export var tile_map : TileMap:
+	set(tm):
+		tile_map = tm
+		current_tile_cords = tile_map.local_to_map(position)
 		
 @export var MIN_GRAVITY = -100
 @export var MAX_GRAVITY = 600
@@ -24,6 +27,8 @@ signal gem_collected
 @onready var state_machine = $CharacterStateMachine
 
 @onready var character_collision = $CharacterCollision
+
+var gameplay_level : GameplayLevel
 
 var direction := Vector2.ZERO
 
@@ -47,6 +52,8 @@ var bottom_collision = 0
 var current_tile_cords : Vector2i = Vector2i.ZERO
 
 var SCORE = 0
+
+var switch_number = 0
 
 	
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -90,6 +97,10 @@ func check_if_gravity_skipped():
 func kill():
 	state_machine.kill()
 	
+func flip_switch():
+	pass
+
+
 func _physics_process(delta):
 	## Add the gravity.
 	#if floor_raycast.is_colliding():
@@ -153,6 +164,18 @@ func _on_area_2d_body_shape_entered(body_rid, body: TileMap, body_shape_index, l
 			SCORE += 50
 			emit_signal("gem_collected")
 			body.set_cell(0, tile_cords, 0, Vector2i(3, 0))
+		9: # Blue switch
+			switch_number += 9
+		10: # Blue auto switch
+			gameplay_level.flip_switch(9)
+		11: # Red switch
+			switch_number += 11
+		12: # Red auto switch
+			gameplay_level.flip_switch(11)
+		13: # Turqoise switch
+			switch_number += 13
+		14: # Turqoise auto switch
+			gameplay_level.flip_switch(13)
 		15: # Fuel tank %100
 			fuel += 100
 			body.erase_cell(0, tile_cords)
@@ -192,6 +215,13 @@ func _on_area_2d_body_shape_exited(body_rid, body, body_shape_index, local_shape
 		3: # On down ladder
 			on_ladder -= 1
 			push_down -= 1
+		9: # Blue switch
+			switch_number -= 9
+		11: # Red switch
+			switch_number -= 11
+		13: # Turqoise switch
+			switch_number -= 13
+		
 
 
 func _on_middle_collision_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):

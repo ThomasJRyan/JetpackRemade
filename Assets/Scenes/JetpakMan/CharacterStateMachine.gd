@@ -43,4 +43,10 @@ func switch_states(new_state : State):
 	current_state.on_enter()
 	
 func _input(event : InputEvent):
+	check_switch(event)
 	current_state.state_input(event)
+	
+func check_switch(event : InputEvent):
+	if character.switch_number and event.is_action_pressed("move_down"):
+		character.gameplay_level.flip_switch(character.switch_number)
+		
