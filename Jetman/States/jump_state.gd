@@ -3,7 +3,6 @@ class_name JumpState
 
 @export var idle_state: State
 @export var walk_state: State
-@export var slide_state: State
 @export var jump_speed: int = 200
 @export var movement_penalty: float = 0.2
 
@@ -14,9 +13,6 @@ func enter(from: State) -> void:
 		parent.animations.play("idle_jump")
 		idle_jump = true
 	elif from is WalkState:
-		parent.animations.play("walk_jump")
-		idle_jump = false
-	elif from is SlideState:
 		parent.animations.play("walk_jump")
 		idle_jump = false
 	parent.velocity.y -= jump_speed

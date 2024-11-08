@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bm7xsxanrve0t"]
+[gd_scene load_steps=12 format=3 uid="uid://bm7xsxanrve0t"]
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_oiuey"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="1_yc2j1"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Blocks/Components/breakable_component.tscn" id="2_l2os5"]
 [ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Blocks/Modifiers.png" id="5_8jywq"]
-[ext_resource type="Script" path="res://Blocks/Components/Modifiers/ice_modifier.gd" id="6_prmyj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qanx"]
 size = Vector2(12, 12)
@@ -97,12 +96,11 @@ region_rect = Rect2(108, 0, 12, 12)
 visible = false
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_hmwmw")
-frame_progress = 0.569272
+frame_progress = 0.837513
 
 [node name="IceModifier" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 8
-script = ExtResource("6_prmyj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="IceModifier"]
 position = Vector2(0, -6)

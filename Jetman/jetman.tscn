@@ -488,11 +488,10 @@ phase_state = NodePath("../PhaseState")
 fall_state = NodePath("../FallState")
 animation_name = "walk"
 
-[node name="JumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "slide_state")]
+[node name="JumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("6_7gpbv")
 idle_state = NodePath("../IdleState")
 walk_state = NodePath("../WalkState")
-slide_state = NodePath("../SlideState")
 jump_speed = 275
 movement_penalty = 0.6
 
@@ -520,12 +519,8 @@ jump_state = NodePath("../JumpState")
 fly_state = NodePath("../FlyState")
 animation_name = "phaser"
 
-[node name="SlideState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "fly_state")]
+[node name="SlideState" type="Node" parent="StateMachine"]
 script = ExtResource("10_v4bux")
-idle_state = NodePath("../IdleState")
-jump_state = NodePath("../JumpState")
-fly_state = NodePath("../FlyState")
-animation_name = "idle"
 
 [node name="Phasers" type="Node2D" parent="."]
 

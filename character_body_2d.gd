@@ -32,3 +32,7 @@ func _physics_process(delta: float) -> void:
 
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
+
+var on_ice: int = 0
+func is_on_ice() -> bool:
+	return on_ice > 0
