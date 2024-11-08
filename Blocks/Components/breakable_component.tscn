@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://raevwrewfi75"]
+
+[ext_resource type="Script" path="res://Blocks/Components/breakable_component.gd" id="1_uswtb"]
+[ext_resource type="Texture2D" uid="uid://cvrgxribuj0fa" path="res://Blocks/RedBricksBreak.png" id="2_jfsu8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjrck"]
+atlas = ExtResource("2_jfsu8")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a37bd"]
+atlas = ExtResource("2_jfsu8")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkhib"]
+atlas = ExtResource("2_jfsu8")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04hq8"]
+atlas = ExtResource("2_jfsu8")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mjl54"]
+atlas = ExtResource("2_jfsu8")
+region = Rect2(52, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yh3md"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjrck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a37bd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkhib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04hq8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mjl54")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bahb"]
+size = Vector2(12, 12)
+
+[node name="BreakableComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_uswtb")
+break_frames = SubResource("SpriteFrames_yh3md")
+
+[node name="BreakableComponentCollision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_2bahb")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+texture_filter = 1
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,81 @@
+[gd_scene load_steps=4 format=3 uid="uid://deunmfjf7gkos"]
+
+[ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Jetman/jetman.tscn" id="1_dm3f5"]
+[ext_resource type="PackedScene" uid="uid://bm7xsxanrve0t" path="res://Blocks/red_brick.tscn" id="2_f26mb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpufm"]
+size = Vector2(339.667, 20)
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(3, 3)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
+z_index = 1
+position = Vector2(92.6667, 144.667)
+fuel = 0
+
+[node name="RedBrick" parent="." instance=ExtResource("2_f26mb")]
+position = Vector2(136.667, 149.333)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(180.333, 165.333)
+shape = SubResource("RectangleShape2D_gpufm")
+
+[node name="RedBrick2" parent="." instance=ExtResource("2_f26mb")]
+position = Vector2(148.667, 149.333)
+
+[node name="RedBrick2" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(12, -1.52588e-05)
+
+[node name="RedBrick4" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(59.9993, 0.000693003)
+
+[node name="RedBrick5" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(15.6663, -53.9997)
+
+[node name="RedBrick2" parent="RedBrick2/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(12, 12)
+
+[node name="RedBrick4" parent="RedBrick2/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(83.333, 12.0003)
+
+[node name="RedBrick5" parent="RedBrick2/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(12, 1.01725e-05)
+
+[node name="RedBrick3" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(23.9997, 0.000340859)
+
+[node name="RedBrick2" parent="RedBrick2/RedBrick3" instance=ExtResource("2_f26mb")]
+position = Vector2(12, -1.52588e-05)
+
+[node name="RedBrick4" parent="RedBrick2/RedBrick3" instance=ExtResource("2_f26mb")]
+position = Vector2(59.6664, 0.000347137)
+
+[node name="RedBrick5" parent="RedBrick2/RedBrick3" instance=ExtResource("2_f26mb")]
+position = Vector2(23.6663, -62.333)
+
+[node name="RedBrick2" parent="RedBrick2/RedBrick3/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(12, 12)
+
+[node name="RedBrick4" parent="RedBrick2/RedBrick3/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(83.333, 12.0003)
+
+[node name="RedBrick5" parent="RedBrick2/RedBrick3/RedBrick5" instance=ExtResource("2_f26mb")]
+position = Vector2(12, 1.01725e-05)
+
+[node name="RedBrick6" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(71.9994, 0.000693003)
+
+[node name="RedBrick7" parent="RedBrick2" instance=ExtResource("2_f26mb")]
+position = Vector2(42.6663, -57.6663)
+
+[node name="RedBrick3" parent="." instance=ExtResource("2_f26mb")]
+position = Vector2(124.667, 149.333)
+
+[node name="RedBrick4" parent="." instance=ExtResource("2_f26mb")]
+position = Vector2(196.666, 149.334)
+
+[node name="RedBrick5" parent="." instance=ExtResource("2_f26mb")]
+position = Vector2(148.333, 97)

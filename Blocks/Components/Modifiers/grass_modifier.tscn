@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdraeaaon351h"]
+
+[ext_resource type="Script" path="res://Blocks/Components/Modifiers/grass_modifier.gd" id="1_0i2k3"]
+[ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Blocks/Modifiers.png" id="2_rvvky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mprte"]
+size = Vector2(12, 1)
+
+[node name="GrassModifier" type="Area2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_0i2k3")
+grass_modifier = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_mprte")
+
+[node name="Grass" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_rvvky")
+region_enabled = true
+region_rect = Rect2(12, 0, 12, 12)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

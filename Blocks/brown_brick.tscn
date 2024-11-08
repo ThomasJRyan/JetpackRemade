@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bnw0tkbk8krsj"]
+
+[node name="BrownBrick" type="StaticBody2D"]
