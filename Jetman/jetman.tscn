@@ -1,6 +1,6 @@
 [gd_scene load_steps=69 format=3 uid="uid://bww4rwjr358np"]
 
-[ext_resource type="Script" path="res://character_body_2d.gd" id="1_cnoqe"]
+[ext_resource type="Script" path="res://Jetman/player_controller.gd" id="1_cnoqe"]
 [ext_resource type="Texture2D" uid="uid://c7o18sbag7twj" path="res://Jetman/jetman.png" id="2_rlxjt"]
 [ext_resource type="Script" path="res://Jetman/feet_ray_cast.gd" id="3_aumg1"]
 [ext_resource type="Script" path="res://StateMachine/state_machine.gd" id="3_p6bpd"]
