@@ -11,7 +11,7 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var parent: Player
 
-func enter(from: State) -> void:
+func enter() -> void:
 	parent.animations.play(animation_name)
 
 func exit() -> void:

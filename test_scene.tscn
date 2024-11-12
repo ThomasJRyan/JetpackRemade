@@ -11,7 +11,7 @@ scale = Vector2(3, 3)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
 z_index = 1
-position = Vector2(92.6667, 144.667)
+position = Vector2(136.667, 128.333)
 fuel = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -23,35 +23,5 @@ shape = SubResource("RectangleShape2D_gpufm")
 [node name="RedBrick" parent="." instance=ExtResource("2_f26mb")]
 position = Vector2(136.667, 149.333)
 
-[node name="RedBrick3" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(124.667, 149.333)
-
-[node name="RedBrick4" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(160.667, 149.333)
-
-[node name="RedBrick5" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(148.667, 149.333)
-
 [node name="RedBrick2" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(184.667, 149.333)
-
-[node name="RedBrick6" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(172.667, 149.334)
-
-[node name="RedBrick7" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(208.667, 149.334)
-
-[node name="RedBrick8" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(196.667, 149.334)
-
-[node name="RedBrick9" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(232.667, 149.333)
-
-[node name="RedBrick10" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(220.667, 149.334)
-
-[node name="RedBrick11" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(256.667, 149.334)
-
-[node name="RedBrick12" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(244.667, 149.334)
+position = Vector2(162.667, 149.333)

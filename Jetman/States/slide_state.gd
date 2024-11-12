@@ -4,19 +4,27 @@ class_name SlideState
 @export var slide_speed: int = 150
 
 @export var idle_state: IdleState
-@export var jump_state: JumpState
-@export var fly_state: FlyState
+@export var idle_jump_state: IdleJumpState
+@export var walk_jump_state: WalkJumpState
+@export var idle_fly_state: IdleFlyState
+@export var walk_fly_state: WalkFlyState
 @export var fall_state: FallState
 
+@export var foot_raycast: FeetRayCast
+
 func process_input(event: InputEvent) -> State:
-	if Input.is_action_just_pressed("jump"):
-		if parent.fuel > 0:
-			return fly_state
-		return jump_state
-		
 	var direction = Input.get_axis("left", "right")
-	if direction:
-		parent.direction = direction
+	parent.direction = direction
+	
+	if Input.is_action_just_pressed("jump"):
+		if direction:
+			if parent.fuel > 0:
+				return walk_fly_state
+			return walk_jump_state
+		if parent.fuel > 0:
+			return idle_fly_state
+		return idle_jump_state
+		
 	return null
 
 func process_physics(delta: float) -> State:
@@ -26,9 +34,9 @@ func process_physics(delta: float) -> State:
 	parent.velocity.x = slide_speed * parent.direction
 	parent.move_and_slide()
 	
-	if not parent.is_on_ice():
-		if parent.is_on_floor():
-			return idle_state
+	if parent.is_on_floor() and not foot_raycast.is_a_foot_colliding():
+		return idle_state
+	elif !parent.is_on_floor() and not foot_raycast.is_a_foot_colliding():
 		return fall_state
 				
 	

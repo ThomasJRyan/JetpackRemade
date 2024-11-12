@@ -1,58 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://bm7xsxanrve0t"]
+[gd_scene load_steps=4 format=3 uid="uid://bm7xsxanrve0t"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_oiuey"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="1_yc2j1"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Blocks/Components/breakable_component.tscn" id="2_l2os5"]
-[ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Blocks/Modifiers.png" id="5_8jywq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qanx"]
 size = Vector2(12, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e5pb1"]
-atlas = ExtResource("5_8jywq")
-region = Rect2(24, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lfsml"]
-atlas = ExtResource("5_8jywq")
-region = Rect2(36, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ogqkx"]
-atlas = ExtResource("5_8jywq")
-region = Rect2(48, 0, 12, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4t6xx"]
-atlas = ExtResource("5_8jywq")
-region = Rect2(60, 0, 12, 12)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_hmwmw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e5pb1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lfsml")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ogqkx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4t6xx")
-}],
-"loop": true,
-"name": &"default",
-"speed": 16.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ye4"]
-size = Vector2(12, 1)
-
 [node name="RedBrick" type="StaticBody2D"]
 
-[node name="ClippingComponent" parent="." instance=ExtResource("1_oiuey")]
-
-[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
-texture_filter = 3
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("1_yc2j1")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
@@ -61,56 +18,4 @@ region_rect = Rect2(0, 0, 12, 12)
 shape = SubResource("RectangleShape2D_0qanx")
 
 [node name="BreakableComponent" parent="." instance=ExtResource("2_l2os5")]
-
-[node name="BlockModifierComponent" type="Node2D" parent="."]
-
-[node name="LeftUbreakable" type="Sprite2D" parent="BlockModifierComponent"]
-visible = false
-texture_filter = 3
-texture = ExtResource("5_8jywq")
-region_enabled = true
-region_rect = Rect2(72, 0, 12, 12)
-
-[node name="TopUbreakable" type="Sprite2D" parent="BlockModifierComponent"]
-visible = false
-texture_filter = 3
-texture = ExtResource("5_8jywq")
-region_enabled = true
-region_rect = Rect2(84, 0, 12, 12)
-
-[node name="RightUbreakable" type="Sprite2D" parent="BlockModifierComponent"]
-visible = false
-texture_filter = 3
-texture = ExtResource("5_8jywq")
-region_enabled = true
-region_rect = Rect2(96, 0, 12, 12)
-
-[node name="BottomUbreakable" type="Sprite2D" parent="BlockModifierComponent"]
-visible = false
-texture_filter = 3
-texture = ExtResource("5_8jywq")
-region_enabled = true
-region_rect = Rect2(108, 0, 12, 12)
-
-[node name="Conveyor" type="AnimatedSprite2D" parent="BlockModifierComponent"]
-visible = false
-texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_hmwmw")
-frame_progress = 0.837513
-
-[node name="IceModifier" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IceModifier"]
-position = Vector2(0, -6)
-shape = SubResource("RectangleShape2D_47ye4")
-
-[node name="Ice" type="Sprite2D" parent="IceModifier"]
-texture_filter = 3
-texture = ExtResource("5_8jywq")
-region_enabled = true
-region_rect = Rect2(0, 0, 12, 12)
-
-[connection signal="body_entered" from="IceModifier" to="IceModifier" method="_on_body_entered"]
-[connection signal="body_exited" from="IceModifier" to="IceModifier" method="_on_body_exited"]
+unbreakable = 9

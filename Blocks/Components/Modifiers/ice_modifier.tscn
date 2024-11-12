@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1u3mb4dlj27m"]
+
+[ext_resource type="Script" path="res://Blocks/Components/Modifiers/ice_modifier.gd" id="1_a8pa8"]
+[ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Blocks/Modifiers.png" id="2_msh3f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ye4"]
+size = Vector2(12, 1)
+
+[node name="IceModifier" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_a8pa8")
+modifier_name = "Ice"
+
+[node name="Ice" type="Sprite2D" parent="."]
+texture_filter = 3
+texture = ExtResource("2_msh3f")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5.5)
+shape = SubResource("RectangleShape2D_47ye4")

@@ -1,11 +1,19 @@
 extends State
 class_name WalkState
 
-@export var idle_state: State
-@export var jump_state: State
-@export var fly_state: State
-@export var phase_state: State
-@export var fall_state: State
+@export_category("States")
+@export var idle_state: IdleState
+@export var jump_state: WalkJumpState
+@export var fly_state: WalkFlyState
+@export var phase_state: PhaseState
+@export var fall_state: FallState
+@export var slide_state: SlideState
+
+@export_category("Objects")
+@export var foot_raycast: FeetRayCast
+
+@export_category("Variables")
+@export_range(0.0, 1.0, 0.05) var grass_speed: float
 
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("jump"):
@@ -20,8 +28,7 @@ func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("left", "right") * move_speed
-	if movement != 0:
-		parent.direction = movement
+	parent.direction = movement
 	
 	if movement == 0:
 		return idle_state
@@ -31,6 +38,20 @@ func process_physics(delta: float) -> State:
 		
 	parent.animations.flip_h = parent.direction < 0
 	parent.velocity.x = movement * parent.speed_modifier
-	parent.move_and_slide()
 	
+	if foot_raycast.is_a_foot_colliding():
+		if foot_raycast.get_surface_name() == "Ice":
+			return slide_state
+		if foot_raycast.get_surface_name() == "Grass":
+			parent.speed_modifier = grass_speed
+			return null
+		if foot_raycast.get_surface_name() == "Conveyor":
+			var surface_data = foot_raycast.get_surface_data()
+			var conveyor_movement = surface_data.get("x_movement")
+			parent.velocity.x = movement + conveyor_movement
+			parent.move_and_slide()
+			return null
+	
+	parent.move_and_slide()
+	parent.speed_modifier = 1.0	
 	return null

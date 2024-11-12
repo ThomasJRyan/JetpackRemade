@@ -18,8 +18,6 @@ var direction = 1:
 			direction = 1
 		elif value < 0:
 			direction = -1
-		else:
-			direction = 0
 
 func _ready() -> void:
 	state_machine.init(self)

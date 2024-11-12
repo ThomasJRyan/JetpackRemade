@@ -1,13 +1,16 @@
 extends State
 class_name IdleState
 
-@export var walk_state: State
-@export var jump_state: State
-@export var fly_state: State
-@export var phase_state: State
+@export var walk_state: WalkState
+@export var jump_state: IdleJumpState
+@export var fly_state: IdleFlyState
+@export var phase_state: PhaseState
+@export var slide_state: SlideState
 
-func enter(from: State) -> void:
-	super(null)
+@export var foot_raycast: FeetRayCast
+
+func enter() -> void:
+	super()
 	parent.velocity.x = 0
 	
 func process_input(event: InputEvent) -> State:
@@ -24,4 +27,16 @@ func process_input(event: InputEvent) -> State:
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	parent.move_and_slide()
+	
+	if foot_raycast.is_a_foot_colliding():
+		#print(foot_raycast.get_surface_data())
+		if foot_raycast.get_surface_name() == "Ice":
+			return slide_state
+		if foot_raycast.get_surface_name() == "Conveyor":
+			var surface_data = foot_raycast.get_surface_data()
+			var conveyor_movement = surface_data.get("x_movement")
+			parent.velocity.x = conveyor_movement
+			return null
+	
+	parent.velocity.x = 0
 	return null

@@ -1,17 +1,17 @@
 extends State
-class_name FlyState
+class_name IdleFlyState
 
 @export var fly_vert_speed: int = 100
 @export var maximum_thrust: int = -250
 @export var fuel_consumption: int = 1
-@export var fall_state: State
 
-func enter(from: State) -> void:
-	if from is IdleState:
-		parent.animations.play("idle_fly")
-	elif from is WalkState:
-		parent.animations.play("walk_fly")
-	
+@export var fall_state: FallState
+@export var walk_fly_state: WalkFlyState
+
+func process_input(event: InputEvent):
+	if Input.get_axis('left', 'right'):
+		return walk_fly_state
+
 func process_physics(delta: float) -> State:
 	parent.velocity.y += gravity * delta
 	
@@ -24,13 +24,7 @@ func process_physics(delta: float) -> State:
 		return fall_state
 		
 	var movement = Input.get_axis('left', 'right') * move_speed
-	if movement != 0:
-		parent.direction = movement
-		
-	if movement == 0:
-		parent.animations.play("idle_fly")
-	else:
-		parent.animations.play("walk_fly")
+	parent.direction = movement
 		
 	parent.animations.flip_h = parent.direction < 0
 	parent.velocity.y -= fly_vert_speed

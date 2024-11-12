@@ -29,8 +29,7 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("left", "right") * move_speed
-	if movement != 0:
-		parent.direction = movement
+	parent.direction = movement
 	
 	if !Input.is_action_pressed("phaser"):
 		if movement:

@@ -1,17 +1,21 @@
 extends State
 class_name FallState
 
-@export var idle_state: State
-@export var walk_state: State
-@export var fly_state: State
+@export var idle_state: IdleState
+@export var walk_state: WalkState
+@export var idle_fly_state: IdleFlyState
+@export var walk_fly_state: WalkFlyState
 @export var phase_state: State
 
-func enter(from: State) -> void:
-	super(from)
 	
 func process_input(event: InputEvent) -> State:
+	var direction = Input.get_axis("left", "right")
+	parent.direction = direction
+	
 	if Input.is_action_just_pressed("jump") and parent.fuel > 0:
-		return fly_state
+		if direction:
+			return walk_fly_state
+		return idle_fly_state
 	if Input.is_action_just_pressed("phaser"):
 		return phase_state
 	return null
@@ -21,8 +25,7 @@ func process_physics(delta: float) -> State:
 		parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("left", "right") * move_speed
-	if movement != 0:
-		parent.direction = movement
+	parent.direction = movement
 		
 	parent.animations.flip_h = parent.direction < 0
 	parent.velocity.x = movement

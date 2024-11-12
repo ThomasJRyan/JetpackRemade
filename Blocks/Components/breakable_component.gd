@@ -5,9 +5,25 @@ extends Area2D
 @export var reform_wait: float = 3.0
 @export var reform_time: float = 0.25
 
+@export_flags("Left", "Right", "Up", "Down") var unbreakable: int = 0
+
 @onready var block: StaticBody2D = $".."
 @onready var timer: Timer = $Timer
 @onready var break_animation: AnimatedSprite2D = $AnimatedSprite2D
+
+@onready var left_unbreakable = $Unbreakable/LeftUnbreakable
+@onready var right_unbreakable = $Unbreakable/RightUnbreakable
+@onready var top_unbreakable = $Unbreakable/TopUnbreakable
+@onready var bottom_unbreakable = $Unbreakable/BottomUnbreakable
+
+enum unbreakables {
+	left = 1,
+	right = 2,
+	top = 4, 
+	bottom = 8
+}
+
+@onready var collision = $BreakableComponentCollision
 
 enum states {
 	UNBROKEN,
@@ -18,6 +34,27 @@ var state: states = states.UNBROKEN
 
 func _ready():
 	break_animation.sprite_frames = break_frames
+	
+	var collision_vec = Vector2i(12, 12)
+	if unbreakables.left & unbreakable:
+		left_unbreakable.visible = true
+		collision_vec.x -= 2
+		collision.position.x += 1
+	if unbreakables.right & unbreakable:
+		right_unbreakable.visible = true
+		collision_vec.x -= 2
+		collision.position.x -= 1
+	if unbreakables.top & unbreakable:
+		top_unbreakable.visible = true
+		collision_vec.y -= 2
+		collision.position.y += 1
+	if unbreakables.bottom & unbreakable:
+		bottom_unbreakable.visible = true
+		collision_vec.y -= 2
+		collision.position.y -= 1
+	
+	#var collision_shape = RectangleShape2D(collision_vec)
+	collision.shape.size = collision_vec
 
 func break_block():
 	""" Activates the block breaking functionality """
