@@ -44,6 +44,7 @@ func process_physics(delta: float) -> State:
 			return slide_state
 		if foot_raycast.get_surface_name() == "Grass":
 			parent.speed_modifier = grass_speed
+			parent.move_and_slide()
 			return null
 		if foot_raycast.get_surface_name() == "Conveyor":
 			var surface_data = foot_raycast.get_surface_data()
