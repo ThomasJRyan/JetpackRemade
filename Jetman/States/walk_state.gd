@@ -8,9 +8,11 @@ class_name WalkState
 @export var phase_state: PhaseState
 @export var fall_state: FallState
 @export var slide_state: SlideState
+@export var climb_state: ClimbState
 
 @export_category("Objects")
 @export var foot_raycast: FeetRayCast
+@export var body_raycast: BodyRayCast
 
 @export_category("Variables")
 @export_range(0.0, 1.0, 0.05) var grass_speed: float
@@ -22,10 +24,17 @@ func process_input(event: InputEvent) -> State:
 		return jump_state
 	if Input.is_action_just_pressed("phaser"):
 		return phase_state
+	if Input.is_action_just_pressed("up") and body_raycast.is_body_colliding_with("Climbable"):
+		return climb_state
+	if Input.is_action_just_pressed("down") and foot_raycast.is_a_foot_colliding_with("Climbable"):
+		return climb_state
 	return null
 
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
+	if foot_raycast.is_a_foot_colliding_with("Climbable"):
+		parent.velocity.y = 0
+	else:
+		parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("left", "right") * move_speed
 	parent.direction = movement
@@ -33,7 +42,7 @@ func process_physics(delta: float) -> State:
 	if movement == 0:
 		return idle_state
 		
-	if !parent.is_on_floor():
+	if !parent.is_on_floor() and !body_raycast.is_body_colliding_with("Climbable") and !foot_raycast.is_a_foot_colliding_with("Climbable"):
 		return fall_state
 		
 	parent.animations.flip_h = parent.direction < 0

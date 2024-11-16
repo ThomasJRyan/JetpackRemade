@@ -1,11 +1,15 @@
 extends State
 class_name FallState
 
+@export_category("States")
 @export var idle_state: IdleState
 @export var walk_state: WalkState
 @export var idle_fly_state: IdleFlyState
 @export var walk_fly_state: WalkFlyState
 @export var phase_state: State
+
+@export_category("Raycasts")
+@export var feet_raycast: FeetRayCast
 
 	
 func process_input(event: InputEvent) -> State:
@@ -29,6 +33,12 @@ func process_physics(delta: float) -> State:
 		
 	parent.animations.flip_h = parent.direction < 0
 	parent.velocity.x = movement
+	
+	if feet_raycast.is_a_foot_colliding_with("Climbable"):
+		if movement != 0:
+			return walk_state
+		return idle_state
+		
 	parent.move_and_slide()
 	
 	if parent.is_on_floor() and movement:

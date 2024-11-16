@@ -1,17 +1,22 @@
 extends State
 class_name IdleState
 
+@export_category("States")
 @export var walk_state: WalkState
 @export var jump_state: IdleJumpState
 @export var fly_state: IdleFlyState
 @export var phase_state: PhaseState
 @export var slide_state: SlideState
+@export var climb_state: ClimbState
 
+@export_category("Rays")
 @export var foot_raycast: FeetRayCast
+@export var body_raycast: BodyRayCast
 
 func enter() -> void:
 	super()
 	parent.velocity.x = 0
+	parent.velocity.y = 0
 	
 func process_input(event: InputEvent) -> State:
 	if Input.is_action_just_pressed("jump"):
@@ -22,10 +27,18 @@ func process_input(event: InputEvent) -> State:
 		return walk_state
 	if Input.is_action_just_pressed("phaser"):
 		return phase_state
+	if Input.is_action_just_pressed("up") and body_raycast.is_body_colliding_with("Climbable"):
+		return climb_state
+	if Input.is_action_just_pressed("down") and foot_raycast.is_a_foot_colliding_with("Climbable"):
+		return climb_state
 	return null
 	
 func process_physics(delta: float) -> State:
-	parent.velocity.y += gravity * delta
+	if foot_raycast.is_a_foot_colliding_with("Climbable"):
+		parent.velocity.y = 0
+	else:
+		parent.velocity.y += gravity * delta
+			
 	parent.move_and_slide()
 	
 	if foot_raycast.is_a_foot_colliding():

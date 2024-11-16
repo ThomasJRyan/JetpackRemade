@@ -1,15 +1,20 @@
 extends State
 class_name PhaseState
 
+@export_category("States")
 @export var idle_state: State
 @export var walk_state: State
 @export var jump_state: State
 @export var fly_state: State
 
+@export_category("Raycasts")
+@export var foot_raycast: FeetRayCast
+
 @onready var left_phaser = $"../../Phasers/Area2D/LeftPhaser"
 @onready var right_phaser = $"../../Phasers/Area2D/RightPhaser"
 @onready var up_phaser = $"../../Phasers/Area2D/UpPhaser"
 @onready var down_phaser = $"../../Phasers/Area2D/DownPhaser"
+
 
 func handle_direction(direction: Vector2) -> void:
 	left_phaser.disabled = direction.x != -1
@@ -25,8 +30,11 @@ func process_input(event: InputEvent) -> State:
 	return null
 
 func process_physics(delta: float) -> State:
-	if parent.velocity.y < terminal_velocity:
-		parent.velocity.y += gravity * delta
+	if foot_raycast.is_a_foot_colliding_with("Climbable"):
+		parent.velocity.y = 0
+	else:
+		if parent.velocity.y < terminal_velocity:
+			parent.velocity.y += gravity * delta
 	
 	var movement = Input.get_axis("left", "right") * move_speed
 	parent.direction = movement

@@ -12,8 +12,14 @@ class_name FeetRayCast
 func are_feet_colliding() -> bool:
 	return left_foot.is_colliding() and right_foot.is_colliding()
 	
+func are_feet_colliding_with(name: String) -> bool:
+	return (left_foot.is_colliding() and get_surface_name() == name) and (right_foot.is_colliding() and get_surface_name() == name)
+	
 func is_a_foot_colliding() -> bool:
 	return left_foot.is_colliding() or right_foot.is_colliding()
+	
+func is_a_foot_colliding_with(name: String) -> bool:
+	return (left_foot.is_colliding() and get_surface_name() == name) or (right_foot.is_colliding() and get_surface_name() == name)
 	
 func disable_feet() -> void:
 	left_foot.enabled = false

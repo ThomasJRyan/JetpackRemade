@@ -62,6 +62,8 @@ phaser={
 2d_physics/layer_2="Breakable"
 2d_physics/layer_3="Collectable"
 2d_physics/layer_4="Player Feet"
+2d_physics/layer_5="Player Body"
+2d_physics/layer_6="World Border"
 
 [rendering]
 

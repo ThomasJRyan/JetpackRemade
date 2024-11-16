@@ -464,8 +464,7 @@ size = Vector2(4, 1)
 radius = 2.0
 
 [node name="Player" type="CharacterBody2D"]
-collision_layer = 41
-collision_mask = 33
+collision_layer = 9
 script = ExtResource("1_cnoqe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -496,17 +495,13 @@ slide_state = NodePath("../StateMachine/SlideState")
 position = Vector2(-3, 5)
 target_position = Vector2(0, 2)
 collision_mask = 8
-hit_from_inside = true
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="FootRayCastRight" type="RayCast2D" parent="FeetRayCast"]
 position = Vector2(3, 5)
 target_position = Vector2(0, 2)
 collision_mask = 8
-hit_from_inside = true
 collide_with_areas = true
-collide_with_bodies = false
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_p6bpd")
@@ -524,13 +519,12 @@ foot_raycast = NodePath("../../FeetRayCast")
 body_raycast = NodePath("../../BodyRayCast")
 animation_name = "idle"
 
-[node name="IdleJumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "feet_raycast")]
+[node name="IdleJumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("8_23ocm")
 idle_state = NodePath("../IdleState")
 walk_state = NodePath("../WalkState")
 jump_speed = 300
 movement_penalty = 0.8
-feet_raycast = NodePath("../../FeetRayCast")
 animation_name = "idle_jump"
 
 [node name="IdleFlyState" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "walk_fly_state")]
@@ -542,7 +536,7 @@ fall_state = NodePath("../FallState")
 walk_fly_state = NodePath("../WalkFlyState")
 animation_name = "idle_fly"
 
-[node name="WalkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "fly_state", "phase_state", "fall_state", "slide_state", "climb_state", "foot_raycast", "body_raycast")]
+[node name="WalkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "fly_state", "phase_state", "fall_state", "slide_state", "foot_raycast")]
 script = ExtResource("5_alpxq")
 idle_state = NodePath("../IdleState")
 jump_state = NodePath("../WalkJumpState")
@@ -550,19 +544,18 @@ fly_state = NodePath("../WalkFlyState")
 phase_state = NodePath("../PhaseState")
 fall_state = NodePath("../FallState")
 slide_state = NodePath("../SlideState")
-climb_state = NodePath("../ClimbState")
 foot_raycast = NodePath("../../FeetRayCast")
-body_raycast = NodePath("../../BodyRayCast")
 grass_speed = 0.6
 animation_name = "walk"
+move_speed = null
+terminal_velocity = null
 
-[node name="WalkJumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "feet_raycast")]
+[node name="WalkJumpState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state")]
 script = ExtResource("9_o1y0e")
+jump_speed = 300
+animation_name = "walk_jump"
 idle_state = NodePath("../IdleState")
 walk_state = NodePath("../WalkState")
-jump_speed = 300
-feet_raycast = NodePath("../../FeetRayCast")
-animation_name = "walk_jump"
 
 [node name="WalkFlyState" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_fly_state")]
 script = ExtResource("10_wi4ob")
@@ -571,24 +564,22 @@ fall_state = NodePath("../FallState")
 idle_fly_state = NodePath("../IdleFlyState")
 animation_name = "walk_fly"
 
-[node name="FallState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "idle_fly_state", "walk_fly_state", "phase_state", "feet_raycast")]
+[node name="FallState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "idle_fly_state", "walk_fly_state", "phase_state")]
 script = ExtResource("8_40udi")
 idle_state = NodePath("../IdleState")
 walk_state = NodePath("../WalkState")
 idle_fly_state = NodePath("../IdleFlyState")
 walk_fly_state = NodePath("../WalkFlyState")
 phase_state = NodePath("../PhaseState")
-feet_raycast = NodePath("../../FeetRayCast")
 animation_name = "idle"
 move_speed = 100.0
 
-[node name="PhaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fly_state", "foot_raycast")]
+[node name="PhaseState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "jump_state", "fly_state")]
 script = ExtResource("9_rf3p7")
 idle_state = NodePath("../IdleState")
 walk_state = NodePath("../WalkState")
 jump_state = NodePath("../WalkJumpState")
 fly_state = NodePath("../IdleFlyState")
-foot_raycast = NodePath("../../FeetRayCast")
 animation_name = "phaser"
 
 [node name="SlideState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "idle_jump_state", "walk_jump_state", "idle_fly_state", "walk_fly_state", "fall_state", "foot_raycast")]
@@ -602,11 +593,8 @@ fall_state = NodePath("../FallState")
 foot_raycast = NodePath("../../FeetRayCast")
 animation_name = "idle"
 
-[node name="ClimbState" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "walk_state", "body_raycast")]
+[node name="ClimbState" type="Node" parent="StateMachine"]
 script = ExtResource("14_0whpe")
-idle_state = NodePath("../IdleState")
-walk_state = NodePath("../WalkState")
-body_raycast = NodePath("../../BodyRayCast")
 animation_name = "climb"
 
 [node name="Phasers" type="Node2D" parent="."]

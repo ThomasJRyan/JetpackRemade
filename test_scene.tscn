@@ -1,27 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=6 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="PackedScene" uid="uid://bm7xsxanrve0t" path="res://Blocks/red_brick.tscn" id="2_f26mb"]
+[ext_resource type="PackedScene" uid="uid://ddt3m6ryow70d" path="res://Blocks/ladder.tscn" id="3_gfd12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpufm"]
-size = Vector2(339.667, 20)
+size = Vector2(388, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu385"]
+size = Vector2(5.5, 232.5)
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(3, 3)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
 z_index = 1
-position = Vector2(136.667, 128.333)
+position = Vector2(137, 206)
 fuel = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 33
+collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(180.333, 165.333)
+position = Vector2(192, 220)
 shape = SubResource("RectangleShape2D_gpufm")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(192, -4)
+shape = SubResource("RectangleShape2D_gpufm")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2.66667, 110.333)
+shape = SubResource("RectangleShape2D_lu385")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(386.667, 105.667)
+shape = SubResource("RectangleShape2D_lu385")
+
 [node name="RedBrick" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(136.667, 149.333)
+position = Vector2(210, 210)
 
 [node name="RedBrick2" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(162.667, 149.333)
+position = Vector2(198, 210)
+
+[node name="Ladder" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(162, 210)
+
+[node name="Ladder2" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(174, 210)
+
+[node name="Ladder3" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(162, 198)
+
+[node name="Ladder4" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(174, 198)
+
+[node name="Ladder5" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(162, 186)
+
+[node name="Ladder6" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(174, 186)
+
+[node name="Ladder7" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(162, 174)
+
+[node name="Ladder8" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(198, 198)
+
+[node name="Ladder9" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(134, 198)
+
+[node name="Ladder10" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(134, 186)
+
+[node name="Ladder11" parent="." instance=ExtResource("3_gfd12")]
+position = Vector2(134, 174)
