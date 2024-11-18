@@ -10,7 +10,6 @@ class_name Player
 		fuel = clamp(value, 0, max_fuel)
 
 var speed_modifier: float = 1.0
-var feet_touching: int = 0
 
 var direction = 1:
 	set(value):

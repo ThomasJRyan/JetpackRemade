@@ -18,15 +18,18 @@ func enter() -> void:
 func process_physics(delta: float) -> State:
 	
 	if Input.is_action_pressed("up"):
-		if !body_raycast.is_body_colliding_with("Climbable"):
+		if !body_raycast.is_body_colliding_with_any(CLIMBABLES):
 			parent.velocity.y = 0
 			return idle_state
-		parent.velocity.y = -climb_speed
+		var data = body_raycast.get_surface_data()
+		var y_movement = data.get("y_movement", 0)
+		parent.velocity.y = -climb_speed + y_movement
 		parent.move_and_slide()
 		return null
 	elif Input.is_action_pressed("down"):
-		
-		parent.velocity.y = climb_speed
+		var data = body_raycast.get_surface_data()
+		var y_movement = data.get("y_movement", 0)
+		parent.velocity.y = climb_speed + y_movement
 		parent.move_and_slide()
 		return null
 	

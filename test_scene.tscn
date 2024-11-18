@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=7 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="PackedScene" uid="uid://bm7xsxanrve0t" path="res://Blocks/red_brick.tscn" id="2_f26mb"]
 [ext_resource type="PackedScene" uid="uid://ddt3m6ryow70d" path="res://Blocks/ladder.tscn" id="3_gfd12"]
+[ext_resource type="PackedScene" uid="uid://34ydlbgo8eck" path="res://Blocks/moving_ladder.tscn" id="4_j7te6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpufm"]
 size = Vector2(388, 8)
@@ -16,7 +17,6 @@ scale = Vector2(3, 3)
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
 z_index = 1
 position = Vector2(137, 206)
-fuel = 0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 33
@@ -39,10 +39,10 @@ position = Vector2(386.667, 105.667)
 shape = SubResource("RectangleShape2D_lu385")
 
 [node name="RedBrick" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(210, 210)
+position = Vector2(122, 186)
 
 [node name="RedBrick2" parent="." instance=ExtResource("2_f26mb")]
-position = Vector2(198, 210)
+position = Vector2(98, 186)
 
 [node name="Ladder" parent="." instance=ExtResource("3_gfd12")]
 position = Vector2(162, 210)
@@ -76,3 +76,12 @@ position = Vector2(134, 186)
 
 [node name="Ladder11" parent="." instance=ExtResource("3_gfd12")]
 position = Vector2(134, 174)
+
+[node name="MovingLadder" parent="." instance=ExtResource("4_j7te6")]
+position = Vector2(110, 210)
+
+[node name="MovingLadder2" parent="." instance=ExtResource("4_j7te6")]
+position = Vector2(110, 198)
+
+[node name="MovingLadder3" parent="." instance=ExtResource("4_j7te6")]
+position = Vector2(110, 186)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbaxjwprl068s"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_28y34"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="2_7beme"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Blocks/Components/breakable_component.tscn" id="3_wb4x7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[node name="RedBrickBlock" type="StaticBody2D"]
+
+[node name="ClippingComponent" parent="." instance=ExtResource("1_28y34")]
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("2_7beme")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")
+
+[node name="BreakableComponent" parent="." instance=ExtResource("3_wb4x7")]
+unbreakable = 9

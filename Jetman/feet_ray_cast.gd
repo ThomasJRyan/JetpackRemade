@@ -21,6 +21,12 @@ func is_a_foot_colliding() -> bool:
 func is_a_foot_colliding_with(name: String) -> bool:
 	return (left_foot.is_colliding() and get_surface_name() == name) or (right_foot.is_colliding() and get_surface_name() == name)
 	
+func is_a_foot_colliding_with_any(names: Array[String]) -> bool:
+	for name in names:
+		if is_a_foot_colliding_with(name):
+			return true
+	return false
+	
 func disable_feet() -> void:
 	left_foot.enabled = false
 	right_foot.enabled = false

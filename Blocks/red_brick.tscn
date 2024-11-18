@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bm7xsxanrve0t"]
+[gd_scene load_steps=6 format=3 uid="uid://bm7xsxanrve0t"]
 
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_q07wk"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="1_yc2j1"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Blocks/Components/breakable_component.tscn" id="2_l2os5"]
 [ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Blocks/Components/Modifiers/grass_modifier.tscn" id="3_ip1qy"]
@@ -9,16 +10,20 @@ size = Vector2(12, 12)
 
 [node name="RedBrick" type="StaticBody2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="ClippingComponent" parent="." instance=ExtResource("1_q07wk")]
+region_rect = Rect2(24, 0, 12, 12)
+clipping_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
 texture = ExtResource("1_yc2j1")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
 
+[node name="GrassModifier" parent="ClippingComponent" instance=ExtResource("3_ip1qy")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0qanx")
-
-[node name="GrassModifier" parent="." instance=ExtResource("3_ip1qy")]
 
 [node name="BreakableComponent" parent="." instance=ExtResource("2_l2os5")]
 unbreakable = 9

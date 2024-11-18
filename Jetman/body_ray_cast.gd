@@ -13,3 +13,21 @@ func is_body_colliding_with(name: String) -> bool:
 			return false
 		return body_cast.is_colliding() and collision_object.modifier_name == name
 	return false
+	
+func is_body_colliding_with_any(names: Array[String]) -> bool:
+	for name in names:
+		if is_body_colliding_with(name):
+			return true
+	return false
+
+func get_surface_data() -> Dictionary:
+	if !body_cast.get_collision_count():
+		return {}
+	var collision_object = body_cast.get_collider(0)
+	
+	if collision_object is not Modifier:
+		return {}
+	if collision_object is Modifier:
+		return collision_object.modifier_data
+	
+	return {}

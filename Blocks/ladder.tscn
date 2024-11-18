@@ -3,19 +3,15 @@
 [ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Blocks/Ladder.png" id="1_fyvhd"]
 [ext_resource type="Script" path="res://Blocks/Components/Modifiers/climbable_modifier.gd" id="2_2h4jt"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6syl2"]
-size = Vector2(12, 12)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0kff"]
 size = Vector2(12, 12)
 
-[node name="Ladder" type="StaticBody2D"]
-collision_mask = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqkxg"]
+size = Vector2(12, 12)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6syl2")
-disabled = true
-one_way_collision = true
+[node name="Ladder" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -32,8 +28,5 @@ modifier_name = "Climbable"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClimbableModifier"]
 shape = SubResource("RectangleShape2D_m0kff")
 
-[node name="RayCast2D" type="RayCast2D" parent="ClimbableModifier"]
-target_position = Vector2(0, -7)
-collision_mask = 8
-collide_with_areas = true
-collide_with_bodies = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jqkxg")

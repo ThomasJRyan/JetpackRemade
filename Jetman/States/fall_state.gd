@@ -34,7 +34,7 @@ func process_physics(delta: float) -> State:
 	parent.animations.flip_h = parent.direction < 0
 	parent.velocity.x = movement
 	
-	if feet_raycast.is_a_foot_colliding_with("Climbable"):
+	if feet_raycast.is_a_foot_colliding_with_any(["Climbable", "MovingClimbable"]):
 		if movement != 0:
 			return walk_state
 		return idle_state

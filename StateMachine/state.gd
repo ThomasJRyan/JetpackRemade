@@ -11,6 +11,8 @@ var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var parent: Player
 
+var CLIMBABLES: Array[String] = ["Climbable", "MovingClimbable"]
+
 func enter() -> void:
 	parent.animations.play(animation_name)
 
