@@ -1,12 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=15 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
+[ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
 [ext_resource type="PackedScene" uid="uid://dox6lv6c85x52" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_clip_bl.tscn" id="3_jpjql"]
 [ext_resource type="PackedScene" uid="uid://b8m41jw1knh2i" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_conveyor_right.tscn" id="4_it07n"]
-[ext_resource type="PackedScene" uid="uid://cehkrx7rqawmm" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_facade.tscn" id="5_oh7ew"]
 [ext_resource type="PackedScene" uid="uid://cg5d857whwmag" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_grass.tscn" id="6_k7tq7"]
 [ext_resource type="PackedScene" uid="uid://dsq1n0i3ercvt" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_ice.tscn" id="7_re4mh"]
 [ext_resource type="PackedScene" uid="uid://b1eqlm1gfr7x1" path="res://Assets/Blocks/CompletedBlocks/BrownBrickBlock/brown_brick_block_normal.tscn" id="8_gms1n"]
+[ext_resource type="PackedScene" uid="uid://bapu65rqiv6ti" path="res://Assets/Collectables/Pile/pile.tscn" id="9_4cmki"]
+[ext_resource type="PackedScene" uid="uid://c1fdaeecbv1en" path="res://Assets/Collectables/Coin/coin.tscn" id="9_yy8vd"]
+[ext_resource type="PackedScene" uid="uid://w8m7vv6cgn07" path="res://Assets/Collectables/Vase/vase.tscn" id="10_ejwbn"]
+[ext_resource type="PackedScene" uid="uid://chht1vg2r88v8" path="res://Assets/Collectables/Totem/totem.tscn" id="11_og1i2"]
 [ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="41_5o5la"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpufm"]
@@ -17,6 +21,7 @@ size = Vector2(5.5, 232.5)
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(3, 3)
+script = ExtResource("1_tghmy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -25,6 +30,7 @@ offset_right = 386.0
 offset_bottom = 218.0
 texture = ExtResource("41_5o5la")
 stretch_mode = 1
+metadata/_edit_lock_ = true
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
 z_index = 1
@@ -62,15 +68,6 @@ position = Vector2(78, 210)
 [node name="RedBrickBlockConveyorRight3" parent="." instance=ExtResource("4_it07n")]
 position = Vector2(90, 210)
 
-[node name="RedBrickBlockFacade" parent="." instance=ExtResource("5_oh7ew")]
-position = Vector2(66, 198)
-
-[node name="RedBrickBlockFacade2" parent="." instance=ExtResource("5_oh7ew")]
-position = Vector2(78, 198)
-
-[node name="RedBrickBlockFacade3" parent="." instance=ExtResource("5_oh7ew")]
-position = Vector2(90, 198)
-
 [node name="GreyBrickBlockGrass" parent="." instance=ExtResource("6_k7tq7")]
 position = Vector2(190, 210)
 
@@ -97,3 +94,36 @@ position = Vector2(274, 210)
 
 [node name="BrownBrickBlockNormal3" parent="." instance=ExtResource("8_gms1n")]
 position = Vector2(286, 210)
+
+[node name="Coin" parent="." instance=ExtResource("9_yy8vd")]
+position = Vector2(166, 194)
+
+[node name="BrownBrickBlockNormal4" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(162, 130)
+
+[node name="BrownBrickBlockNormal5" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(174, 130)
+
+[node name="BrownBrickBlockNormal6" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(186, 130)
+
+[node name="BrownBrickBlockNormal7" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(198, 130)
+
+[node name="BrownBrickBlockNormal8" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(210, 130)
+
+[node name="BrownBrickBlockNormal9" parent="." instance=ExtResource("8_gms1n")]
+position = Vector2(222, 130)
+
+[node name="Coin2" parent="." instance=ExtResource("9_yy8vd")]
+position = Vector2(174, 118)
+
+[node name="Pile" parent="." instance=ExtResource("9_4cmki")]
+position = Vector2(186, 118)
+
+[node name="Vase" parent="." instance=ExtResource("10_ejwbn")]
+position = Vector2(198, 118)
+
+[node name="Totem" parent="." instance=ExtResource("11_og1i2")]
+position = Vector2(210, 118)

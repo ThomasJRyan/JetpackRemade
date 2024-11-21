@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bapu65rqiv6ti"]
+
+[ext_resource type="Texture2D" uid="uid://be7xn66whn76a" path="res://Assets/Collectables/treasure.png" id="1_tvy6j"]
+[ext_resource type="PackedScene" uid="uid://b5w7em3uklbne" path="res://Assets/Collectables/Base/collectable.tscn" id="2_fw4mq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30nye"]
+size = Vector2(6, 4)
+
+[node name="Pile" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_tvy6j")
+region_enabled = true
+region_rect = Rect2(13, 0, 12, 12)
+
+[node name="Collectable" parent="." instance=ExtResource("2_fw4mq")]
+points = 250
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_30nye")

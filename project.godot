@@ -23,6 +23,10 @@ version_control/autoload_on_startup=true
 
 enabled=PackedStringArray("res://addons/block_generator/plugin.cfg")
 
+[global_group]
+
+collectable=""
+
 [input]
 
 up={

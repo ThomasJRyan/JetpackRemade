@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://w8m7vv6cgn07"]
+
+[ext_resource type="Texture2D" uid="uid://be7xn66whn76a" path="res://Assets/Collectables/treasure.png" id="1_loi45"]
+[ext_resource type="PackedScene" uid="uid://b5w7em3uklbne" path="res://Assets/Collectables/Base/collectable.tscn" id="2_828v4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30nye"]
+size = Vector2(6, 7)
+
+[node name="Vase" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_loi45")
+region_enabled = true
+region_rect = Rect2(26, 0, 12, 12)
+
+[node name="Collectable" parent="." instance=ExtResource("2_828v4")]
+points = 500
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_30nye")

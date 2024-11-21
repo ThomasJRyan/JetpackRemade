@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1fdaeecbv1en"]
+
+[ext_resource type="Texture2D" uid="uid://be7xn66whn76a" path="res://Assets/Collectables/treasure.png" id="1_6wgmi"]
+[ext_resource type="PackedScene" uid="uid://b5w7em3uklbne" path="res://Assets/Collectables/Base/collectable.tscn" id="1_qn4hp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kvxy"]
+radius = 3.0
+
+[node name="Coin" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_6wgmi")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="Collectable" parent="." instance=ExtResource("1_qn4hp")]
+points = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
+shape = SubResource("CircleShape2D_4kvxy")
