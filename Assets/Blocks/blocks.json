@@ -1,0 +1,162 @@
+{
+	"blocks": {
+		"base_blocks": [
+			"red_brick_block",
+			"brown_brick_block",
+			"grey_brick_block"
+		],
+		"block_types": [
+			{
+				"name": "normal"
+			},
+			{
+				"name": "clip_tl",
+				"clip": 1
+			},
+			{
+				"name": "clip_tr",
+				"clip": 2
+			},
+			{
+				"name": "clip_tl_tr",
+				"clip": 3
+			},
+			{
+				"name": "clip_bl",
+				"clip": 4
+			},
+			{
+				"name": "clip_tl_bl",
+				"clip": 5
+			},
+			{
+				"name": "clip_tr_bl",
+				"clip": 6
+			},
+			{
+				"name": "clip_tl_tr_bl",
+				"clip": 7
+			},
+			{
+				"name": "clip_br",
+				"clip": 8
+			},
+			{
+				"name": "clip_tl_br",
+				"clip": 9
+			},
+			{
+				"name": "clip_tr_br",
+				"clip": 10
+			},
+			{
+				"name": "clip_tl_tr_br",
+				"clip": 11
+			},
+			{
+				"name": "clip_bl_br",
+				"clip": 12
+			},
+			{
+				"name": "clip_tl_bl_br",
+				"clip": 13
+			},
+			{
+				"name": "clip_tr_bl_br",
+				"clip": 14
+			},
+			{
+				"name": "clip_tl_tr_bl_br",
+				"clip": 15
+			},
+			{
+				"name": "grass",
+				"modifier": "grass"
+			},
+			{
+				"name": "ice",
+				"modifier": "ice"
+			},
+			{
+				"name": "conveyor_left",
+				"modifier": "conveyor",
+				"modifier_data": {
+					"reverse": true,
+					"x_movement": 50
+				}
+			},
+			{
+				"name": "conveyor_right",
+				"modifier": "conveyor",
+				"modifier_data": {
+					"reverse": false,
+					"x_movement": 50
+				}
+			},
+			{
+				"name": "unbreakable_l",
+				"unbreakable": 1
+			},
+			{
+				"name": "unbreakable_r",
+				"unbreakable": 2
+			},
+			{
+				"name": "unbreakable_lr",
+				"unbreakable": 3
+			},
+			{
+				"name": "unbreakable_u",
+				"unbreakable": 4
+			},
+			{
+				"name": "unbreakable_lu",
+				"unbreakable": 5
+			},
+			{
+				"name": "unbreakable_ru",
+				"unbreakable": 6
+			},
+			{
+				"name": "unbreakable_lru",
+				"unbreakable": 7
+			},
+			{
+				"name": "unbreakable_d",
+				"unbreakable": 8
+			},
+			{
+				"name": "unbreakable_ld",
+				"unbreakable": 9
+			},
+			{
+				"name": "unbreakable_rd",
+				"unbreakable": 10
+			},
+			{
+				"name": "unbreakable_lrd",
+				"unbreakable": 11
+			},
+			{
+				"name": "unbreakable_ud",
+				"unbreakable": 12
+			},
+			{
+				"name": "unbreakable_lud",
+				"unbreakable": 13
+			},
+			{
+				"name": "unbreakable_rud",
+				"unbreakable": 14
+			},
+			{
+				"name": "unbreakable_lrud",
+				"unbreakable": 15
+			},
+			{
+				"name": "facade",
+				"facade": true
+			}
+		]
+	}
+}

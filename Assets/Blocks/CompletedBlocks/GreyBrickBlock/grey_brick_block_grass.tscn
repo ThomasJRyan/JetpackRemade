@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://cg5d857whwmag"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_m1ec4"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_nsap4"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_lwfsr"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_mq84m"]
+[ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.tscn" id="5_jfwu7"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_jpckd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[node name="GreyBrickBlockGrass" type="StaticBody2D"]
+
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_m1ec4")]
+clip_children = 1
+texture_filter = 3
+texture = ExtResource("2_nsap4")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("3_lwfsr")
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("4_mq84m")
+region_enabled = true
+region_rect = Rect2(0, 26, 12, 12)
+
+[node name="GrassModifier" type="Area2D" parent="." instance=ExtResource("5_jfwu7")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_jpckd")
+modifier_name = "Grass"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")

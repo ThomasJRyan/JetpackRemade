@@ -1,0 +1,69 @@
+[gd_scene load_steps=12 format=3 uid="uid://bjxdeb02t7ksy"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_ofxly"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="2_fkm6b"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="3_ifg7u"]
+[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="4_8f2xk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_384ho"]
+atlas = ExtResource("4_8f2xk")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el452"]
+atlas = ExtResource("4_8f2xk")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8pkg"]
+atlas = ExtResource("4_8f2xk")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8s2w"]
+atlas = ExtResource("4_8f2xk")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ndhxn"]
+atlas = ExtResource("4_8f2xk")
+region = Rect2(52, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dxvfa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_384ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el452")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8pkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8s2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ndhxn")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RedBrickBlock" type="StaticBody2D"]
+
+[node name="ClippingComponent" parent="." instance=ExtResource("1_ofxly")]
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("2_fkm6b")
+region_enabled = true
+region_rect = Rect2(0, 13, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")
+
+[node name="BreakableComponent" parent="." instance=ExtResource("3_ifg7u")]
+break_frames = SubResource("SpriteFrames_dxvfa")
+break_time = 2.0

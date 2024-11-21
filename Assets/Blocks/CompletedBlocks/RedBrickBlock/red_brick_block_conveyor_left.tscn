@@ -1,0 +1,96 @@
+[gd_scene load_steps=17 format=3 uid="uid://cth6obdfttyc3"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_5uc1a"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_wylhn"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_na484"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_f8t3r"]
+[ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_sqq7s"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_5pca1"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_w8arp"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_dppe8"]
+[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_5wsy8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xsjr"]
+atlas = ExtResource("9_5wsy8")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg4sb"]
+atlas = ExtResource("9_5wsy8")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfg6"]
+atlas = ExtResource("9_5wsy8")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h86i"]
+atlas = ExtResource("9_5wsy8")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0403"]
+atlas = ExtResource("9_5wsy8")
+region = Rect2(52, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yr0sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xsjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg4sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h86i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0403")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RedBrickBlockConveyorLeft" type="StaticBody2D"]
+
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_5uc1a")]
+clip_children = 1
+texture_filter = 3
+texture = ExtResource("2_wylhn")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("3_na484")
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("4_f8t3r")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")
+
+[node name="ConveyorModifier" type="Area2D" parent="." instance=ExtResource("5_sqq7s")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_5pca1")
+modifier_name = "Conveyor"
+modifier_data = {
+"reverse": true,
+"x_movement": 50.0
+}
+
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_w8arp")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_dppe8")
+break_frames = SubResource("SpriteFrames_yr0sl")
+left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
+right_unbreakable = NodePath("Unbreakable/RightUnbreakable")
+top_unbreakable = NodePath("Unbreakable/TopUnbreakable")
+bottom_unbreakable = NodePath("Unbreakable/BottomUnbreakable")

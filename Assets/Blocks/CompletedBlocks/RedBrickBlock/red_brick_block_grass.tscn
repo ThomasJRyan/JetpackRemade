@@ -1,0 +1,92 @@
+[gd_scene load_steps=17 format=3 uid="uid://dshleuf3mne8r"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_ptexu"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_avh4k"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_4vkut"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_dm07o"]
+[ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.tscn" id="5_nhwwh"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_r40vg"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_1r0ug"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_cmg54"]
+[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_17hdl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xsjr"]
+atlas = ExtResource("9_17hdl")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kg4sb"]
+atlas = ExtResource("9_17hdl")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfg6"]
+atlas = ExtResource("9_17hdl")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4h86i"]
+atlas = ExtResource("9_17hdl")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0403"]
+atlas = ExtResource("9_17hdl")
+region = Rect2(52, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yr0sl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xsjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kg4sb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opfg6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4h86i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0403")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RedBrickBlockGrass" type="StaticBody2D"]
+
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_ptexu")]
+clip_children = 1
+texture_filter = 3
+texture = ExtResource("2_avh4k")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("3_4vkut")
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("4_dm07o")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")
+
+[node name="GrassModifier" type="Area2D" parent="." instance=ExtResource("5_nhwwh")]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("6_r40vg")
+modifier_name = "Grass"
+
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_1r0ug")]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("8_cmg54")
+break_frames = SubResource("SpriteFrames_yr0sl")
+left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
+right_unbreakable = NodePath("Unbreakable/RightUnbreakable")
+top_unbreakable = NodePath("Unbreakable/TopUnbreakable")
+bottom_unbreakable = NodePath("Unbreakable/BottomUnbreakable")

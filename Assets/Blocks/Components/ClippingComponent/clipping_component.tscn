@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gl0tghbo5vh"]
+
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="1_qttru"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="2_bvq5s"]
+
+[node name="ClippingComponent" type="Sprite2D"]
+clip_children = 1
+texture_filter = 3
+texture = ExtResource("1_qttru")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("2_bvq5s")

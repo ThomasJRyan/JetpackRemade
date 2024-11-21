@@ -3,13 +3,13 @@ extends EditorPlugin
 
 var MENU_NAME = "Generate Blocks"
 
-var BLOCKS_JSON = "res://Blocks/blocks.json"
+var BLOCKS_JSON: String = "res://Assets/Blocks/blocks.json"
 
 func load_json(file_path: String) -> Dictionary:
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	
 	if !file.file_exists(file_path):
-		print(BLOCKS_JSON + " does not exist")
+		print(file_path + " does not exist")
 		return {}
 
 	var json_string = file.get_as_text()  # Read the file content as a string
@@ -27,14 +27,13 @@ func load_json(file_path: String) -> Dictionary:
 func generate_blocks():
 	var block_json = load_json(BLOCKS_JSON)
 	
-	var dir = DirAccess.open("res://Blocks")
-	dir.make_dir("GeneratedBlocks")
+	var dir = DirAccess.open("res://Assets/Blocks/CompletedBlocks")
 	
 	for base_block_name in block_json["blocks"]["base_blocks"]:
-		var save_dir: String = "GeneratedBlocks/" + base_block_name.to_pascal_case() + "/"
+		var save_dir: String = base_block_name.to_pascal_case() + "/"
 		dir.make_dir(save_dir)
 		for block_data in block_json["blocks"]["block_types"]:
-			var block: Node2D = load("res://Blocks/Bases/" + base_block_name + ".tscn").instantiate()
+			var block: Node2D = load("res://Assets/Blocks/Bases/" + base_block_name + ".tscn").instantiate()
 			var block_name = base_block_name + "_" + block_data["name"]
 			block.name = block_name.to_pascal_case()
 			
@@ -43,7 +42,8 @@ func generate_blocks():
 				clipping_node.clipping_mask = block_data["clip"]
 				
 			if "modifier" in block_data:
-				var modifier: PackedScene = load("res://Blocks/Components/Modifiers/" + block_data["modifier"] + "_modifier.tscn")
+				var modifier_folder: String = block_data["modifier"].to_pascal_case() + "Modifier"
+				var modifier: PackedScene = load("res://Assets/Blocks/Components/" + modifier_folder + "/" + block_data["modifier"] + "_modifier.tscn")
 				var init_modifier = modifier.instantiate()
 				block.add_child(init_modifier)
 				block.move_child(init_modifier, -2)
@@ -71,7 +71,7 @@ func generate_blocks():
 			
 			var scene = PackedScene.new()
 			scene.pack(block)
-			ResourceSaver.save(scene, "res://Blocks/" + save_dir + block_name + ".tscn")
+			ResourceSaver.save(scene, "res://Assets/Blocks/CompletedBlocks/" + save_dir + block_name + ".tscn")
 	
 	print("Blocks Generated!")
 
