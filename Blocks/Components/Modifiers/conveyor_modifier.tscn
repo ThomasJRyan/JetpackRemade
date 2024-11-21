@@ -48,6 +48,7 @@ collision_mask = 0
 script = ExtResource("1_8iend")
 modifier_name = "Conveyor"
 modifier_data = {
+"reverse": false,
 "x_movement": 50
 }
 
@@ -59,4 +60,4 @@ shape = SubResource("RectangleShape2D_8v2j8")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_o01ef")
 autoplay = "default"
-frame_progress = 0.791223
+frame_progress = 0.968714

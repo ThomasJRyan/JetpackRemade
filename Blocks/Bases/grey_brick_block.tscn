@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmauqcaprkgtm"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_kxlwd"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="2_fp47a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[node name="RedBrickBlock" type="StaticBody2D"]
+
+[node name="ClippingComponent" parent="." instance=ExtResource("1_kxlwd")]
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("2_fp47a")
+region_enabled = true
+region_rect = Rect2(0, 26, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")

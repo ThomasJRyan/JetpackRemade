@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg4lgcwm24j26"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_f3v61"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="4_5rlwi"]
+
+[node name="RedBrickBlockFacade" type="StaticBody2D"]
+
+[node name="ClippingComponent" parent="." instance=ExtResource("1_f3v61")]
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+z_index = 100
+texture_filter = 1
+texture = ExtResource("4_5rlwi")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)

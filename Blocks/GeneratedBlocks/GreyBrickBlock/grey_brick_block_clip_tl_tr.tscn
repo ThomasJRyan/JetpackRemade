@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://pm1ce8yhevw"]
+
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Blocks/Components/clipping_component.tscn" id="1_nil6j"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Blocks/ClippingMask.png" id="2_s1wwx"]
+[ext_resource type="Script" path="res://Blocks/Components/clipping_component.gd" id="3_46dh2"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Blocks/StandardBricks.png" id="4_4pr0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
+size = Vector2(12, 12)
+
+[node name="GreyBrickBlockClipTlTr" type="StaticBody2D"]
+
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_nil6j")]
+clip_children = 1
+texture_filter = 3
+texture = ExtResource("2_s1wwx")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("3_46dh2")
+clipping_mask = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
+texture_filter = 1
+texture = ExtResource("4_4pr0i")
+region_enabled = true
+region_rect = Rect2(0, 26, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6wisr")

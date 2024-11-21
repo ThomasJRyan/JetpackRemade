@@ -1,4 +1,6 @@
+@tool
 extends Area2D
+class_name BreakableComponent
 
 @export var break_frames: SpriteFrames
 @export var break_time: float = 1.0
@@ -11,10 +13,10 @@ extends Area2D
 @onready var timer: Timer = $Timer
 @onready var break_animation: AnimatedSprite2D = $AnimatedSprite2D
 
-@onready var left_unbreakable = $Unbreakable/LeftUnbreakable
-@onready var right_unbreakable = $Unbreakable/RightUnbreakable
-@onready var top_unbreakable = $Unbreakable/TopUnbreakable
-@onready var bottom_unbreakable = $Unbreakable/BottomUnbreakable
+@export var left_unbreakable = Sprite2D
+@export var right_unbreakable = Sprite2D
+@export var top_unbreakable = Sprite2D
+@export var bottom_unbreakable = Sprite2D
 
 enum unbreakables {
 	left = 1,
@@ -24,6 +26,7 @@ enum unbreakables {
 }
 
 @onready var collision = $BreakableComponentCollision
+#@export var collision: CollisionShape2D
 
 enum states {
 	UNBROKEN,
@@ -32,26 +35,40 @@ enum states {
 }
 var state: states = states.UNBROKEN
 
+func determine_visibility() -> void:
+	if unbreakables.left & unbreakable:
+		left_unbreakable.visible = true
+	if unbreakables.right & unbreakable:
+		right_unbreakable.visible = true
+	if unbreakables.top & unbreakable:
+		top_unbreakable.visible = true
+	if unbreakables.bottom & unbreakable:
+		bottom_unbreakable.visible = true
+
+func _enter_tree() -> void:
+	determine_visibility()
+	
 func _ready():
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
+	
 	break_animation.sprite_frames = break_frames
 	
 	var collision_vec = Vector2i(12, 12)
 	if unbreakables.left & unbreakable:
-		left_unbreakable.visible = true
 		collision_vec.x -= 2
 		collision.position.x += 1
 	if unbreakables.right & unbreakable:
-		right_unbreakable.visible = true
 		collision_vec.x -= 2
 		collision.position.x -= 1
 	if unbreakables.top & unbreakable:
-		top_unbreakable.visible = true
 		collision_vec.y -= 2
 		collision.position.y += 1
 	if unbreakables.bottom & unbreakable:
-		bottom_unbreakable.visible = true
 		collision_vec.y -= 2
 		collision.position.y -= 1
+		
+	determine_visibility()
 	
 	#var collision_shape = RectangleShape2D(collision_vec)
 	collision.shape.size = collision_vec

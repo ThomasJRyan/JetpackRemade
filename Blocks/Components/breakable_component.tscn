@@ -48,13 +48,18 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2bahb"]
-size = Vector2(12, 12)
+resource_local_to_scene = true
+size = Vector2(12, 10)
 
-[node name="BreakableComponent" type="Area2D"]
+[node name="BreakableComponent" type="Area2D" node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable")]
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_uswtb")
 break_frames = SubResource("SpriteFrames_yh3md")
+left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
+right_unbreakable = NodePath("Unbreakable/RightUnbreakable")
+top_unbreakable = NodePath("Unbreakable/TopUnbreakable")
+bottom_unbreakable = NodePath("Unbreakable/BottomUnbreakable")
 
 [node name="Unbreakable" type="Node2D" parent="."]
 
@@ -97,6 +102,4 @@ one_shot = true
 visible = false
 texture_filter = 1
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
