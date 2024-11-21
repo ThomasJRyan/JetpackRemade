@@ -50,6 +50,9 @@ size = Vector2(5.5, 232.5)
 [node name="Node2D" type="Node2D"]
 scale = Vector2(3, 3)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(330, 202)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
 z_index = 1
 position = Vector2(137, 206)
