@@ -1,22 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://34ydlbgo8eck"]
+[gd_scene load_steps=10 format=3 uid="uid://c3capivs3yrur"]
 
-[ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Assets/Blocks/Sprites/Ladder.png" id="1_04sdr"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClimableModifiers/moving_climable_modifier.gd" id="1_78eub"]
+[ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Assets/Blocks/Sprites/Ladder.png" id="1_5ot61"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClimableModifiers/moving_climable_modifier.gd" id="2_kmev7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uveay"]
-atlas = ExtResource("1_04sdr")
+atlas = ExtResource("1_5ot61")
 region = Rect2(12, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gllik"]
-atlas = ExtResource("1_04sdr")
+atlas = ExtResource("1_5ot61")
 region = Rect2(24, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_47f1x"]
-atlas = ExtResource("1_04sdr")
+atlas = ExtResource("1_5ot61")
 region = Rect2(36, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5563u"]
-atlas = ExtResource("1_04sdr")
+atlas = ExtResource("1_5ot61")
 region = Rect2(48, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tpxqr"]
@@ -45,7 +45,7 @@ size = Vector2(12, 12)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08psj"]
 size = Vector2(12, 12)
 
-[node name="MovingLadder" type="StaticBody2D"]
+[node name="MovingLadderDown" type="StaticBody2D"]
 collision_layer = 0
 collision_mask = 0
 
@@ -58,7 +58,8 @@ frame_progress = 0.741186
 [node name="MovingClimableModifier" type="Area2D" parent="." node_paths=PackedStringArray("animation")]
 collision_layer = 24
 collision_mask = 0
-script = ExtResource("1_78eub")
+script = ExtResource("2_kmev7")
+reverse = true
 animation = NodePath("../AnimatedSprite2D")
 modifier_name = "MovingClimbable"
 modifier_data = {

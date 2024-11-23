@@ -5,4 +5,5 @@ func _ready() -> void:
 		collectable.connect("collected", _collect_treasure)
 	
 func _collect_treasure(points):
-	print("Treasure collected " + str(points))
+	#print("Treasure collected " + str(points))
+	pass

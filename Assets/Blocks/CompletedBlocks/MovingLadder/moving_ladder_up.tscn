@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://34ydlbgo8eck"]
+
+[ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Assets/Blocks/Sprites/Ladder.png" id="1_rafcp"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClimableModifiers/moving_climable_modifier.gd" id="2_fsqks"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uveay"]
+atlas = ExtResource("1_rafcp")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gllik"]
+atlas = ExtResource("1_rafcp")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47f1x"]
+atlas = ExtResource("1_rafcp")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5563u"]
+atlas = ExtResource("1_rafcp")
+region = Rect2(48, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpxqr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uveay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gllik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47f1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5563u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gbs4c"]
+size = Vector2(12, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08psj"]
+size = Vector2(12, 12)
+
+[node name="MovingLadderUp" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_tpxqr")
+autoplay = "default"
+frame_progress = 0.741186
+
+[node name="MovingClimableModifier" type="Area2D" parent="." node_paths=PackedStringArray("animation")]
+collision_layer = 24
+collision_mask = 0
+script = ExtResource("2_fsqks")
+animation = NodePath("../AnimatedSprite2D")
+modifier_name = "MovingClimbable"
+modifier_data = {
+"y_movement": -50
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovingClimableModifier"]
+shape = SubResource("RectangleShape2D_gbs4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_08psj")

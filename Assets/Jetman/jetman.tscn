@@ -464,6 +464,7 @@ size = Vector2(4, 1)
 radius = 2.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+z_index = 10
 collision_layer = 41
 collision_mask = 33
 script = ExtResource("1_cnoqe")

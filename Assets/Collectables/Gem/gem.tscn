@@ -7,9 +7,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfyo"]
 size = Vector2(7, 9)
 
-[node name="Coin" type="Sprite2D"]
+[node name="Gem" type="Sprite2D"]
 texture_filter = 1
-position = Vector2(0, 1)
 texture = ExtResource("1_3b8tn")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
@@ -20,7 +19,7 @@ points = 100
 remove_collectable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable"]
-position = Vector2(-0.5, 0.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_lmfyo")
 
 [connection signal="collected" from="Collectable" to="." method="_on_collectable_collected"]

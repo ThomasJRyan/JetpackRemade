@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://db02x6ntmwg82"]
+
+[ext_resource type="Texture2D" uid="uid://ymq1ewki6umb" path="res://Assets/Collectables/Fuel/fuel.png" id="1_8lrk2"]
+[ext_resource type="Script" path="res://Assets/Collectables/Fuel/fuel.gd" id="2_dxggx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dkwf"]
+size = Vector2(4, 7)
+
+[node name="Fuel" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_8lrk2")
+region_enabled = true
+region_rect = Rect2(13, 0, 12, 12)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("2_dxggx")
+fuel_amount = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_7dkwf")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

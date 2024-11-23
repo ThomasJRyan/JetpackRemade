@@ -23,7 +23,7 @@ gradient = SubResource("Gradient_ruefi")
 width = 7
 height = 12
 
-[node name="Control" type="Control"]
+[node name="StatusBar" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

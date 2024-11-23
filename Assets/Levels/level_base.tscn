@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://djm7sombf4kb8"]
+
+[ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="1_t0ouo"]
+[ext_resource type="PackedScene" uid="uid://x5fn66w2ur6j" path="res://Assets/UI/status_bar.tscn" id="2_0mn0h"]
+
+[node name="LevelBase" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+texture_repeat = 2
+offset_right = 312.0
+offset_bottom = 201.0
+texture = ExtResource("1_t0ouo")
+stretch_mode = 1
+metadata/_edit_lock_ = true
+
+[node name="StatusBar" parent="." instance=ExtResource("2_0mn0h")]
+offset_top = 192.0
+offset_bottom = 192.0
+metadata/_edit_lock_ = true
+
+[node name="GameBorder" type="StaticBody2D" parent="."]
+collision_layer = 33
+collision_mask = 33
+metadata/_edit_lock_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBorder"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 312, 0, 312, 192, 0, 192)
+metadata/_edit_lock_ = true

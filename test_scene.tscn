@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=15 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
@@ -14,9 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://chht1vg2r88v8" path="res://Assets/Collectables/Totem/totem.tscn" id="11_og1i2"]
 [ext_resource type="PackedScene" uid="uid://deqerobmsvcrn" path="res://Assets/Collectables/Gem/gem.tscn" id="14_jub5s"]
 [ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="41_5o5la"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_anc2l"]
-size = Vector2(8, 222)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tghmy")
@@ -40,11 +37,6 @@ position = Vector2(136, 168)
 [node name="GameBorder" type="StaticBody2D" parent="Game"]
 collision_layer = 33
 collision_mask = 33
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/GameBorder"]
-visible = false
-position = Vector2(-4, 101)
-shape = SubResource("RectangleShape2D_anc2l")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/GameBorder"]
 build_mode = 1
@@ -149,9 +141,6 @@ position = Vector2(150, 6)
 
 [node name="BrownBrickBlockNormal18" parent="Game" instance=ExtResource("8_gms1n")]
 position = Vector2(294, 6)
-
-[node name="BrownBrickBlockNormal19" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(318, 6)
 
 [node name="BrownBrickBlockNormal20" parent="Game" instance=ExtResource("8_gms1n")]
 position = Vector2(246, 6)
