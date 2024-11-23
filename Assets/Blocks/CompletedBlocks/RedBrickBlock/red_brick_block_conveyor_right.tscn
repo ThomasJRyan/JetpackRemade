@@ -82,7 +82,7 @@ script = ExtResource("6_407dj")
 modifier_name = "Conveyor"
 modifier_data = {
 "reverse": false,
-"x_movement": 50.0
+"x_movement": 15.0
 }
 
 [node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_o2sjp")]

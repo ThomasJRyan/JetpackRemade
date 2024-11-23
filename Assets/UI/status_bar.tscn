@@ -1,0 +1,156 @@
+[gd_scene load_steps=8 format=3 uid="uid://x5fn66w2ur6j"]
+
+[ext_resource type="Script" path="res://Assets/UI/status_bar.gd" id="1_5hgat"]
+[ext_resource type="Theme" uid="uid://dkse2mn8f4t5r" path="res://Assets/UI/status_bar.tres" id="1_7bxft"]
+[ext_resource type="FontFile" uid="uid://csbae84cghn6x" path="res://Assets/UI/Fonts/amiga4ever.ttf" id="3_3hwo4"]
+
+[sub_resource type="Gradient" id="Gradient_1c6l8"]
+offsets = PackedFloat32Array(0, 0.502008, 0.987952)
+colors = PackedColorArray(0.109804, 0.65098, 0.509804, 1, 0.0313726, 0.235294, 0.172549, 1, 0.286275, 0.984314, 0.796078, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hrnf4"]
+gradient = SubResource("Gradient_1c6l8")
+width = 7
+height = 12
+
+[sub_resource type="Gradient" id="Gradient_26bwj"]
+offsets = PackedFloat32Array(0, 0.506024, 1)
+colors = PackedColorArray(0.745098, 0.745098, 0.745098, 1, 0.443137, 0.443137, 0.443137, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0j7o5"]
+gradient = SubResource("Gradient_26bwj")
+width = 7
+height = 12
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7bxft")
+script = ExtResource("1_5hgat")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 312.0
+offset_bottom = 12.0
+color = Color(0.317647, 0.317647, 0.317647, 1)
+metadata/_edit_lock_ = true
+
+[node name="LabelFuel" type="Label" parent="."]
+clip_children = 1
+layout_mode = 2
+offset_top = 2.0
+offset_right = 32.0
+offset_bottom = 10.0
+text = "FUEL"
+
+[node name="GreenGradient" type="TextureRect" parent="LabelFuel"]
+layout_mode = 0
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 39.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_hrnf4")
+metadata/_edit_lock_ = true
+
+[node name="FuelBar" type="ProgressBar" parent="."]
+texture_filter = 1
+layout_mode = 2
+offset_left = 34.0
+offset_top = 2.0
+offset_right = 130.0
+offset_bottom = 9.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 100.0
+show_percentage = false
+
+[node name="LabelLives" type="Label" parent="."]
+clip_children = 1
+layout_mode = 2
+offset_left = 142.0
+offset_top = 2.0
+offset_right = 188.0
+offset_bottom = 10.0
+text = "LIVES:"
+
+[node name="GreenGradient" type="TextureRect" parent="LabelLives"]
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 49.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_hrnf4")
+metadata/_edit_lock_ = true
+
+[node name="GreyGradient" type="TextureRect" parent="LabelLives"]
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 46.0
+offset_bottom = 49.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_0j7o5")
+metadata/_edit_lock_ = true
+
+[node name="LifeCounter" type="Label" parent="."]
+clip_children = 1
+layout_mode = 2
+offset_left = 190.0
+offset_top = 2.0
+offset_right = 209.0
+offset_bottom = 10.0
+text = "00"
+
+[node name="GreyGradient" type="TextureRect" parent="LifeCounter"]
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 55.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_0j7o5")
+
+[node name="ScoreLabel" type="Label" parent="."]
+clip_children = 1
+layout_mode = 2
+offset_left = 214.0
+offset_top = 2.0
+offset_right = 270.0
+offset_bottom = 10.0
+text = "SCORE:"
+
+[node name="GreenGradient" type="TextureRect" parent="ScoreLabel"]
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 52.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_hrnf4")
+metadata/_edit_lock_ = true
+
+[node name="GreyGradient" type="TextureRect" parent="ScoreLabel"]
+offset_left = 39.0
+offset_top = 7.0
+offset_right = 46.0
+offset_bottom = 49.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_0j7o5")
+metadata/_edit_lock_ = true
+
+[node name="Score" type="Label" parent="."]
+clip_children = 1
+layout_mode = 2
+offset_left = 264.0
+offset_top = 2.0
+offset_right = 312.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("3_3hwo4")
+text = "000000"
+
+[node name="GreyGradient" type="TextureRect" parent="Score"]
+offset_top = 7.0
+offset_right = 7.0
+offset_bottom = 55.0
+rotation = -1.57079
+texture = SubResource("GradientTexture2D_0j7o5")

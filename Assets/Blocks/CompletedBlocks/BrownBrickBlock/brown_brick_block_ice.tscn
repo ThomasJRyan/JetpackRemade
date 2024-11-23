@@ -1,36 +1,36 @@
 [gd_scene load_steps=17 format=3 uid="uid://bea5shgo7of5s"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_mqg47"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_pfxsa"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_stp3i"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_ld50u"]
-[ext_resource type="PackedScene" uid="uid://c1u3mb4dlj27m" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.tscn" id="5_uuqye"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_o35ma"]
-[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_u3v8q"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_tv3hi"]
-[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="9_am0fp"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_xu50m"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_kbq43"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_f8blb"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_pxo27"]
+[ext_resource type="PackedScene" uid="uid://c1u3mb4dlj27m" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.tscn" id="5_ipbn2"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_xjjt5"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_l80mx"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_qtxvu"]
+[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="9_85m33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_384ho"]
-atlas = ExtResource("9_am0fp")
+atlas = ExtResource("9_85m33")
 region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_el452"]
-atlas = ExtResource("9_am0fp")
+atlas = ExtResource("9_85m33")
 region = Rect2(13, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8pkg"]
-atlas = ExtResource("9_am0fp")
+atlas = ExtResource("9_85m33")
 region = Rect2(26, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8s2w"]
-atlas = ExtResource("9_am0fp")
+atlas = ExtResource("9_85m33")
 region = Rect2(39, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndhxn"]
-atlas = ExtResource("9_am0fp")
+atlas = ExtResource("9_85m33")
 region = Rect2(52, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxvfa"]
@@ -58,33 +58,33 @@ animations = [{
 
 [node name="BrownBrickBlockIce" type="StaticBody2D"]
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_mqg47")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_xu50m")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_pfxsa")
+texture = ExtResource("2_kbq43")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_stp3i")
+script = ExtResource("3_f8blb")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_ld50u")
+texture = ExtResource("4_pxo27")
 region_enabled = true
 region_rect = Rect2(0, 13, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="IceModifier" type="Area2D" parent="." instance=ExtResource("5_uuqye")]
+[node name="IceModifier" type="Area2D" parent="." instance=ExtResource("5_ipbn2")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("6_o35ma")
+script = ExtResource("6_xjjt5")
 modifier_name = "Ice"
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_u3v8q")]
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_l80mx")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("8_tv3hi")
+script = ExtResource("8_qtxvu")
 break_frames = SubResource("SpriteFrames_dxvfa")
 break_time = 2.0
 left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")

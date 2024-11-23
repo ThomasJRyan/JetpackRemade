@@ -49,7 +49,7 @@ script = ExtResource("1_8iend")
 modifier_name = "Conveyor"
 modifier_data = {
 "reverse": false,
-"x_movement": 50
+"x_movement": 15
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

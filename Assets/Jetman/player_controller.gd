@@ -1,13 +1,16 @@
 extends CharacterBody2D
 class_name Player
 
+signal fuel_changed(fuel)
+
 @onready var state_machine = $StateMachine
 @onready var animations = $AnimatedSprite2D
 
-@export var max_fuel: int = 10000
-@export var fuel: int = 10000:
+@export var max_fuel: float = 10000
+@export var fuel: float = 10000:
 	set(value):
 		fuel = clamp(value, 0, max_fuel)
+		emit_signal("fuel_changed", fuel)
 
 var speed_modifier: float = 1.0
 

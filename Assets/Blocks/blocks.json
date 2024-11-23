@@ -82,7 +82,7 @@
 				"modifier": "conveyor",
 				"modifier_data": {
 					"reverse": true,
-					"x_movement": 50
+					"x_movement": 15
 				}
 			},
 			{
@@ -90,7 +90,7 @@
 				"modifier": "conveyor",
 				"modifier_data": {
 					"reverse": false,
-					"x_movement": 50
+					"x_movement": 15
 				}
 			},
 			{

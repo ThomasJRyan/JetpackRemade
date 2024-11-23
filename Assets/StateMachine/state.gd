@@ -2,8 +2,8 @@ extends Node
 class_name State
 
 @export var animation_name: String
-@export var move_speed: float = 150
-@export var terminal_velocity: int = 250
+@export var move_speed: float = 50
+@export var terminal_velocity: int = 80
 
 var active := false
 

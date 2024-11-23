@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
 [ext_resource type="PackedScene" uid="uid://dox6lv6c85x52" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_clip_bl.tscn" id="3_jpjql"]
+[ext_resource type="PackedScene" uid="uid://x5fn66w2ur6j" path="res://Assets/UI/status_bar.tscn" id="3_t5boi"]
 [ext_resource type="PackedScene" uid="uid://b8m41jw1knh2i" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_conveyor_right.tscn" id="4_it07n"]
 [ext_resource type="PackedScene" uid="uid://cg5d857whwmag" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_grass.tscn" id="6_k7tq7"]
 [ext_resource type="PackedScene" uid="uid://dsq1n0i3ercvt" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_ice.tscn" id="7_re4mh"]
@@ -13,117 +14,160 @@
 [ext_resource type="PackedScene" uid="uid://chht1vg2r88v8" path="res://Assets/Collectables/Totem/totem.tscn" id="11_og1i2"]
 [ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="41_5o5la"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpufm"]
-size = Vector2(388, 8)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lu385"]
-size = Vector2(5.5, 232.5)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_anc2l"]
+size = Vector2(8, 222)
 
 [node name="Node2D" type="Node2D"]
-scale = Vector2(3, 3)
 script = ExtResource("1_tghmy")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Game" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Game"]
 texture_filter = 1
 texture_repeat = 2
-offset_right = 386.0
-offset_bottom = 218.0
+offset_right = 312.0
+offset_bottom = 204.0
 texture = ExtResource("41_5o5la")
 stretch_mode = 1
 metadata/_edit_lock_ = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_dm3f5")]
+[node name="CharacterBody2D" parent="Game" instance=ExtResource("1_dm3f5")]
 z_index = 1
-position = Vector2(137, 206)
+position = Vector2(136, 168)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="GameBorder" type="StaticBody2D" parent="Game"]
 collision_layer = 33
 collision_mask = 33
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(192, 220)
-shape = SubResource("RectangleShape2D_gpufm")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game/GameBorder"]
+visible = false
+position = Vector2(-4, 101)
+shape = SubResource("RectangleShape2D_anc2l")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(192, -4)
-shape = SubResource("RectangleShape2D_gpufm")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/GameBorder"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 312, 0, 312, 192, 0, 192)
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-2.66667, 110.333)
-shape = SubResource("RectangleShape2D_lu385")
+[node name="RedBrickBlockClipBl" parent="Game" instance=ExtResource("3_jpjql")]
+position = Vector2(102, 198)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(386.667, 105.667)
-shape = SubResource("RectangleShape2D_lu385")
+[node name="RedBrickBlockConveyorRight" parent="Game" instance=ExtResource("4_it07n")]
+position = Vector2(66, 162)
 
-[node name="RedBrickBlockClipBl" parent="." instance=ExtResource("3_jpjql")]
-position = Vector2(166, 206)
+[node name="RedBrickBlockConveyorRight2" parent="Game" instance=ExtResource("4_it07n")]
+position = Vector2(94, 94)
 
-[node name="RedBrickBlockConveyorRight" parent="." instance=ExtResource("4_it07n")]
-position = Vector2(66, 210)
+[node name="RedBrickBlockConveyorRight3" parent="Game" instance=ExtResource("4_it07n")]
+position = Vector2(106, 94)
 
-[node name="RedBrickBlockConveyorRight2" parent="." instance=ExtResource("4_it07n")]
-position = Vector2(78, 210)
+[node name="GreyBrickBlockGrass" parent="Game" instance=ExtResource("6_k7tq7")]
+position = Vector2(202, 70)
 
-[node name="RedBrickBlockConveyorRight3" parent="." instance=ExtResource("4_it07n")]
-position = Vector2(90, 210)
+[node name="GreyBrickBlockGrass2" parent="Game" instance=ExtResource("6_k7tq7")]
+position = Vector2(214, 70)
 
-[node name="GreyBrickBlockGrass" parent="." instance=ExtResource("6_k7tq7")]
-position = Vector2(190, 210)
+[node name="GreyBrickBlockGrass3" parent="Game" instance=ExtResource("6_k7tq7")]
+position = Vector2(226, 70)
 
-[node name="GreyBrickBlockGrass2" parent="." instance=ExtResource("6_k7tq7")]
-position = Vector2(202, 210)
+[node name="GreyBrickBlockIce" parent="Game" instance=ExtResource("7_re4mh")]
+position = Vector2(238, 70)
 
-[node name="GreyBrickBlockGrass3" parent="." instance=ExtResource("6_k7tq7")]
-position = Vector2(214, 210)
+[node name="GreyBrickBlockIce2" parent="Game" instance=ExtResource("7_re4mh")]
+position = Vector2(250, 70)
 
-[node name="GreyBrickBlockIce" parent="." instance=ExtResource("7_re4mh")]
-position = Vector2(226, 210)
+[node name="GreyBrickBlockIce3" parent="Game" instance=ExtResource("7_re4mh")]
+position = Vector2(262, 70)
 
-[node name="GreyBrickBlockIce2" parent="." instance=ExtResource("7_re4mh")]
-position = Vector2(238, 210)
+[node name="BrownBrickBlockNormal" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 150)
 
-[node name="GreyBrickBlockIce3" parent="." instance=ExtResource("7_re4mh")]
-position = Vector2(250, 210)
+[node name="BrownBrickBlockNormal2" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 174)
 
-[node name="BrownBrickBlockNormal" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(262, 210)
+[node name="BrownBrickBlockNormal3" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(222, 6)
 
-[node name="BrownBrickBlockNormal2" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(274, 210)
+[node name="Coin" parent="Game" instance=ExtResource("9_yy8vd")]
+position = Vector2(150, 122)
 
-[node name="BrownBrickBlockNormal3" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(286, 210)
+[node name="BrownBrickBlockNormal4" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 6)
 
-[node name="Coin" parent="." instance=ExtResource("9_yy8vd")]
-position = Vector2(166, 194)
+[node name="BrownBrickBlockNormal5" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 54)
 
-[node name="BrownBrickBlockNormal4" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(162, 130)
+[node name="BrownBrickBlockNormal6" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 30)
 
-[node name="BrownBrickBlockNormal5" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(174, 130)
+[node name="BrownBrickBlockNormal7" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 78)
 
-[node name="BrownBrickBlockNormal6" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(186, 130)
+[node name="BrownBrickBlockNormal8" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 102)
 
-[node name="BrownBrickBlockNormal7" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(198, 130)
+[node name="BrownBrickBlockNormal9" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(6, 126)
 
-[node name="BrownBrickBlockNormal8" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(210, 130)
-
-[node name="BrownBrickBlockNormal9" parent="." instance=ExtResource("8_gms1n")]
-position = Vector2(222, 130)
-
-[node name="Coin2" parent="." instance=ExtResource("9_yy8vd")]
+[node name="Coin2" parent="Game" instance=ExtResource("9_yy8vd")]
 position = Vector2(174, 118)
 
-[node name="Pile" parent="." instance=ExtResource("9_4cmki")]
+[node name="Pile" parent="Game" instance=ExtResource("9_4cmki")]
 position = Vector2(186, 118)
 
-[node name="Vase" parent="." instance=ExtResource("10_ejwbn")]
+[node name="Vase" parent="Game" instance=ExtResource("10_ejwbn")]
 position = Vector2(198, 118)
 
-[node name="Totem" parent="." instance=ExtResource("11_og1i2")]
+[node name="Totem" parent="Game" instance=ExtResource("11_og1i2")]
 position = Vector2(210, 118)
+
+[node name="BrownBrickBlockNormal10" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(174, 6)
+
+[node name="BrownBrickBlockNormal11" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(198, 6)
+
+[node name="BrownBrickBlockNormal12" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(30, 6)
+
+[node name="BrownBrickBlockNormal13" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(78, 6)
+
+[node name="BrownBrickBlockNormal14" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(54, 6)
+
+[node name="BrownBrickBlockNormal15" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(102, 6)
+
+[node name="BrownBrickBlockNormal16" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(126, 6)
+
+[node name="BrownBrickBlockNormal17" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(150, 6)
+
+[node name="BrownBrickBlockNormal18" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(294, 6)
+
+[node name="BrownBrickBlockNormal19" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(318, 6)
+
+[node name="BrownBrickBlockNormal20" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(246, 6)
+
+[node name="BrownBrickBlockNormal21" parent="Game" instance=ExtResource("8_gms1n")]
+position = Vector2(270, 6)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="StatusBar" parent="UI" instance=ExtResource("3_t5boi")]
+layout_mode = 1
+offset_top = 194.0
+offset_right = 312.0
+offset_bottom = 206.0
+
+[node name="RedBrickBlockClipBl" parent="." instance=ExtResource("3_jpjql")]
+position = Vector2(102, 186)

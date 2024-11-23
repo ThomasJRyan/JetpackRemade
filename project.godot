@@ -14,6 +14,13 @@ config/name="Jetpack"
 run/main_scene="res://test_scene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[display]
+
+window/size/viewport_width=312
+window/size/viewport_height=204
+window/stretch/mode="canvas_items"
+window/stretch/scale_mode="integer"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -26,6 +33,7 @@ enabled=PackedStringArray("res://addons/block_generator/plugin.cfg")
 [global_group]
 
 collectable=""
+player=""
 
 [input]
 
@@ -73,7 +81,12 @@ phaser={
 2d_physics/layer_5="Player Body"
 2d_physics/layer_6="World Border"
 
+[physics]
+
+2d/default_gravity=320.0
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"

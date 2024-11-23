@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dkse2mn8f4t5r"]
+
+[ext_resource type="FontFile" uid="uid://w5yly4bxmomk" path="res://Assets/UI/Fonts/amiga4ever pro.ttf" id="1_jtyr3"]
+
+[resource]
+default_font = ExtResource("1_jtyr3")
+default_font_size = 8
+/colors/TextColour = Color(0, 0, 0, 1)
