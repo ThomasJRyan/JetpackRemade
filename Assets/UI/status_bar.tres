@@ -1,8 +1,25 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dkse2mn8f4t5r"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dkse2mn8f4t5r"]
 
 [ext_resource type="FontFile" uid="uid://w5yly4bxmomk" path="res://Assets/UI/Fonts/amiga4ever pro.ttf" id="1_jtyr3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv3dk"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_w1d5d"]
+offsets = PackedFloat32Array(0.204819, 1)
+colors = PackedColorArray(0, 0.556863, 0, 1, 0, 0.780392, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cfwg6"]
+gradient = SubResource("Gradient_w1d5d")
+width = 100
+height = 4
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yxthm"]
+texture = SubResource("GradientTexture2D_cfwg6")
 
 [resource]
 default_font = ExtResource("1_jtyr3")
 default_font_size = 8
-/colors/TextColour = Color(0, 0, 0, 1)
+ProgressBar/styles/background = SubResource("StyleBoxFlat_uv3dk")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_yxthm")
