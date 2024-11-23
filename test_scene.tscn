@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=16 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://c1fdaeecbv1en" path="res://Assets/Collectables/Coin/coin.tscn" id="9_yy8vd"]
 [ext_resource type="PackedScene" uid="uid://w8m7vv6cgn07" path="res://Assets/Collectables/Vase/vase.tscn" id="10_ejwbn"]
 [ext_resource type="PackedScene" uid="uid://chht1vg2r88v8" path="res://Assets/Collectables/Totem/totem.tscn" id="11_og1i2"]
+[ext_resource type="PackedScene" uid="uid://deqerobmsvcrn" path="res://Assets/Collectables/Gem/gem.tscn" id="14_jub5s"]
 [ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="41_5o5la"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_anc2l"]
@@ -165,9 +166,15 @@ metadata/_edit_use_anchors_ = true
 
 [node name="StatusBar" parent="UI" instance=ExtResource("3_t5boi")]
 layout_mode = 1
-offset_top = 194.0
+offset_top = 192.0
 offset_right = 312.0
-offset_bottom = 206.0
+offset_bottom = 201.0
 
 [node name="RedBrickBlockClipBl" parent="." instance=ExtResource("3_jpjql")]
 position = Vector2(102, 186)
+
+[node name="Coin" parent="." instance=ExtResource("14_jub5s")]
+position = Vector2(172, 187)
+
+[node name="Coin2" parent="." instance=ExtResource("14_jub5s")]
+position = Vector2(194, 187)
