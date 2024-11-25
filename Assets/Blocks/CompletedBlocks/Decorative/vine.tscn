@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb2ye3q3fkmxk"]
+
+[ext_resource type="Texture2D" uid="uid://dgsp7dpb6o382" path="res://Assets/Blocks/CompletedBlocks/Decorative/Decorations.png" id="1_xu58t"]
+
+[node name="Vine" type="Sprite2D"]
+z_index = 20
+texture = ExtResource("1_xu58t")
+region_enabled = true
+region_rect = Rect2(52, 0, 12, 12)

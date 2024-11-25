@@ -34,6 +34,8 @@ enabled=PackedStringArray("res://addons/block_generator/plugin.cfg")
 
 collectable=""
 player=""
+door=""
+gem=""
 
 [input]
 

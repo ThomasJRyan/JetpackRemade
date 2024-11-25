@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://bww4rwjr358np"]
+[gd_scene load_steps=80 format=3 uid="uid://bww4rwjr358np"]
 
 [ext_resource type="Script" path="res://Assets/Jetman/player_controller.gd" id="1_cnoqe"]
 [ext_resource type="Texture2D" uid="uid://c7o18sbag7twj" path="res://Assets/Jetman/jetman.png" id="2_rlxjt"]
@@ -15,6 +15,8 @@
 [ext_resource type="Script" path="res://Assets/Jetman/States/slide_state.gd" id="10_v4bux"]
 [ext_resource type="Script" path="res://Assets/Jetman/States/walk_fly_state.gd" id="10_wi4ob"]
 [ext_resource type="Script" path="res://Assets/Jetman/States/climb_state.gd" id="14_0whpe"]
+[ext_resource type="Script" path="res://Assets/Jetman/States/death_state.gd" id="16_v0nti"]
+[ext_resource type="Script" path="res://Assets/Jetman/States/dance_state.gd" id="17_45e8g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pip4"]
 atlas = ExtResource("2_rlxjt")
@@ -31,6 +33,30 @@ region = Rect2(120, 24, 12, 12)
 [sub_resource type="AtlasTexture" id="AtlasTexture_n8los"]
 atlas = ExtResource("2_rlxjt")
 region = Rect2(132, 24, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06x1r"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(0, 84, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbrgw"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(12, 84, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqpib"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(24, 84, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fpn1"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(36, 84, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc001"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(48, 84, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emo82"]
+atlas = ExtResource("2_rlxjt")
+region = Rect2(60, 84, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e0kl3"]
 atlas = ExtResource("2_rlxjt")
@@ -242,6 +268,29 @@ animations = [{
 "loop": true,
 "name": &"climb",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06x1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbrgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqpib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fpn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc001")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emo82")
+}],
+"loop": false,
+"name": &"dance",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -473,7 +522,7 @@ fuel = 0.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4ys4w")
-animation = &"idle"
+animation = &"dance"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_bg8wj")
@@ -614,6 +663,13 @@ walk_state = NodePath("../WalkState")
 climb_speed = 30
 body_raycast = NodePath("../../BodyRayCast")
 animation_name = "climb"
+
+[node name="DeathState" type="Node" parent="StateMachine"]
+script = ExtResource("16_v0nti")
+
+[node name="DanceState" type="Node" parent="StateMachine"]
+script = ExtResource("17_45e8g")
+animation_name = "dance"
 
 [node name="Phasers" type="Node2D" parent="."]
 

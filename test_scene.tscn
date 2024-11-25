@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=28 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
 [ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
+[ext_resource type="PackedScene" uid="uid://djm7sombf4kb8" path="res://Assets/Levels/level_base.tscn" id="2_g8a73"]
 [ext_resource type="PackedScene" uid="uid://dox6lv6c85x52" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_clip_bl.tscn" id="3_jpjql"]
-[ext_resource type="PackedScene" uid="uid://x5fn66w2ur6j" path="res://Assets/UI/status_bar.tscn" id="3_t5boi"]
 [ext_resource type="PackedScene" uid="uid://b8m41jw1knh2i" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_conveyor_right.tscn" id="4_it07n"]
 [ext_resource type="PackedScene" uid="uid://cg5d857whwmag" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_grass.tscn" id="6_k7tq7"]
 [ext_resource type="PackedScene" uid="uid://dsq1n0i3ercvt" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_ice.tscn" id="7_re4mh"]
@@ -12,8 +12,21 @@
 [ext_resource type="PackedScene" uid="uid://c1fdaeecbv1en" path="res://Assets/Collectables/Coin/coin.tscn" id="9_yy8vd"]
 [ext_resource type="PackedScene" uid="uid://w8m7vv6cgn07" path="res://Assets/Collectables/Vase/vase.tscn" id="10_ejwbn"]
 [ext_resource type="PackedScene" uid="uid://chht1vg2r88v8" path="res://Assets/Collectables/Totem/totem.tscn" id="11_og1i2"]
+[ext_resource type="PackedScene" uid="uid://c0vsoi11bnawr" path="res://Assets/Collectables/Fuel/fuel.tscn" id="13_2autg"]
 [ext_resource type="PackedScene" uid="uid://deqerobmsvcrn" path="res://Assets/Collectables/Gem/gem.tscn" id="14_jub5s"]
-[ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="41_5o5la"]
+[ext_resource type="PackedScene" uid="uid://ckyv5o0jxwstp" path="res://Assets/Blocks/CompletedBlocks/Box/box.tscn" id="15_5p5fi"]
+[ext_resource type="PackedScene" uid="uid://dpkaiheg55xj8" path="res://Assets/Blocks/CompletedBlocks/PhaseGate/PhaseGate.tscn" id="16_cdnyc"]
+[ext_resource type="PackedScene" uid="uid://d2mwxgsii85bx" path="res://Assets/Blocks/CompletedBlocks/Fueler/fueler.tscn" id="17_taaem"]
+[ext_resource type="PackedScene" uid="uid://b7hewm6fo1w3m" path="res://Assets/Blocks/CompletedBlocks/Fueler/defueler.tscn" id="18_7mgel"]
+[ext_resource type="PackedScene" uid="uid://beihjptjjefso" path="res://Assets/Blocks/CompletedBlocks/Decorative/scifi_block.tscn" id="19_vq2rp"]
+[ext_resource type="PackedScene" uid="uid://dt34ocj0rt6ac" path="res://Assets/Blocks/CompletedBlocks/Decorative/golden_block.tscn" id="20_hn741"]
+[ext_resource type="PackedScene" uid="uid://bxvlocgk75600" path="res://Assets/Blocks/CompletedBlocks/Decorative/fence.tscn" id="21_vq3qv"]
+[ext_resource type="PackedScene" uid="uid://dgt8ci10dcqqb" path="res://Assets/Blocks/CompletedBlocks/Decorative/pillar.tscn" id="22_m1h0q"]
+[ext_resource type="PackedScene" uid="uid://b3ydo778uav6i" path="res://Assets/Blocks/CompletedBlocks/Decorative/scifi_facade.tscn" id="23_8unkv"]
+[ext_resource type="PackedScene" uid="uid://bb2ye3q3fkmxk" path="res://Assets/Blocks/CompletedBlocks/Decorative/vine.tscn" id="24_op8vr"]
+[ext_resource type="PackedScene" uid="uid://xyffu53l1puc" path="res://Assets/Hazards/Spikes/top_spike.tscn" id="25_1vsdp"]
+[ext_resource type="PackedScene" uid="uid://ccy5vqmo70bnj" path="res://Assets/Hazards/Mine/mine.tscn" id="26_0u60s"]
+[ext_resource type="PackedScene" uid="uid://bmj5a5cl5xn2s" path="res://Assets/Door/door.tscn" id="27_wsnm1"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tghmy")
@@ -21,33 +34,14 @@ script = ExtResource("1_tghmy")
 [node name="Game" type="Node2D" parent="."]
 metadata/_edit_lock_ = true
 
-[node name="TextureRect" type="TextureRect" parent="Game"]
-texture_filter = 1
-texture_repeat = 2
-offset_right = 312.0
-offset_bottom = 204.0
-texture = ExtResource("41_5o5la")
-stretch_mode = 1
-metadata/_edit_lock_ = true
+[node name="LevelBase" parent="Game" instance=ExtResource("2_g8a73")]
 
 [node name="CharacterBody2D" parent="Game" instance=ExtResource("1_dm3f5")]
 z_index = 1
 position = Vector2(136, 168)
 
-[node name="GameBorder" type="StaticBody2D" parent="Game"]
-collision_layer = 33
-collision_mask = 33
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Game/GameBorder"]
-build_mode = 1
-polygon = PackedVector2Array(0, 0, 312, 0, 312, 192, 0, 192)
-metadata/_edit_lock_ = true
-
-[node name="RedBrickBlockClipBl" parent="Game" instance=ExtResource("3_jpjql")]
-position = Vector2(102, 198)
-
 [node name="RedBrickBlockConveyorRight" parent="Game" instance=ExtResource("4_it07n")]
-position = Vector2(66, 162)
+position = Vector2(54, 90)
 
 [node name="RedBrickBlockConveyorRight2" parent="Game" instance=ExtResource("4_it07n")]
 position = Vector2(94, 94)
@@ -115,6 +109,57 @@ position = Vector2(198, 118)
 [node name="Totem" parent="Game" instance=ExtResource("11_og1i2")]
 position = Vector2(210, 118)
 
+[node name="Totem2" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(256, 144)
+
+[node name="Totem3" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(256, 118)
+
+[node name="Totem4" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(232, 128)
+
+[node name="Totem5" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(238, 102)
+
+[node name="Totem6" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(276, 96)
+
+[node name="Totem7" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(288, 128)
+
+[node name="Totem8" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(289, 157)
+
+[node name="Totem9" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(250, 168)
+
+[node name="Totem10" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(216, 156)
+
+[node name="Totem11" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(178, 144)
+
+[node name="Totem12" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(150, 134)
+
+[node name="Totem13" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(172, 102)
+
+[node name="Totem14" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(210, 96)
+
+[node name="Totem15" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(208, 140)
+
+[node name="Totem16" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(192, 157)
+
+[node name="Totem17" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(233, 168)
+
+[node name="Totem18" parent="Game" instance=ExtResource("11_og1i2")]
+position = Vector2(238, 150)
+
 [node name="BrownBrickBlockNormal10" parent="Game" instance=ExtResource("8_gms1n")]
 position = Vector2(174, 6)
 
@@ -148,22 +193,134 @@ position = Vector2(246, 6)
 [node name="BrownBrickBlockNormal21" parent="Game" instance=ExtResource("8_gms1n")]
 position = Vector2(270, 6)
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-metadata/_edit_use_anchors_ = true
-
-[node name="StatusBar" parent="UI" instance=ExtResource("3_t5boi")]
-layout_mode = 1
-offset_top = 192.0
-offset_right = 312.0
-offset_bottom = 201.0
+[node name="Fuel" parent="Game" instance=ExtResource("13_2autg")]
+position = Vector2(224, 186)
 
 [node name="RedBrickBlockClipBl" parent="." instance=ExtResource("3_jpjql")]
-position = Vector2(102, 186)
+position = Vector2(72, 72)
 
 [node name="Coin" parent="." instance=ExtResource("14_jub5s")]
-position = Vector2(172, 187)
+position = Vector2(150.5, 186)
 
-[node name="Coin2" parent="." instance=ExtResource("14_jub5s")]
-position = Vector2(194, 187)
+[node name="Box" parent="." instance=ExtResource("15_5p5fi")]
+position = Vector2(80, 114)
+
+[node name="Box2" parent="." instance=ExtResource("15_5p5fi")]
+position = Vector2(68, 114)
+
+[node name="Door" parent="." instance=ExtResource("16_cdnyc")]
+position = Vector2(54, 186)
+
+[node name="Door2" parent="." instance=ExtResource("16_cdnyc")]
+position = Vector2(66, 186)
+
+[node name="Door3" parent="." instance=ExtResource("16_cdnyc")]
+position = Vector2(78, 186)
+
+[node name="Door4" parent="." instance=ExtResource("16_cdnyc")]
+position = Vector2(90, 186)
+
+[node name="Fueler" parent="." instance=ExtResource("17_taaem")]
+position = Vector2(174, 84)
+
+[node name="Defueler" parent="." instance=ExtResource("18_7mgel")]
+position = Vector2(114, 186)
+
+[node name="GoldenBlock" parent="." instance=ExtResource("19_vq2rp")]
+position = Vector2(90, 162)
+
+[node name="GoldenBlock2" parent="." instance=ExtResource("19_vq2rp")]
+position = Vector2(78, 162)
+
+[node name="GoldenBlock3" parent="." instance=ExtResource("19_vq2rp")]
+position = Vector2(66, 162)
+
+[node name="GoldenBlock4" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(114, 138)
+
+[node name="GoldenBlock5" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(126, 138)
+
+[node name="GoldenBlock6" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(138, 138)
+
+[node name="GoldenBlock7" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(114, 54)
+
+[node name="GoldenBlock8" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(126, 54)
+
+[node name="GoldenBlock9" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(138, 54)
+
+[node name="GoldenBlock10" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(150, 54)
+
+[node name="GoldenBlock11" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(162, 54)
+
+[node name="GoldenBlock12" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(174, 54)
+
+[node name="GoldenBlock13" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(186, 54)
+
+[node name="GoldenBlock14" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(198, 54)
+
+[node name="GoldenBlock15" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(210, 54)
+
+[node name="GoldenBlock16" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(222, 54)
+
+[node name="GoldenBlock17" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(234, 54)
+
+[node name="GoldenBlock18" parent="." instance=ExtResource("20_hn741")]
+position = Vector2(246, 54)
+
+[node name="Fence" parent="." instance=ExtResource("21_vq3qv")]
+position = Vector2(222, 42)
+
+[node name="Fence2" parent="." instance=ExtResource("21_vq3qv")]
+position = Vector2(234, 42)
+
+[node name="Fence3" parent="." instance=ExtResource("21_vq3qv")]
+position = Vector2(246, 42)
+
+[node name="Pillar" parent="." instance=ExtResource("22_m1h0q")]
+position = Vector2(114, 42)
+
+[node name="Pillar2" parent="." instance=ExtResource("22_m1h0q")]
+position = Vector2(126, 42)
+
+[node name="Pillar3" parent="." instance=ExtResource("22_m1h0q")]
+position = Vector2(138, 42)
+
+[node name="SciFiFacade" parent="." instance=ExtResource("23_8unkv")]
+position = Vector2(150, 42)
+
+[node name="SciFiFacade2" parent="." instance=ExtResource("23_8unkv")]
+position = Vector2(162, 42)
+
+[node name="SciFiFacade3" parent="." instance=ExtResource("23_8unkv")]
+position = Vector2(174, 42)
+
+[node name="Vine" parent="." instance=ExtResource("24_op8vr")]
+position = Vector2(186, 42)
+
+[node name="Vine2" parent="." instance=ExtResource("24_op8vr")]
+position = Vector2(198, 42)
+
+[node name="Vine3" parent="." instance=ExtResource("24_op8vr")]
+position = Vector2(210, 42)
+
+[node name="TopSpike" parent="." instance=ExtResource("25_1vsdp")]
+position = Vector2(246, 186)
+
+[node name="Mine" parent="." instance=ExtResource("26_0u60s")]
+position = Vector2(306, 186)
+
+[node name="Door5" parent="." instance=ExtResource("27_wsnm1")]
+position = Vector2(179, 180)

@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://dpkaiheg55xj8"]
+
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="2_ggi55"]
+[ext_resource type="Texture2D" uid="uid://byalvete6f1cj" path="res://Assets/Blocks/CompletedBlocks/PhaseGate/PhaseGate.png" id="3_62h43"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jnvs"]
+atlas = ExtResource("3_62h43")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4hyl"]
+atlas = ExtResource("3_62h43")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtgij"]
+atlas = ExtResource("3_62h43")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdfaw"]
+atlas = ExtResource("3_62h43")
+region = Rect2(48, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ett1m"]
+atlas = ExtResource("3_62h43")
+region = Rect2(60, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6brhn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jnvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4hyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtgij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdfaw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ett1m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s8sa7"]
+size = Vector2(12, 12)
+
+[node name="PhaseGate" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_62h43")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="BreakableComponent" parent="." instance=ExtResource("2_ggi55")]
+break_frames = SubResource("SpriteFrames_6brhn")
+break_time = 0.0
+reform_wait = 0.5
+reform_time = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_s8sa7")

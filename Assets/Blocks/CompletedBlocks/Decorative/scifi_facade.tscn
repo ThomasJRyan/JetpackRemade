@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ydo778uav6i"]
+
+[ext_resource type="Texture2D" uid="uid://dgsp7dpb6o382" path="res://Assets/Blocks/CompletedBlocks/Decorative/Decorations.png" id="1_dt23c"]
+
+[node name="SciFiFacade" type="Sprite2D"]
+texture = ExtResource("1_dt23c")
+region_enabled = true
+region_rect = Rect2(39, 0, 12, 12)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 20
+texture = ExtResource("1_dt23c")
+region_enabled = true
+region_rect = Rect2(26, 0, 12, 12)

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://djm7sombf4kb8"]
+[gd_scene load_steps=4 format=3 uid="uid://djm7sombf4kb8"]
 
+[ext_resource type="Script" path="res://Assets/Levels/level_base.gd" id="1_34x8o"]
 [ext_resource type="Texture2D" uid="uid://dmr0yjr41rpi8" path="res://Assets/Background.png" id="1_t0ouo"]
 [ext_resource type="PackedScene" uid="uid://x5fn66w2ur6j" path="res://Assets/UI/status_bar.tscn" id="2_0mn0h"]
 
 [node name="LevelBase" type="Node2D"]
+script = ExtResource("1_34x8o")
 metadata/_edit_lock_ = true
 
 [node name="Background" type="TextureRect" parent="."]
@@ -16,7 +18,6 @@ stretch_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="StatusBar" parent="." instance=ExtResource("2_0mn0h")]
-offset_top = 192.0
 offset_bottom = 192.0
 metadata/_edit_lock_ = true
 

@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfyo"]
 size = Vector2(7, 9)
 
-[node name="Gem" type="Sprite2D"]
+[node name="Gem" type="Sprite2D" groups=["gem"]]
 texture_filter = 1
 texture = ExtResource("1_3b8tn")
 region_enabled = true

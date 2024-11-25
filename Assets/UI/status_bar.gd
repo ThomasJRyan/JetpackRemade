@@ -2,6 +2,7 @@ extends Control
 
 @onready var fuel_bar = $FuelBar
 @onready var score_label = $Score
+@onready var life_counter = $LifeCounter
 
 var score: int = 0
 
@@ -13,11 +14,16 @@ func _ready() -> void:
 		
 	player = get_tree().get_nodes_in_group("player")[0]
 	player.connect("fuel_changed", _on_fuel_changed)
-	fuel_bar.value = player.fuel
+	player.connect("lives_changed", _on_lives_changed)
+	_on_fuel_changed(player.fuel)
+	_on_lives_changed(player.lives)
 		
 	
 func _on_fuel_changed(fuel):
 	fuel_bar.set_value(fuel / player.max_fuel * 100)
+	
+func _on_lives_changed(lives):
+	life_counter.set_text("%02d" % [lives])
 
 func _collect_treasure(points):
 	score += points

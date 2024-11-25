@@ -2,6 +2,8 @@
 extends Area2D
 class_name BreakableComponent
 
+signal breaking_block
+
 @export var break_frames: SpriteFrames
 @export var break_time: float = 1.0
 @export var reform_wait: float = 3.0
@@ -17,6 +19,8 @@ class_name BreakableComponent
 @export var right_unbreakable = Sprite2D
 @export var top_unbreakable = Sprite2D
 @export var bottom_unbreakable = Sprite2D
+
+@export var one_time_break: bool = false
 
 enum unbreakables {
 	left = 1,
@@ -75,23 +79,26 @@ func _ready():
 
 func break_block():
 	""" Activates the block breaking functionality """
-	# First, set the player collision value to false
-	# so that the player (and enemies) can pass through it
-	block.set_collision_layer_value(1, false)
+	emit_signal("breaking_block")
 	
-	# Second, make the break_animation visible and beging
+	# Make the break_animation visible and begin
 	# playing the break_animation animation
+	# Wait for it to finish before continuing
 	break_animation.visible = true
 	break_animation.play("default", 5.0, true)
+	await break_animation.animation_finished
+	
+	# Set the player collision value to false
+	# so that the player (and enemies) can pass through it
+	block.set_collision_layer_value(1, false)
 	
 	# Set the state to broken so that we aren't trying to
 	# break it more times
 	state = states.BROKEN
 	
-	# Wait for the animation to finish and then start the 
-	# reformation timer
-	await break_animation.animation_finished
-	timer.start(reform_wait)
+	# If it's not a one-time break, start the reform timer
+	if not one_time_break:
+		timer.start(reform_wait)
 	
 	
 func reform_block():
@@ -120,7 +127,10 @@ func _on_area_entered(area: Area2D) -> void:
 	accordingly
 	"""
 	if state == states.UNBROKEN:
-		timer.start(break_time)
+		if break_time:
+			timer.start(break_time)
+		else:
+			break_block()
 
 
 func _on_area_exited(area: Area2D) -> void:

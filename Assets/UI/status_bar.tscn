@@ -28,7 +28,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 195.0
+offset_top = 192.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7bxft")
@@ -88,6 +89,7 @@ offset_bottom = 9.0
 text = "LIVES:"
 
 [node name="GreenGradient" type="TextureRect" parent="LabelLives"]
+layout_mode = 0
 offset_top = 7.0
 offset_right = 7.0
 offset_bottom = 49.0
@@ -96,6 +98,7 @@ texture = SubResource("GradientTexture2D_hrnf4")
 metadata/_edit_lock_ = true
 
 [node name="GreyGradient" type="TextureRect" parent="LabelLives"]
+layout_mode = 0
 offset_left = 39.0
 offset_top = 7.0
 offset_right = 46.0
@@ -111,9 +114,11 @@ offset_left = 190.0
 offset_top = 1.0
 offset_right = 209.0
 offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("3_3hwo4")
 text = "00"
 
 [node name="GreyGradient" type="TextureRect" parent="LifeCounter"]
+layout_mode = 0
 offset_top = 7.0
 offset_right = 7.0
 offset_bottom = 55.0
@@ -130,6 +135,7 @@ offset_bottom = 9.0
 text = "SCORE:"
 
 [node name="GreenGradient" type="TextureRect" parent="ScoreLabel"]
+layout_mode = 0
 offset_top = 7.0
 offset_right = 7.0
 offset_bottom = 52.0
@@ -138,13 +144,13 @@ texture = SubResource("GradientTexture2D_hrnf4")
 metadata/_edit_lock_ = true
 
 [node name="GreyGradient" type="TextureRect" parent="ScoreLabel"]
-offset_left = 39.0
+layout_mode = 0
+offset_left = 40.0
 offset_top = 7.0
-offset_right = 46.0
+offset_right = 47.0
 offset_bottom = 49.0
 rotation = -1.57079
 texture = SubResource("GradientTexture2D_0j7o5")
-metadata/_edit_lock_ = true
 
 [node name="Score" type="Label" parent="."]
 clip_children = 1
@@ -157,6 +163,7 @@ theme_override_fonts/font = ExtResource("3_3hwo4")
 text = "000000"
 
 [node name="GreyGradient" type="TextureRect" parent="Score"]
+layout_mode = 0
 offset_top = 7.0
 offset_right = 7.0
 offset_bottom = 55.0

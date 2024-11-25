@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://beihjptjjefso"]
+
+[ext_resource type="Texture2D" uid="uid://c0atkfcprp672" path="res://Assets/Blocks/CompletedBlocks/Decorative/DecorativeBlocks.png" id="1_gopyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di1rv"]
+size = Vector2(12, 12)
+
+[node name="SciFiBlock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gopyt")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_di1rv")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt34ocj0rt6ac"]
+
+[ext_resource type="Texture2D" uid="uid://c0atkfcprp672" path="res://Assets/Blocks/CompletedBlocks/Decorative/DecorativeBlocks.png" id="1_hcnx5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_di1rv"]
+size = Vector2(12, 12)
+
+[node name="GoldenBlock" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hcnx5")
+region_enabled = true
+region_rect = Rect2(13, 0, 12, 12)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_di1rv")
