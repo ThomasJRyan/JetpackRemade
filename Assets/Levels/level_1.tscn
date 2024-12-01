@@ -16,9 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://dgqila8jni4ll" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_clip_tr_br.tscn" id="15_yg78p"]
 [ext_resource type="PackedScene" uid="uid://dgupddltwmjoj" path="res://Assets/Blocks/CompletedBlocks/GreyBrickBlock/grey_brick_block_clip_tl_bl.tscn" id="16_6mp10"]
 [ext_resource type="PackedScene" uid="uid://w8m7vv6cgn07" path="res://Assets/Collectables/Vase/vase.tscn" id="17_ledg4"]
-[ext_resource type="PackedScene" uid="uid://db02x6ntmwg82" path="res://Assets/Collectables/Fuel/fuel_half.tscn" id="18_4efkq"]
 [ext_resource type="PackedScene" uid="uid://deqerobmsvcrn" path="res://Assets/Collectables/Gem/gem.tscn" id="18_8uny1"]
 [ext_resource type="PackedScene" uid="uid://c0vsoi11bnawr" path="res://Assets/Collectables/Fuel/fuel.tscn" id="19_ea5s8"]
+[ext_resource type="PackedScene" uid="uid://bmj5a5cl5xn2s" path="res://Assets/Door/door.tscn" id="20_wqh40"]
 
 [node name="Level1" type="Node2D"]
 
@@ -516,8 +516,8 @@ position = Vector2(114, 102)
 [node name="Gem3" parent="." instance=ExtResource("18_8uny1")]
 position = Vector2(246, 138)
 
-[node name="Fuel" parent="." instance=ExtResource("18_4efkq")]
-position = Vector2(258, 186)
-
 [node name="Fuel2" parent="." instance=ExtResource("19_ea5s8")]
-position = Vector2(282, 186)
+position = Vector2(246, 186)
+
+[node name="Door" parent="." instance=ExtResource("20_wqh40")]
+position = Vector2(300, 12)

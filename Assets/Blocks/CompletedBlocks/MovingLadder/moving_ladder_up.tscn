@@ -62,7 +62,7 @@ script = ExtResource("2_fsqks")
 animation = NodePath("../AnimatedSprite2D")
 modifier_name = "MovingClimbable"
 modifier_data = {
-"y_movement": -50
+"y_movement": -15
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovingClimableModifier"]

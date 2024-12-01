@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://vnb5nrfeeno5"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_3inh8"]
+[ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_hxqfd"]
+[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block.gd" id="3_kvupb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0mok7"]
+resource_local_to_scene = true
+shader = ExtResource("1_3inh8")
+shader_parameter/colour = Vector4(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuubk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_21wrv"]
+size = Vector2(12, 12)
+
+[node name="ToggleBlockBaseHorizontal" type="Sprite2D" groups=["toggle_block"]]
+material = SubResource("ShaderMaterial_0mok7")
+rotation = 1.5708
+texture = ExtResource("2_hxqfd")
+region_enabled = true
+region_rect = Rect2(0, 0, 12, 12)
+script = ExtResource("3_kvupb")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+material = SubResource("ShaderMaterial_kuubk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_21wrv")

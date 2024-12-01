@@ -31,3 +31,8 @@ func get_surface_data() -> Dictionary:
 		return collision_object.modifier_data
 	
 	return {}
+
+func get_collider() -> CollisionObject2D:
+	if body_cast.is_colliding():
+		return body_cast.get_collider(0)
+	return null

@@ -36,6 +36,9 @@ collectable=""
 player=""
 door=""
 gem=""
+toggle_block=""
+toggle_switch=""
+teleporter=""
 
 [input]
 

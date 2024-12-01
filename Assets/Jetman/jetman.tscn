@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://bww4rwjr358np"]
+[gd_scene load_steps=84 format=3 uid="uid://bww4rwjr358np"]
 
 [ext_resource type="Script" path="res://Assets/Jetman/player_controller.gd" id="1_cnoqe"]
 [ext_resource type="Texture2D" uid="uid://c7o18sbag7twj" path="res://Assets/Jetman/jetman.png" id="2_rlxjt"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://Assets/Jetman/States/climb_state.gd" id="14_0whpe"]
 [ext_resource type="Script" path="res://Assets/Jetman/States/death_state.gd" id="16_v0nti"]
 [ext_resource type="Script" path="res://Assets/Jetman/States/dance_state.gd" id="17_45e8g"]
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="18_s86tv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8pip4"]
 atlas = ExtResource("2_rlxjt")
@@ -502,6 +503,18 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1h4va"]
+shader = ExtResource("18_s86tv")
+shader_parameter/colour = Vector4(1, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fornx"]
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_12pyo"]
+width = 12
+height = 12
+noise = SubResource("FastNoiseLite_fornx")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bg8wj"]
 radius = 3.0
 height = 11.9
@@ -522,12 +535,19 @@ fuel = 0.0
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_4ys4w")
-animation = &"dance"
+animation = &"idle"
+
+[node name="TeleportShader" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+material = SubResource("ShaderMaterial_1h4va")
+texture = SubResource("NoiseTexture2D_12pyo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_bg8wj")
 
 [node name="BodyRayCast" type="Node2D" parent="."]
+visible = false
 script = ExtResource("3_7bmlg")
 
 [node name="RayCast" type="ShapeCast2D" parent="BodyRayCast"]
@@ -538,6 +558,7 @@ collision_mask = 16
 collide_with_areas = true
 
 [node name="FeetRayCast" type="Node2D" parent="." node_paths=PackedStringArray("character", "state_machine", "slide_state")]
+visible = false
 script = ExtResource("3_aumg1")
 character = NodePath("..")
 state_machine = NodePath("../StateMachine")
@@ -672,6 +693,7 @@ script = ExtResource("17_45e8g")
 animation_name = "dance"
 
 [node name="Phasers" type="Node2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="Phasers"]
 collision_layer = 2

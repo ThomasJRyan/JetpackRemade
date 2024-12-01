@@ -21,6 +21,13 @@ func process_physics(delta: float) -> State:
 		if !body_raycast.is_body_colliding_with_any(CLIMBABLES):
 			parent.velocity.y = 0
 			return idle_state
+		
+		# Center player
+		var collider = body_raycast.get_collider()
+		if collider:
+			parent.position = parent.position.move_toward(
+				Vector2(collider.global_position.x, parent.position.y), delta * 30)
+		
 		var data = body_raycast.get_surface_data()
 		var y_movement = data.get("y_movement", 0)
 		parent.velocity.y = -climb_speed + y_movement
@@ -29,6 +36,13 @@ func process_physics(delta: float) -> State:
 	elif Input.is_action_pressed("down"):
 		var data = body_raycast.get_surface_data()
 		var y_movement = data.get("y_movement", 0)
+		
+		# Center player
+		var collider = body_raycast.get_collider()
+		if collider:
+			parent.position = parent.position.move_toward(
+				Vector2(collider.global_position.x, parent.position.y), delta * 30)
+			
 		parent.velocity.y = climb_speed + y_movement
 		parent.move_and_slide()
 		return null

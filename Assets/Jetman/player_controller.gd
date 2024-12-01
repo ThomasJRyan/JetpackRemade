@@ -6,6 +6,7 @@ signal lives_changed(lives)
 
 @onready var state_machine = $StateMachine
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var teleport_shader = $AnimatedSprite2D/TeleportShader
 
 @export var max_fuel: float = 10000
 @export var fuel: float = 10000:
@@ -42,6 +43,15 @@ func kill(death_type: DEATHS = DEATHS.BLOODY) -> void:
 
 func dance():
 	state_machine.change_state($StateMachine/DanceState)
+	
+func start_teleport(colour: Color):
+	animations.set_clip_children_mode(CanvasItem.CLIP_CHILDREN_AND_DRAW)
+	teleport_shader.material.set_shader_parameter("colour", colour)
+	teleport_shader.visible = true
+	
+func stop_teleport():
+	animations.set_clip_children_mode(CanvasItem.CLIP_CHILDREN_DISABLED)
+	teleport_shader.visible = false
 
 func _ready() -> void:
 	state_machine.init(self)
@@ -50,6 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
+	teleport_shader.texture.noise.seed = randi_range(1, 1000)
 	state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:

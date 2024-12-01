@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://da2hvcrqg31eq"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_ygiqu"]
+[ext_resource type="Texture2D" uid="uid://kgf2luyddm7y" path="res://Assets/Blocks/Bases/Teleporter.png" id="2_qkjjx"]
+[ext_resource type="Script" path="res://Assets/Blocks/Bases/teleporter.gd" id="3_xomqg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lui0"]
+shader = ExtResource("1_ygiqu")
+shader_parameter/colour = Vector4(1, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o41l3"]
+size = Vector2(12, 3)
+
+[node name="TeleporterRed" type="Sprite2D" groups=["teleporter"]]
+material = SubResource("ShaderMaterial_0lui0")
+texture = ExtResource("2_qkjjx")
+script = ExtResource("3_xomqg")
+colour = Color(1, 0, 0, 1)
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_o41l3")
+target_position = Vector2(0, 0)
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
