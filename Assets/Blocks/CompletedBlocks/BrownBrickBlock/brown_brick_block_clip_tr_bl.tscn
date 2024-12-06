@@ -1,34 +1,34 @@
 [gd_scene load_steps=15 format=3 uid="uid://cs4rju170r5jc"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_2rybq"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_uoxxl"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_1qu0x"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_8ueyx"]
-[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_td25j"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_ogxxl"]
-[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="7_q547g"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_d11b7"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_wyprj"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_b6kdg"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_rddqu"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_1mt0p"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_c5x30"]
+[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="7_syy1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_384ho"]
-atlas = ExtResource("7_q547g")
+atlas = ExtResource("7_syy1o")
 region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_el452"]
-atlas = ExtResource("7_q547g")
+atlas = ExtResource("7_syy1o")
 region = Rect2(13, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8pkg"]
-atlas = ExtResource("7_q547g")
+atlas = ExtResource("7_syy1o")
 region = Rect2(26, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8s2w"]
-atlas = ExtResource("7_q547g")
+atlas = ExtResource("7_syy1o")
 region = Rect2(39, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndhxn"]
-atlas = ExtResource("7_q547g")
+atlas = ExtResource("7_syy1o")
 region = Rect2(52, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxvfa"]
@@ -55,29 +55,31 @@ animations = [{
 }]
 
 [node name="BrownBrickBlockClipTrBl" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_2rybq")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_d11b7")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_uoxxl")
+texture = ExtResource("2_wyprj")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_1qu0x")
+script = ExtResource("3_b6kdg")
 clipping_mask = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_8ueyx")
+texture = ExtResource("4_rddqu")
 region_enabled = true
 region_rect = Rect2(0, 13, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("5_td25j")]
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("5_1mt0p")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("6_ogxxl")
+script = ExtResource("6_c5x30")
 break_frames = SubResource("SpriteFrames_dxvfa")
 break_time = 2.0
 left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")

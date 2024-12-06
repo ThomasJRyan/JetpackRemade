@@ -1,11 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1eqlm1gfr7x1"]
+[gd_scene load_steps=12 format=3 uid="uid://b1eqlm1gfr7x1"]
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_jxxfh"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_mqqmx"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_6cf1v"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_4714v"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_u16ya"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_3ws76"]
 [ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="7_ki4nk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
@@ -55,14 +52,10 @@ animations = [{
 }]
 
 [node name="BrownBrickBlockNormal" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_jxxfh")]
-clip_children = 1
-texture_filter = 3
-texture = ExtResource("2_mqqmx")
-region_enabled = true
-region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_6cf1v")
+[node name="ClippingComponent" parent="." instance=ExtResource("1_jxxfh")]
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
@@ -73,13 +66,6 @@ region_rect = Rect2(0, 13, 12, 12)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("5_u16ya")]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("6_3ws76")
+[node name="BreakableComponent" parent="." instance=ExtResource("5_u16ya")]
 break_frames = SubResource("SpriteFrames_dxvfa")
 break_time = 2.0
-left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
-right_unbreakable = NodePath("Unbreakable/RightUnbreakable")
-top_unbreakable = NodePath("Unbreakable/TopUnbreakable")
-bottom_unbreakable = NodePath("Unbreakable/BottomUnbreakable")

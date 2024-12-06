@@ -85,6 +85,8 @@ phaser={
 2d_physics/layer_4="Player Feet"
 2d_physics/layer_5="Player Body"
 2d_physics/layer_6="World Border"
+2d_physics/layer_7="Block"
+2d_physics/layer_8="Enemy"
 
 [physics]
 

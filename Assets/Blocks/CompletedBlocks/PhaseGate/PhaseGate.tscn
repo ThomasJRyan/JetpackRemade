@@ -50,6 +50,8 @@ animations = [{
 size = Vector2(12, 12)
 
 [node name="PhaseGate" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("3_62h43")

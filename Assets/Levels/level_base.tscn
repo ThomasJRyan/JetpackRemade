@@ -22,8 +22,8 @@ offset_bottom = 192.0
 metadata/_edit_lock_ = true
 
 [node name="GameBorder" type="StaticBody2D" parent="."]
-collision_layer = 33
-collision_mask = 33
+collision_layer = 161
+collision_mask = 161
 metadata/_edit_lock_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GameBorder"]

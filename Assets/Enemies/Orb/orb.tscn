@@ -1,0 +1,89 @@
+[gd_scene load_steps=13 format=3 uid="uid://dnq7etrh65gm8"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb.gd" id="1_bx4w5"]
+[ext_resource type="Texture2D" uid="uid://7eu8jbsvmyml" path="res://Assets/Enemies/Orb/Orb.png" id="1_kvoon"]
+[ext_resource type="Script" path="res://Assets/StateMachine/state_machine.gd" id="2_iqdj1"]
+[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb_move_state.gd" id="3_qxbk7"]
+[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb_fall_state.gd" id="5_mu6tg"]
+[ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="6_24wv6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urndd"]
+atlas = ExtResource("1_kvoon")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qapqd"]
+atlas = ExtResource("1_kvoon")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sofg5"]
+atlas = ExtResource("1_kvoon")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56its"]
+atlas = ExtResource("1_kvoon")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02vuh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urndd")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qapqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sofg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56its")
+}],
+"loop": true,
+"name": &"move",
+"speed": 16.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ks35y"]
+size = Vector2(10.5, 11.9)
+
+[node name="Orb" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 0
+collision_mask = 192
+script = ExtResource("1_bx4w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_02vuh")
+animation = &"fall"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ks35y")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("2_iqdj1")
+starting_state = NodePath("OrbMoveState")
+
+[node name="OrbMoveState" type="Node" parent="StateMachine" node_paths=PackedStringArray("orb_fall_state")]
+script = ExtResource("3_qxbk7")
+orb_fall_state = NodePath("../OrbFallState")
+animation_name = "move"
+
+[node name="OrbFallState" type="Node" parent="StateMachine" node_paths=PackedStringArray("orb_move_state")]
+script = ExtResource("5_mu6tg")
+orb_move_state = NodePath("../OrbMoveState")
+animation_name = "fall"
+
+[node name="CollisionRight" type="RayCast2D" parent="."]
+target_position = Vector2(6, 0)
+collision_mask = 96
+
+[node name="CollisionLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-6, 0)
+collision_mask = 96
+
+[node name="KillZone" parent="." instance=ExtResource("6_24wv6")]

@@ -1,3 +1,5 @@
+# Honestly... Do yourself a favour and don't look at this code. It's a mess. 
+# I'm sorry.
 @tool
 extends EditorPlugin
 

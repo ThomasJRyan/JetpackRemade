@@ -1,36 +1,36 @@
 [gd_scene load_steps=17 format=3 uid="uid://bc0l6i6h6fy0i"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_v5u4r"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_gsw6y"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_x8ums"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_8m22f"]
-[ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_lkql8"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_a4j8g"]
-[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_5co3v"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_vtg2l"]
-[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_ojwg5"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_26m84"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_xerod"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_g6b88"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_p6eq6"]
+[ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_eegis"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_kbmvu"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_qwwsd"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_xjblq"]
+[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_38h2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xsjr"]
-atlas = ExtResource("9_ojwg5")
+atlas = ExtResource("9_38h2b")
 region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kg4sb"]
-atlas = ExtResource("9_ojwg5")
+atlas = ExtResource("9_38h2b")
 region = Rect2(13, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opfg6"]
-atlas = ExtResource("9_ojwg5")
+atlas = ExtResource("9_38h2b")
 region = Rect2(26, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h86i"]
-atlas = ExtResource("9_ojwg5")
+atlas = ExtResource("9_38h2b")
 region = Rect2(39, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0403"]
-atlas = ExtResource("9_ojwg5")
+atlas = ExtResource("9_38h2b")
 region = Rect2(52, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yr0sl"]
@@ -57,38 +57,40 @@ animations = [{
 }]
 
 [node name="RedBrickBlockConveyorLeft" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_v5u4r")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_26m84")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_gsw6y")
+texture = ExtResource("2_xerod")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_x8ums")
+script = ExtResource("3_g6b88")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_8m22f")
+texture = ExtResource("4_p6eq6")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="ConveyorModifier" type="Area2D" parent="." instance=ExtResource("5_lkql8")]
+[node name="ConveyorModifier" type="Area2D" parent="." instance=ExtResource("5_eegis")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("6_a4j8g")
+script = ExtResource("6_kbmvu")
 modifier_name = "Conveyor"
 modifier_data = {
 "reverse": true,
 "x_movement": 15.0
 }
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_5co3v")]
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_qwwsd")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("8_vtg2l")
+script = ExtResource("8_xjblq")
 break_frames = SubResource("SpriteFrames_yr0sl")
 left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
 right_unbreakable = NodePath("Unbreakable/RightUnbreakable")

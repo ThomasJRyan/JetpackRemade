@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr5hi2om5blij"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Components/KillZone/kill_zone.gd" id="1_6kbmt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac32r"]
+size = Vector2(11, 11)
+
+[node name="KillZone" type="Node2D"]
+script = ExtResource("1_6kbmt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ac32r")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

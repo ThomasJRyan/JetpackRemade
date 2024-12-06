@@ -9,8 +9,10 @@ var active := false
 
 var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-var parent: Player
+var parent: CharacterBody2D
 
+# TODO: This should possibly be moved to a global set of variables, or I should
+# be using signal groups to define what is climbable
 var CLIMBABLES: Array[String] = ["Climbable", "MovingClimbable"]
 
 func enter() -> void:

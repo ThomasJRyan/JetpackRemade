@@ -51,6 +51,8 @@ animations = [{
 size = Vector2(12, 12)
 
 [node name="Box" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 script = ExtResource("1_116ca")
 
 [node name="BreakableComponent" parent="." instance=ExtResource("1_33kx1")]

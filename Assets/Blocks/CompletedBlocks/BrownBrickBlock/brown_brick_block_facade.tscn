@@ -1,23 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://df3ecq8tdrfal"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_k270k"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_w6ynt"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_6ncgl"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_l4veh"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_byc3k"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_mifwa"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_6y447"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_yi351"]
 
 [node name="BrownBrickBlockFacade" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_k270k")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_byc3k")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_w6ynt")
+texture = ExtResource("2_mifwa")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_6ncgl")
+script = ExtResource("3_6y447")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 z_index = 100
 texture_filter = 1
-texture = ExtResource("4_l4veh")
+texture = ExtResource("4_yi351")
 region_enabled = true
 region_rect = Rect2(0, 13, 12, 12)

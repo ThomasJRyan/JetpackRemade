@@ -1,36 +1,36 @@
 [gd_scene load_steps=17 format=3 uid="uid://cghmyg5f4y512"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_yjnts"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_85uve"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_aaull"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_32b2f"]
-[ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.tscn" id="5_novb4"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_c45b7"]
-[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_w0lxg"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_x8yfs"]
-[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="9_tr65v"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_bg51b"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_dldae"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_87p2j"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_8dpy7"]
+[ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.tscn" id="5_bga8a"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_w4y4c"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_fhyps"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_7uooh"]
+[ext_resource type="Texture2D" uid="uid://b4vdj7b4aq2eq" path="res://Assets/Blocks/Bases/BrownBricksBreak.png" id="9_smi1k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_384ho"]
-atlas = ExtResource("9_tr65v")
+atlas = ExtResource("9_smi1k")
 region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_el452"]
-atlas = ExtResource("9_tr65v")
+atlas = ExtResource("9_smi1k")
 region = Rect2(13, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q8pkg"]
-atlas = ExtResource("9_tr65v")
+atlas = ExtResource("9_smi1k")
 region = Rect2(26, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i8s2w"]
-atlas = ExtResource("9_tr65v")
+atlas = ExtResource("9_smi1k")
 region = Rect2(39, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ndhxn"]
-atlas = ExtResource("9_tr65v")
+atlas = ExtResource("9_smi1k")
 region = Rect2(52, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dxvfa"]
@@ -57,34 +57,36 @@ animations = [{
 }]
 
 [node name="BrownBrickBlockGrass" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_yjnts")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_bg51b")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_85uve")
+texture = ExtResource("2_dldae")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_aaull")
+script = ExtResource("3_87p2j")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_32b2f")
+texture = ExtResource("4_8dpy7")
 region_enabled = true
 region_rect = Rect2(0, 13, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="GrassModifier" type="Area2D" parent="." instance=ExtResource("5_novb4")]
+[node name="GrassModifier" type="Area2D" parent="." instance=ExtResource("5_bga8a")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("6_c45b7")
+script = ExtResource("6_w4y4c")
 modifier_name = "Grass"
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_w0lxg")]
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("7_fhyps")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("8_x8yfs")
+script = ExtResource("8_7uooh")
 break_frames = SubResource("SpriteFrames_dxvfa")
 break_time = 2.0
 left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")

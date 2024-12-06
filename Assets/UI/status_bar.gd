@@ -9,9 +9,11 @@ var score: int = 0
 var player: Player
 
 func _ready() -> void:
+	# Connect all collectable nodes to the _collect_treasure function
 	for collectable in get_tree().get_nodes_in_group("collectable"):
 		collectable.connect("collected", _collect_treasure)
 		
+	# Connect the player's fuel and lives signals to the status bar
 	player = get_tree().get_nodes_in_group("player")[0]
 	player.connect("fuel_changed", _on_fuel_changed)
 	player.connect("lives_changed", _on_lives_changed)

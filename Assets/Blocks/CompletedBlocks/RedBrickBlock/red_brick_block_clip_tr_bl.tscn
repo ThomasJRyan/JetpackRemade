@@ -1,34 +1,34 @@
 [gd_scene load_steps=15 format=3 uid="uid://blpkwhakiqouu"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_ha61q"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_i0cvl"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_txtis"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_6i4mx"]
-[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_f4f6x"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_x3lji"]
-[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="7_55njt"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_7fpk6"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_boqrj"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_dyh0i"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_p7l17"]
+[ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_sdwxv"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_oimic"]
+[ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="7_lmatm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xsjr"]
-atlas = ExtResource("7_55njt")
+atlas = ExtResource("7_lmatm")
 region = Rect2(0, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kg4sb"]
-atlas = ExtResource("7_55njt")
+atlas = ExtResource("7_lmatm")
 region = Rect2(13, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opfg6"]
-atlas = ExtResource("7_55njt")
+atlas = ExtResource("7_lmatm")
 region = Rect2(26, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4h86i"]
-atlas = ExtResource("7_55njt")
+atlas = ExtResource("7_lmatm")
 region = Rect2(39, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c0403"]
-atlas = ExtResource("7_55njt")
+atlas = ExtResource("7_lmatm")
 region = Rect2(52, 0, 12, 12)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yr0sl"]
@@ -55,29 +55,31 @@ animations = [{
 }]
 
 [node name="RedBrickBlockClipTrBl" type="StaticBody2D"]
+collision_layer = 64
+collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_ha61q")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_7fpk6")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_i0cvl")
+texture = ExtResource("2_boqrj")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_txtis")
+script = ExtResource("3_dyh0i")
 clipping_mask = 6.0
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_6i4mx")
+texture = ExtResource("4_p7l17")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6wisr")
 
-[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("5_f4f6x")]
+[node name="BreakableComponent" type="Area2D" parent="." node_paths=PackedStringArray("left_unbreakable", "right_unbreakable", "top_unbreakable", "bottom_unbreakable") instance=ExtResource("5_sdwxv")]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("6_x3lji")
+script = ExtResource("6_oimic")
 break_frames = SubResource("SpriteFrames_yr0sl")
 left_unbreakable = NodePath("Unbreakable/LeftUnbreakable")
 right_unbreakable = NodePath("Unbreakable/RightUnbreakable")

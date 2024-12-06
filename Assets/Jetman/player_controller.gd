@@ -38,6 +38,8 @@ var direction = 1:
 			direction = -1
 			
 func kill(death_type: DEATHS = DEATHS.BLOODY) -> void:
+	if state_machine.current_state is DeathState:
+		return
 	death_by = death_type
 	state_machine.change_state($StateMachine/DeathState)
 
