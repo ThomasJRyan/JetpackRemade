@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://bstibv8ckcd27"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Diamond/diamond.gd" id="1_2j7ql"]
+[ext_resource type="Texture2D" uid="uid://dllok62nt2bdr" path="res://Assets/Enemies/Diamond/Diamond.png" id="1_5861n"]
+[ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="2_yhqdl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rftn"]
+atlas = ExtResource("1_5861n")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdrru"]
+atlas = ExtResource("1_5861n")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujvp4"]
+atlas = ExtResource("1_5861n")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evvqw"]
+atlas = ExtResource("1_5861n")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvukj"]
+atlas = ExtResource("1_5861n")
+region = Rect2(52, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amj6x"]
+atlas = ExtResource("1_5861n")
+region = Rect2(65, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eh88d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rftn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujvp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rftn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujvp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rftn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdrru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujvp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evvqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvukj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amj6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evvqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvukj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amj6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evvqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvukj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amj6x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_buwmt"]
+radius = 2.52282
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2gso"]
+radius = 2.555
+
+[node name="Diamond" type="CharacterBody2D"]
+z_index = 15
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_2j7ql")
+speed = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.499281, 0.499282)
+sprite_frames = SubResource("SpriteFrames_eh88d")
+autoplay = "default"
+frame_progress = 0.77265
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.017664, -0.0176659)
+shape = SubResource("CircleShape2D_buwmt")
+
+[node name="KillZone" parent="." instance=ExtResource("2_yhqdl")]
+
+[node name="CollisionShape2D" parent="KillZone/Area2D" index="0"]
+shape = SubResource("CircleShape2D_m2gso")
+
+[editable path="KillZone"]
