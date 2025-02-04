@@ -1,0 +1,81 @@
+[gd_scene load_steps=8 format=3 uid="uid://bd7vn2higikvn"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Star/star.gd" id="1_6nt5b"]
+[ext_resource type="Texture2D" uid="uid://dmvlmyh2sgcbc" path="res://Assets/Enemies/Star/Star.png" id="2_q8ljb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjuqa"]
+atlas = ExtResource("2_q8ljb")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olmb7"]
+atlas = ExtResource("2_q8ljb")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt6k3"]
+atlas = ExtResource("2_q8ljb")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s78a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjuqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olmb7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt6k3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j8ot6"]
+radius = 3.0
+
+[node name="Star" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("1_6nt5b")
+move_speed = 20
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s78a8")
+autoplay = "default"
+frame_progress = 0.687991
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j8ot6")
+
+[node name="RayCasts" type="Node2D" parent="."]
+
+[node name="BottomCast" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(0, 3.1)
+collision_mask = 96
+collide_with_areas = true
+
+[node name="LeftCast" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(-3.1, 0)
+collision_mask = 96
+collide_with_areas = true
+
+[node name="TopCast" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(0, -3.1)
+collision_mask = 96
+collide_with_areas = true
+
+[node name="RightCast" type="RayCast2D" parent="RayCasts"]
+target_position = Vector2(3.1, 0)
+collision_mask = 96
+collide_with_areas = true
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_j8ot6")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
