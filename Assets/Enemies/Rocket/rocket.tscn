@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6ks2fsnqn47l"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Rocket/rocket.gd" id="1_3j71s"]
+[ext_resource type="Texture2D" uid="uid://b5vxotjsg5jyg" path="res://Assets/Enemies/Rocket/Rocket.png" id="2_aue4e"]
+[ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="3_8a4h4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6urq6"]
+atlas = ExtResource("2_aue4e")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nst5o"]
+atlas = ExtResource("2_aue4e")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51iu8"]
+atlas = ExtResource("2_aue4e")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s78a8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6urq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nst5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51iu8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gptcb"]
+size = Vector2(11.8, 11.8)
+
+[node name="Rocket" type="CharacterBody2D"]
+z_index = 5
+collision_layer = 128
+collision_mask = 96
+script = ExtResource("1_3j71s")
+move_speed = 75
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_s78a8")
+autoplay = "default"
+frame_progress = 0.0123819
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gptcb")
+
+[node name="KillZone" parent="." instance=ExtResource("3_8a4h4")]
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-7, 0)
+collision_mask = 96
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(7, 0)
+collision_mask = 96
