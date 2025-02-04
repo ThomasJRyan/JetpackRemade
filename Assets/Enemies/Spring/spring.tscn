@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://dig4gmxom3dch"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/Spring/spring.gd" id="1_a34pc"]
+[ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="1_gok6a"]
+[ext_resource type="Texture2D" uid="uid://tgil318qulv8" path="res://Assets/Enemies/Spring/Spring.png" id="2_601fm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omypx"]
+atlas = ExtResource("2_601fm")
+region = Rect2(39, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sed3p"]
+atlas = ExtResource("2_601fm")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n11i5"]
+atlas = ExtResource("2_601fm")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mskhh"]
+atlas = ExtResource("2_601fm")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qplq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omypx")
+}],
+"loop": false,
+"name": &"CollideDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sed3p")
+}],
+"loop": false,
+"name": &"CollideUp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n11i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mskhh")
+}],
+"loop": true,
+"name": &"Move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dbtqr"]
+size = Vector2(6, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pn6n1"]
+size = Vector2(6, 8)
+
+[node name="Spring" type="CharacterBody2D"]
+collision_layer = 128
+collision_mask = 98
+script = ExtResource("1_a34pc")
+speed = 60
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4qplq")
+animation = &"CollideDown"
+autoplay = "Move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dbtqr")
+
+[node name="RaycastUp" type="RayCast2D" parent="."]
+target_position = Vector2(0, -5)
+collision_mask = 96
+
+[node name="RaycastDown" type="RayCast2D" parent="."]
+target_position = Vector2(0, 5)
+collision_mask = 96
+
+[node name="KillZone" parent="." instance=ExtResource("1_gok6a")]
+
+[node name="CollisionShape2D" parent="KillZone/Area2D" index="0"]
+shape = SubResource("RectangleShape2D_pn6n1")
+
+[editable path="KillZone"]
