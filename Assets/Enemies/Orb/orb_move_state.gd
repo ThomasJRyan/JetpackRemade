@@ -17,7 +17,7 @@ func process_physics(delta: float) -> State:
 		
 	parent.velocity.x = move_speed * parent.direction
 	
-	# TODO: Need to handle conveyors, grass, and ladders
+	# TODO: Need to handle conveyors, grass, ladders, and teleporters
 	
 	parent.move_and_slide()
 	

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name OrbEnemy
 
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
