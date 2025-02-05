@@ -1,12 +1,12 @@
 [gd_scene load_steps=7 format=3 uid="uid://3robok8wnypj"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_xent8"]
-[ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_jh1ic"]
-[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block.gd" id="3_tbni3"]
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_ec4ac"]
+[ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_e1wih"]
+[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block.gd" id="3_knxsa"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwmnq"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppj5k"]
 resource_local_to_scene = true
-shader = ExtResource("1_xent8")
+shader = ExtResource("1_ec4ac")
 shader_parameter/colour = Vector4(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kuubk"]
@@ -15,11 +15,11 @@ shader_parameter/colour = Vector4(1, 1, 1, 1)
 size = Vector2(12, 12)
 
 [node name="ToggleBlockVerticalYellow" type="Sprite2D" groups=["toggle_block"]]
-material = SubResource("ShaderMaterial_dwmnq")
-texture = ExtResource("2_jh1ic")
+material = SubResource("ShaderMaterial_ppj5k")
+texture = ExtResource("2_e1wih")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_tbni3")
+script = ExtResource("3_knxsa")
 colour = Color(1, 1, 0, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

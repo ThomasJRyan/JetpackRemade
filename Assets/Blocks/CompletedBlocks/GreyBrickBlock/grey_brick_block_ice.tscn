@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dsq1n0i3ercvt"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_kbpe1"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_vpnp0"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ruxp2"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_u8ark"]
-[ext_resource type="PackedScene" uid="uid://c1u3mb4dlj27m" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.tscn" id="5_3o74k"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_3ilxb"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_4umnt"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_e8577"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ambwa"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_ra08v"]
+[ext_resource type="PackedScene" uid="uid://c1u3mb4dlj27m" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.tscn" id="5_tyq86"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_t5b7u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
@@ -14,24 +14,24 @@ size = Vector2(12, 12)
 collision_layer = 64
 collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_kbpe1")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_4umnt")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_vpnp0")
+texture = ExtResource("2_e8577")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_ruxp2")
+script = ExtResource("3_ambwa")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_u8ark")
+texture = ExtResource("4_ra08v")
 region_enabled = true
 region_rect = Rect2(0, 26, 12, 12)
 
-[node name="IceModifier" type="Area2D" parent="." instance=ExtResource("5_3o74k")]
+[node name="IceModifier" type="Area2D" parent="." instance=ExtResource("5_tyq86")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("6_3ilxb")
+script = ExtResource("6_t5b7u")
 modifier_name = "Ice"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

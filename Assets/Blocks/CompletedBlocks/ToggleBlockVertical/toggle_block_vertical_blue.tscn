@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_ieiw3"]
 [ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block.gd" id="3_fvdmc"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i4iv8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f54iy"]
 resource_local_to_scene = true
 shader = ExtResource("1_88i06")
 shader_parameter/colour = Vector4(1, 1, 1, 1)
@@ -15,7 +15,7 @@ shader_parameter/colour = Vector4(1, 1, 1, 1)
 size = Vector2(12, 12)
 
 [node name="ToggleBlockVerticalBlue" type="Sprite2D" groups=["toggle_block"]]
-material = SubResource("ShaderMaterial_i4iv8")
+material = SubResource("ShaderMaterial_f54iy")
 texture = ExtResource("2_ieiw3")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)

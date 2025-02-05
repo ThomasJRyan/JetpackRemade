@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://qjqef8w1llgg"]
 
-[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_oe1s3"]
-[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_n6a0d"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_cbxs7"]
-[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_3e72s"]
-[ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_l6dij"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_tx3a1"]
+[ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_tidlk"]
+[ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_ydg8i"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ohfkb"]
+[ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_8xjra"]
+[ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_enfxh"]
+[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_01582"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)
@@ -14,24 +14,24 @@ size = Vector2(12, 12)
 collision_layer = 64
 collision_mask = 64
 
-[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_oe1s3")]
+[node name="ClippingComponent" type="Sprite2D" parent="." instance=ExtResource("1_tidlk")]
 clip_children = 1
 texture_filter = 3
-texture = ExtResource("2_n6a0d")
+texture = ExtResource("2_ydg8i")
 region_enabled = true
 region_rect = Rect2(0, 0, 12, 12)
-script = ExtResource("3_cbxs7")
+script = ExtResource("3_ohfkb")
 
 [node name="Sprite2D" type="Sprite2D" parent="ClippingComponent"]
 texture_filter = 1
-texture = ExtResource("4_3e72s")
+texture = ExtResource("4_8xjra")
 region_enabled = true
 region_rect = Rect2(0, 26, 12, 12)
 
-[node name="ConveyorModifier" type="Area2D" parent="." instance=ExtResource("5_l6dij")]
+[node name="ConveyorModifier" type="Area2D" parent="." instance=ExtResource("5_enfxh")]
 collision_layer = 8
 collision_mask = 0
-script = ExtResource("6_tx3a1")
+script = ExtResource("6_01582")
 modifier_name = "Conveyor"
 modifier_data = {
 "reverse": false,

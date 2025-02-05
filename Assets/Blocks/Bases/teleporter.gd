@@ -10,6 +10,7 @@ class_name Teleporter
 @onready var timer: Timer = $Timer
 
 var teleporters: Array[Teleporter]
+var enemy_cooldown: bool
 
 func _enter_tree() -> void:
 	# Set the colour of the teleporter in the shader
@@ -54,3 +55,15 @@ func _input(event: InputEvent) -> void:
 
 		# ! This is such a hack...
 		player.stop_teleport()
+
+
+func _on_enemy_detector_body_entered(body: Node2D) -> void:
+	if enemy_cooldown:
+		return
+	var teleporter = teleporters.pick_random()
+	teleporter.enemy_cooldown = true
+	body.position = teleporter.position
+
+
+func _on_enemy_detector_body_exited(body: Node2D) -> void:
+	enemy_cooldown = false

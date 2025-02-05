@@ -1,20 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://0h0ms1kxxkn0"]
+[gd_scene load_steps=7 format=3 uid="uid://0h0ms1kxxkn0"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_cgoi0"]
-[ext_resource type="Texture2D" uid="uid://kgf2luyddm7y" path="res://Assets/Blocks/Bases/Teleporter.png" id="2_acmgg"]
-[ext_resource type="Script" path="res://Assets/Blocks/Bases/teleporter.gd" id="3_sauwb"]
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_rrd5a"]
+[ext_resource type="Texture2D" uid="uid://kgf2luyddm7y" path="res://Assets/Blocks/Bases/Teleporter.png" id="2_g7405"]
+[ext_resource type="Script" path="res://Assets/Blocks/Bases/teleporter.gd" id="3_bfote"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lui0"]
-shader = ExtResource("1_cgoi0")
+shader = ExtResource("1_rrd5a")
 shader_parameter/colour = Vector4(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o41l3"]
 size = Vector2(12, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_365lq"]
+size = Vector2(6, 6)
+
 [node name="TeleporterCyan" type="Sprite2D" groups=["teleporter"]]
 material = SubResource("ShaderMaterial_0lui0")
-texture = ExtResource("2_acmgg")
-script = ExtResource("3_sauwb")
+texture = ExtResource("2_g7405")
+script = ExtResource("3_bfote")
 colour = Color(0, 1, 1, 1)
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
@@ -25,3 +28,13 @@ target_position = Vector2(0, 0)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_365lq")
+
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_enemy_detector_body_entered"]

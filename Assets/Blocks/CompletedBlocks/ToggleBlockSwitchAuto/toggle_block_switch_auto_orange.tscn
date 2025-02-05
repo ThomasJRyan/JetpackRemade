@@ -1,11 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://b65bbxyecugcw"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_1w8cb"]
-[ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_npfaj"]
-[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block_switch_auto.gd" id="3_hkcrg"]
+[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_rff6c"]
+[ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_8xu5p"]
+[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block_switch_auto.gd" id="3_b7bog"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72p6a"]
-shader = ExtResource("1_1w8cb")
+shader = ExtResource("1_rff6c")
 shader_parameter/colour = Vector4(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggm5x"]
@@ -13,10 +13,10 @@ size = Vector2(4, 3)
 
 [node name="ToggleBlockSwitchAutoOrange" type="Sprite2D" groups=["toggle_switch"]]
 material = SubResource("ShaderMaterial_72p6a")
-texture = ExtResource("2_npfaj")
+texture = ExtResource("2_8xu5p")
 region_enabled = true
 region_rect = Rect2(48, 0, 12, 12)
-script = ExtResource("3_hkcrg")
+script = ExtResource("3_b7bog")
 colour = Color(1, 0.501961, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="."]
