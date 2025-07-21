@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bstibv8ckcd27"]
 
-[ext_resource type="Script" path="res://Assets/Enemies/Diamond/diamond.gd" id="1_2j7ql"]
+[ext_resource type="Script" uid="uid://devtfdplcmvr5" path="res://Assets/Enemies/Diamond/diamond.gd" id="1_2j7ql"]
 [ext_resource type="Texture2D" uid="uid://dllok62nt2bdr" path="res://Assets/Enemies/Diamond/Diamond.png" id="1_5861n"]
 [ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="2_yhqdl"]
 

@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_tidlk"]
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_ydg8i"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ohfkb"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ohfkb"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_8xjra"]
 [ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_enfxh"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_01582"]
+[ext_resource type="Script" uid="uid://bsetp3foe4cm8" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_01582"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)

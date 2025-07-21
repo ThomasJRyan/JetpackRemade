@@ -15,6 +15,10 @@ var door: Door
 var max_gems: int
 var collected_gems: int
 
+func _input(event):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
 	door = get_tree().get_nodes_in_group("door")[0]

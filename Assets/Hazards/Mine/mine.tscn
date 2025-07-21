@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ccy5vqmo70bnj"]
 
 [ext_resource type="Texture2D" uid="uid://dkryuod355cdr" path="res://Assets/Hazards/Mine/Mine.png" id="1_hxeiu"]
-[ext_resource type="Script" path="res://Assets/Hazards/Mine/mine.gd" id="2_1g7mn"]
+[ext_resource type="Script" uid="uid://b2tohbaqabk5i" path="res://Assets/Hazards/Mine/mine.gd" id="2_1g7mn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7h05x"]
 size = Vector2(2, 1)

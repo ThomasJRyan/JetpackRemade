@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bryuqycqryk1n"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_1kt6x"]
+[ext_resource type="Shader" uid="uid://dc7lpljq21r42" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_1kt6x"]
 [ext_resource type="Texture2D" uid="uid://kgf2luyddm7y" path="res://Assets/Blocks/Bases/Teleporter.png" id="2_0mseb"]
-[ext_resource type="Script" path="res://Assets/Blocks/Bases/teleporter.gd" id="3_74n3w"]
+[ext_resource type="Script" uid="uid://b4uclubsd4npj" path="res://Assets/Blocks/Bases/teleporter.gd" id="3_74n3w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0lui0"]
 shader = ExtResource("1_1kt6x")

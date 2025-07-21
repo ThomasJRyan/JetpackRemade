@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://b7hewm6fo1w3m"]
 
-[ext_resource type="Script" path="res://Assets/Blocks/CompletedBlocks/Fueler/fueler.gd" id="1_6m766"]
+[ext_resource type="Script" uid="uid://dv5q2k2hnwskf" path="res://Assets/Blocks/CompletedBlocks/Fueler/fueler.gd" id="1_6m766"]
 [ext_resource type="Texture2D" uid="uid://c7rlw26omctwc" path="res://Assets/Blocks/CompletedBlocks/Fueler/Defueler.png" id="2_jc71h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5ndu"]

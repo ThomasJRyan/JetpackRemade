@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1u3mb4dlj27m"]
 
-[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="1_a8pa8"]
+[ext_resource type="Script" uid="uid://cc1u8nptxqw1d" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="1_a8pa8"]
 [ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Assets/Blocks/Components/Modifiers.png" id="2_msh3f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47ye4"]

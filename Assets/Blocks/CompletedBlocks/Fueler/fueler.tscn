@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d2mwxgsii85bx"]
 
 [ext_resource type="Texture2D" uid="uid://bqxi7c1us5m23" path="res://Assets/Blocks/CompletedBlocks/Fueler/Fueler.png" id="1_jrg4u"]
-[ext_resource type="Script" path="res://Assets/Blocks/CompletedBlocks/Fueler/fueler.gd" id="1_xcwnn"]
+[ext_resource type="Script" uid="uid://dv5q2k2hnwskf" path="res://Assets/Blocks/CompletedBlocks/Fueler/fueler.gd" id="1_xcwnn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nq247"]
 atlas = ExtResource("1_jrg4u")

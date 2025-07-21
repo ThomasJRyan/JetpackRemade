@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://dnq7etrh65gm8"]
 
-[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb.gd" id="1_bx4w5"]
+[ext_resource type="Script" uid="uid://cud0rx6higvu" path="res://Assets/Enemies/Orb/orb.gd" id="1_bx4w5"]
 [ext_resource type="Texture2D" uid="uid://7eu8jbsvmyml" path="res://Assets/Enemies/Orb/Orb.png" id="1_kvoon"]
-[ext_resource type="Script" path="res://Assets/StateMachine/state_machine.gd" id="2_iqdj1"]
-[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb_move_state.gd" id="3_qxbk7"]
-[ext_resource type="Script" path="res://Assets/Enemies/Orb/orb_fall_state.gd" id="5_mu6tg"]
+[ext_resource type="Script" uid="uid://bt0cdnxf4nixo" path="res://Assets/StateMachine/state_machine.gd" id="2_iqdj1"]
+[ext_resource type="Script" uid="uid://c0gwma0ojtbn8" path="res://Assets/Enemies/Orb/orb_move_state.gd" id="3_qxbk7"]
+[ext_resource type="Script" uid="uid://b8vxye20xucur" path="res://Assets/Enemies/Orb/orb_fall_state.gd" id="5_mu6tg"]
 [ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="6_24wv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_urndd"]

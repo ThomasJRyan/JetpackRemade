@@ -56,6 +56,7 @@ func stop_teleport():
 	teleport_shader.visible = false
 
 func _ready() -> void:
+	print(Vector2i(get_viewport_rect().size) / 12)
 	state_machine.init(self)
 	
 func _unhandled_input(event: InputEvent) -> void:

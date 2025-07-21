@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://kpd5ldt2m6av"]
 
-[ext_resource type="Script" path="res://Assets/Enemies/Octo/octo.gd" id="1_yw8aq"]
+[ext_resource type="Script" uid="uid://jdlele3hpv0p" path="res://Assets/Enemies/Octo/octo.gd" id="1_yw8aq"]
 [ext_resource type="Texture2D" uid="uid://bbf2800vy7x0y" path="res://Assets/Enemies/Octo/Octo.png" id="2_08wgw"]
 [ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="3_0p7cl"]
 

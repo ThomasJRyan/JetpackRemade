@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://x5fn66w2ur6j"]
 
-[ext_resource type="Script" path="res://Assets/UI/status_bar.gd" id="1_5hgat"]
+[ext_resource type="Script" uid="uid://bc3eifjubnif8" path="res://Assets/UI/status_bar.gd" id="1_5hgat"]
 [ext_resource type="Theme" uid="uid://dkse2mn8f4t5r" path="res://Assets/UI/status_bar.tres" id="1_7bxft"]
 [ext_resource type="FontFile" uid="uid://csbae84cghn6x" path="res://Assets/UI/Fonts/amiga4ever.ttf" id="3_3hwo4"]
 [ext_resource type="Texture2D" uid="uid://cwydfqlc770a4" path="res://Assets/UI/FuelBar.png" id="3_gqd8q"]

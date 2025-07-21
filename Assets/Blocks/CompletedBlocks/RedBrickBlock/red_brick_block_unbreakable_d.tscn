@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_0s5re"]
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_qk5ft"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_kicdv"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_kicdv"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_ng2d0"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="5_t6sk6"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_0md41"]
+[ext_resource type="Script" uid="uid://chikr64rn8w6s" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="6_0md41"]
 [ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="7_nd26j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]

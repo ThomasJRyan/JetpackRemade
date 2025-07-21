@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3capivs3yrur"]
 
 [ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Assets/Blocks/Sprites/Ladder.png" id="1_5ot61"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClimableModifiers/moving_climable_modifier.gd" id="2_kmev7"]
+[ext_resource type="Script" uid="uid://c6k56qgv168ge" path="res://Assets/Blocks/Components/ClimableModifiers/moving_climable_modifier.gd" id="2_kmev7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uveay"]
 atlas = ExtResource("1_5ot61")

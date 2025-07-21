@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bd7vn2higikvn"]
 
-[ext_resource type="Script" path="res://Assets/Enemies/Star/star.gd" id="1_6nt5b"]
+[ext_resource type="Script" uid="uid://c86ip3xtmocqs" path="res://Assets/Enemies/Star/star.gd" id="1_6nt5b"]
 [ext_resource type="Texture2D" uid="uid://dmvlmyh2sgcbc" path="res://Assets/Enemies/Star/Star.png" id="2_q8ljb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tjuqa"]

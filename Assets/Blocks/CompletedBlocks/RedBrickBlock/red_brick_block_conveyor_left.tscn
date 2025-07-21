@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_5pjyb"]
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_elb1c"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_5djy1"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_5djy1"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_l4ifv"]
 [ext_resource type="PackedScene" uid="uid://cp0wh0jj7ievq" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.tscn" id="5_uhhma"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_0uem2"]
+[ext_resource type="Script" uid="uid://bsetp3foe4cm8" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="6_0uem2"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_8bxfu"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_oxafd"]
+[ext_resource type="Script" uid="uid://chikr64rn8w6s" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_oxafd"]
 [ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_ljaoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]

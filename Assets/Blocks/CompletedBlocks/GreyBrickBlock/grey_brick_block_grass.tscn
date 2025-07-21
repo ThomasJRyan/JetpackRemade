@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_q0t66"]
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_3qbf6"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_8f16i"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_8f16i"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_60tkc"]
 [ext_resource type="PackedScene" uid="uid://bdraeaaon351h" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.tscn" id="5_ijs4q"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_vm5jk"]
+[ext_resource type="Script" uid="uid://bw2po3v17qdl2" path="res://Assets/Blocks/Components/GrassModifier/grass_modifier.gd" id="6_vm5jk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
 size = Vector2(12, 12)

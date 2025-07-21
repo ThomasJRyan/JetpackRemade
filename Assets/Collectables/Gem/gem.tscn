@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://3ebpcqo0h7kh" path="res://Assets/Collectables/Gem/gem.png" id="1_3b8tn"]
 [ext_resource type="PackedScene" uid="uid://b5w7em3uklbne" path="res://Assets/Collectables/Base/collectable.tscn" id="2_53w56"]
-[ext_resource type="Script" path="res://Assets/Collectables/Gem/gem.gd" id="2_n8fxv"]
+[ext_resource type="Script" uid="uid://c62otv7tlb4wn" path="res://Assets/Collectables/Gem/gem.gd" id="2_n8fxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmfyo"]
 size = Vector2(7, 9)

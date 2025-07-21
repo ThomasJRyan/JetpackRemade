@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://b65bbxyecugcw"]
 
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_rff6c"]
+[ext_resource type="Shader" uid="uid://dc7lpljq21r42" path="res://Assets/Shaders/colour_overlay.gdshader" id="1_rff6c"]
 [ext_resource type="Texture2D" uid="uid://cw7d4oyg5efh2" path="res://Assets/Blocks/Bases/ToggleBlock.png" id="2_8xu5p"]
-[ext_resource type="Script" path="res://Assets/Blocks/Bases/toggle_block_switch_auto.gd" id="3_b7bog"]
+[ext_resource type="Script" uid="uid://cb1jw30d7gmrq" path="res://Assets/Blocks/Bases/toggle_block_switch_auto.gd" id="3_b7bog"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_72p6a"]
 shader = ExtResource("1_rff6c")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cp0wh0jj7ievq"]
 
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="1_8iend"]
+[ext_resource type="Script" uid="uid://bsetp3foe4cm8" path="res://Assets/Blocks/Components/ConveyorModifier/conveyor_modifier.gd" id="1_8iend"]
 [ext_resource type="Texture2D" uid="uid://bnysf3e3tyhpn" path="res://Assets/Blocks/Components/Modifiers.png" id="2_6m1ls"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8v2j8"]

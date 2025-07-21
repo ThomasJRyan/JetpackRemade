@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0vsoi11bnawr"]
 
 [ext_resource type="Texture2D" uid="uid://ymq1ewki6umb" path="res://Assets/Collectables/Fuel/fuel.png" id="1_cjyl4"]
-[ext_resource type="Script" path="res://Assets/Collectables/Fuel/fuel.gd" id="3_lqexy"]
+[ext_resource type="Script" uid="uid://drvoio4hnbhwc" path="res://Assets/Collectables/Fuel/fuel.gd" id="3_lqexy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7dkwf"]
 size = Vector2(8, 7)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://ckyv5o0jxwstp"]
 
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="1_33kx1"]
-[ext_resource type="Script" path="res://Assets/Blocks/CompletedBlocks/Box/box.gd" id="1_116ca"]
+[ext_resource type="Script" uid="uid://kc7lsh0hjbuj" path="res://Assets/Blocks/CompletedBlocks/Box/box.gd" id="1_116ca"]
 [ext_resource type="Texture2D" uid="uid://dh6ifver8e5j" path="res://Assets/Blocks/CompletedBlocks/Box/Box.png" id="2_f1gau"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6kw8"]

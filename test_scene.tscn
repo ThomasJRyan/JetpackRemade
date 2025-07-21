@@ -1,19 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://deunmfjf7gkos"]
+[gd_scene load_steps=7 format=3 uid="uid://deunmfjf7gkos"]
 
 [ext_resource type="PackedScene" uid="uid://bww4rwjr358np" path="res://Assets/Jetman/jetman.tscn" id="1_dm3f5"]
-[ext_resource type="Script" path="res://test_scene.gd" id="1_tghmy"]
+[ext_resource type="Script" uid="uid://cr6ad0a5r7erl" path="res://test_scene.gd" id="1_tghmy"]
 [ext_resource type="PackedScene" uid="uid://djm7sombf4kb8" path="res://Assets/Levels/level_base.tscn" id="2_g8a73"]
-[ext_resource type="PackedScene" uid="uid://dnq7etrh65gm8" path="res://Assets/Enemies/Orb/orb.tscn" id="6_1n8li"]
-[ext_resource type="PackedScene" uid="uid://u8gu8ja3fsg0" path="res://Assets/Blocks/CompletedBlocks/ToggleBlockVertical/toggle_block_vertical_blue.tscn" id="7_fw4rn"]
-[ext_resource type="PackedScene" uid="uid://b1eqlm1gfr7x1" path="res://Assets/Blocks/CompletedBlocks/BrownBrickBlock/brown_brick_block_normal.tscn" id="8_gms1n"]
-[ext_resource type="Shader" path="res://Assets/Shaders/colour_overlay.gdshader" id="8_lrsl6"]
-[ext_resource type="PackedScene" uid="uid://chnqw475csxsc" path="res://Assets/Blocks/CompletedBlocks/ToggleBlockSwitch/toggle_block_switch_blue.tscn" id="9_i73nr"]
+[ext_resource type="PackedScene" uid="uid://dvwgvhxhrhmtd" path="res://Assets/Blocks/CompletedBlocks/RedBrickBlock/red_brick_block_normal.tscn" id="5_kntwr"]
+[ext_resource type="PackedScene" uid="uid://chdie4okpjihl" path="res://Assets/Enemies/Bat/bat.tscn" id="5_sewgr"]
 [ext_resource type="PackedScene" uid="uid://bmj5a5cl5xn2s" path="res://Assets/Door/door.tscn" id="27_wsnm1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0asoe"]
-resource_local_to_scene = true
-shader = ExtResource("8_lrsl6")
-shader_parameter/colour = Vector4(1, 1, 1, 1)
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_tghmy")
@@ -22,182 +14,202 @@ script = ExtResource("1_tghmy")
 metadata/_edit_lock_ = true
 
 [node name="LevelBase" parent="Game" instance=ExtResource("2_g8a73")]
+process_mode = 3
 
 [node name="CharacterBody2D" parent="Game" instance=ExtResource("1_dm3f5")]
 z_index = 1
-position = Vector2(102, 174)
+position = Vector2(174, 114)
+fuel = 10000.0
 
 [node name="Door" parent="Game" instance=ExtResource("27_wsnm1")]
 position = Vector2(294, 18)
 
-[node name="BrownBrickBlockNormal" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 186)
+[node name="Blocks" type="Node2D" parent="Game"]
 
-[node name="BrownBrickBlockNormal2" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 54)
+[node name="RedBrickBlockNormal" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(30, 162)
 
-[node name="BrownBrickBlockNormal14" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 66)
+[node name="RedBrickBlockNormal4" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(30, 150)
 
-[node name="BrownBrickBlockNormal15" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 78)
+[node name="RedBrickBlockNormal5" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(30, 138)
 
-[node name="BrownBrickBlockNormal9" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(90, 42)
+[node name="RedBrickBlockNormal6" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(42, 138)
 
-[node name="BrownBrickBlockNormal10" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 54)
+[node name="RedBrickBlockNormal7" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(54, 138)
 
-[node name="BrownBrickBlockNormal11" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 66)
+[node name="RedBrickBlockNormal8" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(66, 138)
 
-[node name="BrownBrickBlockNormal12" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 78)
-
-[node name="BrownBrickBlockNormal13" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 78)
-
-[node name="BrownBrickBlockNormal16" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 90)
-
-[node name="BrownBrickBlockNormal19" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(102, 102)
-
-[node name="BrownBrickBlockNormal20" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(90, 114)
-
-[node name="BrownBrickBlockNormal21" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 114)
-
-[node name="BrownBrickBlockNormal22" parent="Game" instance=ExtResource("8_gms1n")]
+[node name="RedBrickBlockNormal9" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
 position = Vector2(66, 114)
 
-[node name="BrownBrickBlockNormal23" parent="Game" instance=ExtResource("8_gms1n")]
+[node name="RedBrickBlockNormal20" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(54, 114)
+
+[node name="RedBrickBlockNormal21" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(42, 114)
+
+[node name="RedBrickBlockNormal22" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(30, 114)
+
+[node name="RedBrickBlockNormal23" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(6, 114)
+
+[node name="RedBrickBlockNormal24" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(6, 126)
+
+[node name="RedBrickBlockNormal25" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(18, 138)
+
+[node name="RedBrickBlockNormal26" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(126, 126)
+
+[node name="RedBrickBlockNormal27" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(138, 126)
+
+[node name="RedBrickBlockNormal28" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(150, 126)
+
+[node name="RedBrickBlockNormal29" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(162, 126)
+
+[node name="RedBrickBlockNormal30" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(174, 126)
+
+[node name="RedBrickBlockNormal31" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(174, 138)
+
+[node name="RedBrickBlockNormal10" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(90, 138)
+
+[node name="RedBrickBlockNormal11" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(102, 138)
+
+[node name="RedBrickBlockNormal12" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(114, 138)
+
+[node name="RedBrickBlockNormal13" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(126, 138)
+
+[node name="RedBrickBlockNormal14" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
 position = Vector2(66, 162)
 
-[node name="BrownBrickBlockNormal28" parent="Game" instance=ExtResource("8_gms1n")]
+[node name="RedBrickBlockNormal15" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
 position = Vector2(78, 162)
 
-[node name="BrownBrickBlockNormal29" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 162)
+[node name="RedBrickBlockNormal16" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(90, 162)
 
-[node name="BrownBrickBlockNormal27" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(54, 162)
+[node name="RedBrickBlockNormal17" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(102, 162)
 
-[node name="BrownBrickBlockNormal26" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(42, 150)
+[node name="RedBrickBlockNormal18" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(114, 162)
 
-[node name="BrownBrickBlockNormal24" parent="Game" instance=ExtResource("8_gms1n")]
+[node name="RedBrickBlockNormal19" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(126, 162)
+
+[node name="RedBrickBlockNormal32" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(138, 162)
+
+[node name="RedBrickBlockNormal33" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(150, 162)
+
+[node name="RedBrickBlockNormal34" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(162, 162)
+
+[node name="RedBrickBlockNormal35" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(174, 162)
+
+[node name="RedBrickBlockNormal45" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(114, 102)
+
+[node name="RedBrickBlockNormal46" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(126, 102)
+
+[node name="RedBrickBlockNormal47" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(138, 102)
+
+[node name="RedBrickBlockNormal48" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(150, 102)
+
+[node name="RedBrickBlockNormal49" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(162, 102)
+
+[node name="RedBrickBlockNormal50" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(174, 102)
+
+[node name="RedBrickBlockNormal51" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
 position = Vector2(42, 102)
 
-[node name="BrownBrickBlockNormal25" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(42, 102)
+[node name="RedBrickBlockNormal52" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(54, 102)
 
-[node name="BrownBrickBlockNormal17" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 90)
+[node name="RedBrickBlockNormal53" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(66, 102)
 
-[node name="BrownBrickBlockNormal18" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(78, 90)
+[node name="RedBrickBlockNormal54" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(78, 102)
 
-[node name="BrownBrickBlockNormal3" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(114, 54)
+[node name="RedBrickBlockNormal55" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(90, 102)
 
-[node name="BrownBrickBlockNormal4" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(126, 54)
+[node name="RedBrickBlockNormal56" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(102, 102)
 
-[node name="BrownBrickBlockNormal5" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(138, 54)
+[node name="RedBrickBlockNormal36" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(186, 162)
 
-[node name="BrownBrickBlockNormal6" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(150, 54)
+[node name="RedBrickBlockNormal37" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(198, 162)
 
-[node name="BrownBrickBlockNormal7" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(162, 54)
-
-[node name="BrownBrickBlockNormal30" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(174, 54)
-
-[node name="BrownBrickBlockNormal31" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(186, 54)
-
-[node name="BrownBrickBlockNormal35" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(186, 66)
-
-[node name="BrownBrickBlockNormal36" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(198, 78)
-
-[node name="BrownBrickBlockNormal37" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(210, 90)
-
-[node name="BrownBrickBlockNormal38" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(222, 102)
-
-[node name="BrownBrickBlockNormal39" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(234, 114)
-
-[node name="BrownBrickBlockNormal40" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(246, 126)
-
-[node name="BrownBrickBlockNormal41" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(270, 150)
-
-[node name="BrownBrickBlockNormal42" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(282, 138)
-
-[node name="BrownBrickBlockNormal43" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(258, 150)
-
-[node name="BrownBrickBlockNormal44" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(246, 150)
-
-[node name="BrownBrickBlockNormal45" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(234, 150)
-
-[node name="BrownBrickBlockNormal46" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(222, 150)
-
-[node name="BrownBrickBlockNormal47" parent="Game" instance=ExtResource("8_gms1n")]
+[node name="RedBrickBlockNormal38" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
 position = Vector2(210, 150)
 
-[node name="BrownBrickBlockNormal48" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(198, 150)
+[node name="RedBrickBlockNormal39" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(210, 138)
 
-[node name="BrownBrickBlockNormal49" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(186, 150)
+[node name="RedBrickBlockNormal40" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(210, 126)
 
-[node name="BrownBrickBlockNormal50" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(174, 150)
+[node name="RedBrickBlockNormal41" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(210, 114)
 
-[node name="BrownBrickBlockNormal51" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(174, 150)
+[node name="RedBrickBlockNormal42" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(210, 102)
 
-[node name="BrownBrickBlockNormal52" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(162, 138)
+[node name="RedBrickBlockNormal43" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(198, 102)
 
-[node name="BrownBrickBlockNormal33" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(210, 54)
+[node name="RedBrickBlockNormal44" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(186, 102)
 
-[node name="BrownBrickBlockNormal34" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(222, 54)
+[node name="RedBrickBlockNormal2" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(42, 162)
 
-[node name="BrownBrickBlockNormal8" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(234, 42)
+[node name="RedBrickBlockNormal3" parent="Game/Blocks" instance=ExtResource("5_kntwr")]
+position = Vector2(54, 162)
 
-[node name="Orb" parent="Game" instance=ExtResource("6_1n8li")]
-position = Vector2(102, 42)
+[node name="Enemies" type="Node2D" parent="Game"]
 
-[node name="Orb2" parent="Game" instance=ExtResource("6_1n8li")]
-position = Vector2(114, 42)
+[node name="Bat" parent="Game/Enemies" instance=ExtResource("5_sewgr")]
+position = Vector2(90, 150)
 
-[node name="Orb3" parent="Game" instance=ExtResource("6_1n8li")]
-position = Vector2(126, 42)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 234.0
+offset_bottom = 40.0
 
-[node name="ToggleBlockSwitchBlue" parent="Game" instance=ExtResource("9_i73nr")]
-position = Vector2(102, 174)
+[node name="HSlider" type="HSlider" parent="Control"]
+layout_mode = 0
+offset_right = 210.0
+offset_bottom = 16.0
+max_value = 1.0
+step = 0.05
 
-[node name="BrownBrickBlockNormal32" parent="Game" instance=ExtResource("8_gms1n")]
-position = Vector2(150, 114)
-
-[node name="ToggleBlockVerticalBlue" parent="Game" instance=ExtResource("7_fw4rn")]
-material = SubResource("ShaderMaterial_0asoe")
-position = Vector2(198, 54)
+[connection signal="value_changed" from="Control/HSlider" to="." method="_on_h_slider_value_changed"]

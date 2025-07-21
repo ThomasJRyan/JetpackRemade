@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddt3m6ryow70d"]
 
 [ext_resource type="Texture2D" uid="uid://cuiibus2rycwi" path="res://Assets/Blocks/Sprites/Ladder.png" id="1_fyvhd"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClimableModifiers/climbable_modifier.gd" id="2_2h4jt"]
+[ext_resource type="Script" uid="uid://bdufpg07n7w3v" path="res://Assets/Blocks/Components/ClimableModifiers/climbable_modifier.gd" id="2_2h4jt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m0kff"]
 size = Vector2(12, 12)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://chht1vg2r88v8"]
 
 [ext_resource type="Texture2D" uid="uid://be7xn66whn76a" path="res://Assets/Collectables/treasure.png" id="1_csy6m"]
-[ext_resource type="Script" path="res://Assets/Collectables/Totem/totem.gd" id="2_fv00i"]
+[ext_resource type="Script" uid="uid://pqfy1inxvq6" path="res://Assets/Collectables/Totem/totem.gd" id="2_fv00i"]
 [ext_resource type="PackedScene" uid="uid://b5w7em3uklbne" path="res://Assets/Collectables/Base/collectable.tscn" id="2_lbs2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30nye"]

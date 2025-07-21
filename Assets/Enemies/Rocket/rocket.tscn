@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6ks2fsnqn47l"]
 
-[ext_resource type="Script" path="res://Assets/Enemies/Rocket/rocket.gd" id="1_3j71s"]
+[ext_resource type="Script" uid="uid://b3ilb06p3p1lp" path="res://Assets/Enemies/Rocket/rocket.gd" id="1_3j71s"]
 [ext_resource type="Texture2D" uid="uid://b5vxotjsg5jyg" path="res://Assets/Enemies/Rocket/Rocket.png" id="2_aue4e"]
 [ext_resource type="PackedScene" uid="uid://dr5hi2om5blij" path="res://Assets/Enemies/Components/KillZone/kill_zone.tscn" id="3_8a4h4"]
 

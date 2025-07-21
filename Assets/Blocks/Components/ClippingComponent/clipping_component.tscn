@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b3gl0tghbo5vh"]
 
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="1_qttru"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="2_bvq5s"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="2_bvq5s"]
 
 [node name="ClippingComponent" type="Sprite2D"]
 clip_children = 1

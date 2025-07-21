@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b3gl0tghbo5vh" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.tscn" id="1_irscv"]
 [ext_resource type="Texture2D" uid="uid://b7ty8pq6wn34g" path="res://Assets/Blocks/Components/ClippingComponent/ClippingMask.png" id="2_rvni3"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ogfjs"]
+[ext_resource type="Script" uid="uid://dwcevd3yjgn55" path="res://Assets/Blocks/Components/ClippingComponent/clipping_component.gd" id="3_ogfjs"]
 [ext_resource type="Texture2D" uid="uid://bso24ldaepmbx" path="res://Assets/Blocks/Bases/StandardBricks.png" id="4_rr23c"]
 [ext_resource type="PackedScene" uid="uid://c1u3mb4dlj27m" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.tscn" id="5_2ryn1"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_1x7qw"]
+[ext_resource type="Script" uid="uid://cc1u8nptxqw1d" path="res://Assets/Blocks/Components/IceModifier/ice_modifier.gd" id="6_1x7qw"]
 [ext_resource type="PackedScene" uid="uid://raevwrewfi75" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.tscn" id="7_loiby"]
-[ext_resource type="Script" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_g82nn"]
+[ext_resource type="Script" uid="uid://chikr64rn8w6s" path="res://Assets/Blocks/Components/BreakableComponent/breakable_component.gd" id="8_g82nn"]
 [ext_resource type="Texture2D" uid="uid://bowpwyoteow6n" path="res://Assets/Blocks/Bases/RedBricksBreak.png" id="9_ejrn7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wisr"]
